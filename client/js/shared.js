@@ -6,6 +6,10 @@
 */
 import 'bootstrap.native/dist/bootstrap-native-v4';
 import './../styles/site.scss';
+import './sidenav';
+import './scroller';
+import './three/blocks';
+import './eventOrder';
 
-console.log("shared JS imported")
+console.log("shared JS imported");
  

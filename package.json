@@ -4,18 +4,18 @@
   "private": true,
   "dependencies": {
     "async": "2.1.4",
-    "bootstrap": "4.0.0-beta.2",
+    "bootstrap": "^4.3.1",
     "bootstrap.native": "^2.0.18",
-    "cloudinary": "^1.23.0",
+    "cloudinary": "1.7.0",
     "dotenv": "4.0.0",
     "exports-loader": "^0.6.4",
     "express-handlebars": "3.0.0",
     "express-html-minify": "^1.0.4",
-    "handlebars": "^4.7.6",
+    "handlebars": "4.0.6",
     "jquery": "^3.2.1",
-    "keystone": "^4.2.1",
+    "keystone": "^4.0.0-beta.5",
     "lodash": "^4.13.1",
-    "moment": "^2.29.0",
+    "moment": "2.17.1",
     "node-sass": "^4.5.3",
     "node-sass-middleware": "0.11.0",
     "popper.js": "^1.12.6",
@@ -48,7 +48,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "key": "node keystone.js",
+    "key": "nodemon keystone.js",
     "dev": "webpack -d --watch",
     "prod": "webpack -p"
   }

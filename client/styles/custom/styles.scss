@@ -9,11 +9,12 @@ html, body
     -ms-transition: 0.5s;
     -o-transition: 0.5s linear;
     -webkit-transition: 0.5s linear;
+    height: 100%;
 }
 
 #navbar 
 {
-    //font-family: Magistral;
+    font-family: Magistral;
     transition: 0.2s linear;
     -moz-transition: 0.2s linear;
     -ms-transition: 0.2s;
@@ -206,7 +207,7 @@ html, body
 
 #scroller .expander
 {
-    //font-family: Georgia;
+    font-family: Georgia;
 }
 
 #scroller .expander.active .col
@@ -274,7 +275,7 @@ html, body
 
 h1, h2, h3, h4, h5, h6
 {
-    //font-family: Georgia;
+    font-family: Georgia;
 }
 
 .short-description::-webkit-scrollbar

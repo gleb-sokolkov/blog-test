@@ -6,7 +6,7 @@
 	<div class="collapse navbar-collapse flex-column flex-md-row justify-content-md-around align-items-start"
 		id="navbarSupportedContent">
 		<a class="navbar-brand d-flex justify-content-center align-items-start" href="/">
-			<img src="/logo.png" alt="icon1" class="d-inline-block" style="width: 150px; height: 100px" loading="lazy">
+			<img src="https://res.cloudinary.com/do9pkxeqs/image/upload/w_120,h_80/v1601818296/logo.png" alt="icon1" class="d-inline-block" loading="lazy">
 		</a>
 		<ul class="navbar-nav d-flex w-50 mt-4 d-flex justify-content-around">
 			<li class="nav-item">
@@ -17,7 +17,7 @@
 					</button>
 					<div class="dropdown-menu border" aria-labelledby="dropdownMenuButton">
 						<a href="javascript:void(0)" data-scrollTarget="#rent">Аренда оборуднования</a>
-						<a href="javascript:void(0)" data-scrollTarget="#placement">Размещение оборудования</a>
+						<a href="/clients/placement" data-scrollTarget="#placement">Размещение оборудования</a>
 						<a href="javascript:void(0)" data-scrollTarget="#cloud-services">Облачные сервисы</a>
 					</div>
 				</div>
@@ -53,8 +53,8 @@
 			<input class="form-control mr-4 w-100" type="search" placeholder="Search" aria-label="Search">
 		</form>
 	</div>
-	<div class="mr-0 mr-sm-4 mb-0 mb-lg-3 d-flex justify-content-between align-items-center">
-		<form class="form-inline pt-1 pr-3">
+	<div class="mr-0 mr-sm-4 my-1 d-flex justify-content-between align-items-stretch">
+		<form class="form-inline pr-3">
 			{{#if user}}
 			<a href="/keystone/signout" class="btn btn-outline-success my-2 my-sm-0">Sign out</a>
 			{{else}}

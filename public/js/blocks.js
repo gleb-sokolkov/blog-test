@@ -1,5 +1,3 @@
-import * as THREE from './three'
-
 Number.prototype.clamp = function(min, max) {
     return Math.min(Math.max(this, min), max);
 };
@@ -142,7 +140,7 @@ cubes.forEach(item => {
     scene.add(item.mesh);
 });
 
-export var onScroll = (scrollContainer, scroller) => {
+var onScroll = (scrollContainer, scroller) => {
     var scroll = scrollContainer.scrollTop;
     var accel = oldScroll - scroll;
     cubes.forEach(item => {

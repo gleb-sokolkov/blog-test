@@ -1,6 +1,3 @@
-import { _onScroll } from './scroller'
-import { onScroll } from './three/blocks'
-
 var scrollContainer = document.getElementById("scroll-container");
 var scroller = document.getElementById("scroller");
 

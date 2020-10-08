@@ -13192,7 +13192,7 @@ body {
 }
 
 #scroller .expander.active .col {
-  font-size: 13rem;
+  font-size: calc(2rem + 10vw);
 }
 
 #scroller .expander .col {
@@ -13270,8 +13270,8 @@ h6 {
 .filler {
   background-color: #343844;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 none;
-          flex: 1 1 none;
+      -ms-flex: 1 0 none;
+          flex: 1 0 none;
 }
 
 @media (max-width: 991px) {

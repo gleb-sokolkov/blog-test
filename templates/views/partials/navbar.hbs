@@ -16,9 +16,9 @@
 						Клиентам
 					</button>
 					<div class="dropdown-menu border" aria-labelledby="dropdownMenuButton">
-						<a href="javascript:void(0)" data-scrollTarget="#rent">Аренда оборуднования</a>
+						<a href="/clients/rent" data-scrollTarget="#rent">Аренда оборуднования</a>
 						<a href="/clients/placement" data-scrollTarget="#placement">Размещение оборудования</a>
-						<a href="javascript:void(0)" data-scrollTarget="#cloud-services">Облачные сервисы</a>
+						<a href="/clients/cservices" data-scrollTarget="#cloud-services">Облачные сервисы</a>
 					</div>
 				</div>
 			</li>
@@ -53,7 +53,7 @@
 			<input class="form-control mr-4 w-100" type="search" placeholder="Search" aria-label="Search">
 		</form>
 	</div>
-	<div class="mr-0 mr-sm-4 my-1 d-flex justify-content-between align-items-stretch">
+	<div class="mr-0 mr-sm-4 my-1 d-flex justify-content-between align-items-center">
 		<form class="form-inline pr-3">
 			{{#if user}}
 			<a href="/keystone/signout" class="btn btn-outline-success my-2 my-sm-0">Sign out</a>

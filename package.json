@@ -49,7 +49,8 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "key": "nodemon keystone.js",
+    "devkey": "nodemon keystone.js",
+    "key": "node keystone.js",
     "dev": "webpack -d --watch",
     "prod": "webpack -p"
   }

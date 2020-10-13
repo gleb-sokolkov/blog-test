@@ -31,7 +31,7 @@
 @import "node_modules/bootstrap/scss/button-group";
 @import "node_modules/bootstrap/scss/input-group";
 // @import "node_modules/bootstrap/scss/custom-forms";  
-// @import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/nav";
 @import "node_modules/bootstrap/scss/navbar";
 @import "node_modules/bootstrap/scss/card";
 // @import "node_modules/bootstrap/scss/breadcrumb";
@@ -46,10 +46,18 @@
 // @import "node_modules/bootstrap/scss/modal";
 // @import "node_modules/bootstrap/scss/tooltip";
 // @import "node_modules/bootstrap/scss/popover";
-// @import "node_modules/bootstrap/scss/carousel";
+@import "node_modules/bootstrap/scss/carousel";
 @import "node_modules/bootstrap/scss/utilities";
+/* --------------------------------------------------------
+Font-Awesome
+-------------------------------------------------------- */
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
 
 /* --------------------------------------------------------
    Custom application specific styles
 -------------------------------------------------------- */
+@import "custom/styles.scss";
+@import "custom/sidenav.scss";
+
 @import "base";

@@ -1,0 +1,354 @@
+html, body
+{
+    font-size: 16px;
+    margin: 0;
+    font-family: Roboto;
+    background-color: white;
+    transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    height: 100%;
+}
+
+#navbar 
+{
+    font-family: Magistral;
+    transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s linear;
+    -webkit-transition: 0.2s linear;
+    z-index: 99;
+}
+
+.container-fluid
+{
+    max-width: 1920px;
+}
+
+._header .col
+{
+    height: 176px;
+}
+._header > *
+{
+    font-size: 1.25rem;
+}
+
+
+._email
+{
+    background-color: rgb(52, 56, 68);
+}
+
+._email .col
+{
+    height: 559px; 
+}
+
+._footer .col
+{
+    background-color: rgb(20, 22, 26);
+    height: 76px; 
+}
+
+.blue
+{
+    background-color: rgb(28, 32, 36);
+    color: rgb(161,200,230);
+}
+.blue a:link
+{
+    color: white;    
+}
+
+.dropdown-menu
+{
+    border-radius: 0%;
+    border: none;
+    padding: 0 0;
+}
+
+.dropdown-menu a
+{
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+    color: black;
+    text-align: center;
+}
+
+.dropdown-menu a:hover
+{
+    background-color: rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}
+
+.nav-link:active
+{
+    border: none;
+}
+
+.dropdown button
+{
+    border: none; 
+    background-color: transparent;
+}
+
+.dropdown button:focus
+{
+    outline: none;
+}
+
+
+.service
+{
+    text-decoration: none;
+    
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+.service .capital
+{
+    min-width: 300px;
+    max-width: 300px;
+    height: 300px;
+    text-align: center;
+    font-size: 3rem;
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+
+.service .service-name
+{    
+    min-width: 300px;
+    max-width: 300px;
+    height: 110px;
+    display: block;
+    opacity: 0;
+}
+
+.service .service-name p 
+{
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+
+.service .service-image
+{
+    min-width: 300px;
+    max-width: 300px;
+    height: 300px;
+    display: none;
+    text-align: center;
+}
+
+.empty-service
+{
+    height: 100px;
+}
+
+.empty-service-end
+{
+    height: 300px
+}
+
+.bgd
+{
+    margin-bottom: 100px;
+}
+
+
+._boffset li
+{
+    padding: 0.5rem;
+}
+
+._boffset .row
+{
+    height: 715px; 
+    margin-top: -250px; 
+    overflow-x: hidden;
+}
+
+.company
+{
+    background-color: rgb(206, 241, 203);
+}
+
+
+#scroll-container::-webkit-scrollbar
+{
+    display: none;
+}
+
+#scroll-container
+{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    max-height: 990px;
+    width: 100%;
+    height: 990px;
+    padding: 0 0;
+    margin-top: -127px;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+#scroller .expander
+{
+    font-family: Georgia;
+}
+
+#scroller .expander.active .col
+{
+    font-size: calc(2rem + 10vw);
+}
+
+#scroller .expander .col
+{
+    font-size: 2rem;
+    text-align: center;
+
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+.mt
+{
+    margin-top: -300px;
+}
+
+.short-description
+{
+    height: 600px;
+    visibility: hidden;
+    opacity: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-size: 1.25rem;
+
+    scrollbar-width: none;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+.short-description .content
+{
+    margin-top: 1000px;
+
+    transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+
+.short-description.active
+{
+    visibility: visible;
+    opacity: 1;
+}
+
+.short-description.active .content 
+{
+    margin-top: 0px;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: Georgia;
+}
+
+.short-description::-webkit-scrollbar
+{
+    display: none;
+}
+
+
+
+.short-description a 
+{
+    text-decoration: none;
+    color: black;
+}
+
+#canvas
+{
+    overflow-x: hidden;
+    width: 1900px;
+    margin-top: -127px;
+}
+
+.filler
+{
+    background-color: rgb(52, 56, 68);
+    flex: 1 0 none;
+}
+
+@media (max-width: 991px) 
+{
+    .container 
+    {
+      max-width: 100%;
+    }
+
+    #scroll-container
+    {
+        margin-top: -56px;
+    }
+
+    #canvas
+    {
+        margin-top: -56px;
+    }
+}
+
+@media (max-width: 600px)
+{
+    .service .capital
+    {
+        min-height: 190px;
+        height: 190px;
+        min-width: 190px;
+        max-width: 190px;
+        width: 190px;
+        margin-top: -10px;
+    }
+
+    .service .service-name
+    {
+        text-align: center;
+    }
+
+    ul
+    {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 576px)
+{
+    .short-description
+    {
+        font-size: 4vw;
+    }
+}

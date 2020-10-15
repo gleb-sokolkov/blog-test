@@ -2,7 +2,7 @@ function unobtrusify()
 {
     var previousPosY = window.pageYOffset;
     var navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => 
+    window.addEventListener('scroll', function() 
     {
         if(window.pageYOffset < previousPosY)
         {

@@ -7,7 +7,7 @@ var descriptions = document.getElementById("scroller").getElementsByClassName("s
 var descriptionContents = document.getElementById("scroller").getElementsByClassName("content");
 var _oldScroll = 0;
 
-var _onScroll = (scrollContainer, scroller) => {
+var _onScroll = function(scrollContainer, scroller) {
     var widthCounter = 0;
     var index = 0;
     var origin = scrollContainer.scrollTop + document.documentElement.clientHeight * 0.1;

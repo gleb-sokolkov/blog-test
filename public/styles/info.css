@@ -41,6 +41,17 @@ html, body
     background-color: white;
 }
 
+.gallery
+{
+    overflow: hidden;
+}
+
+.gallery img
+{
+    max-height: 600px; 
+    width: auto;
+}
+
 @media(max-width: 576px)
 {
     .centered
@@ -54,6 +65,16 @@ html, body
     .container-info
     {
         padding: 4rem 2rem;
+    }
+}
+
+@media(max-width: 768px)
+{
+    .gallery img
+    {
+        max-height: 100%;
+        height: auto;
+        max-width: 100%;
     }
 }
 

@@ -1,18 +1,19 @@
 /* Your custom fonts */
 @font-face
 {
-    src: url('RobotoRegular.ttf');
+    src: url('RobotoRegular.ttf'), url('RobotoRegularIE.eot');
+
     font-family: Roboto;
 }
 
 @font-face
 {
-    src: url('georgia.ttf');
+    src: url('georgia.ttf'), url('georgiaIE.eot');
     font-family: Georgia;
 }
 
 @font-face
 {
-    src: url('MagistralC.ttf');
+    src: url('MagistralC.ttf'), url('MagistralIE.eot');
     font-family: Magistral;
 }

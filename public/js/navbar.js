@@ -16,4 +16,7 @@ function unobtrusify()
     });
 }
 
-unobtrusify();
+if(window.navigator.userAgent.match(/MSIE|Trident/) === null)
+{
+    unobtrusify();
+}

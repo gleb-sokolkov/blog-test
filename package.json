@@ -52,6 +52,7 @@
     "devkey": "nodemon keystone.js",
     "key": "node keystone.js",
     "dev": "webpack -d --watch",
+    "blocks": "webpack --config ./webpack.blocks.config.js",
     "prod": "webpack -p"
   }
 }

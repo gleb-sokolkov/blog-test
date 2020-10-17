@@ -1,5 +1,7 @@
 "use strict";
 
+var THREE = require('./three');
+
 function _instanceof(left, right) { if (right != null && typeof Symbol !== "undefined" && right[Symbol.hasInstance]) { return !!right[Symbol.hasInstance](left); } else { return left instanceof right; } }
 
 function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -137,7 +139,7 @@ cubes.forEach(function (item) {
   scene.add(item.mesh);
 });
 
-var onScroll = function onScroll(scrollContainer, scroller) {
+export var onScroll = function onScroll(scrollContainer, scroller) {
   var scroll = scrollContainer.scrollTop;
   var accel = oldScroll - scroll;
   cubes.forEach(function (item) {

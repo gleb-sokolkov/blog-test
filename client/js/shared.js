@@ -7,6 +7,7 @@
 import 'bootstrap.native/dist/bootstrap-native-v4';
 import './../styles/site.scss';
 import './sidenav';
+import './navbar-dropdown';
 
 console.log("shared JS imported");
  

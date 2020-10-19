@@ -8,6 +8,18 @@
     <title>CoreDataNet</title>
     <link rel="stylesheet" href="/styles/site.css">
     <link rel="stylesheet" href="/styles/info.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=49d9e338-98c1-4835-a0e1-d838562fd2a4&lang=ru_RU"
+        type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init(){
+            var myMap = new ymaps.Map("map", {
+                center: [54.95,73.34],
+                zoom: 7
+            });
+        }
+    </script>
 </head>
 
 <body>

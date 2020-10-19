@@ -9,6 +9,8 @@
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link href="/styles/site.css" rel="stylesheet">
 
+
+
 	{{!-- This file provides the default styling for the KeystoneJS Content Editor
 			- only renders when user is logged in and admin--}}
 	{{{isAdminEditorCSS user}}}
@@ -19,6 +21,19 @@
 			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
 			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=49d9e338-98c1-4835-a0e1-d838562fd2a4&lang=ru_RU"
+		type="text/javascript">
+		</script>
+	<script type="text/javascript">
+		ymaps.ready(init);
+		function init() {
+			var myMap = new ymaps.Map("map", {
+				center: [54.95,73.34],
+				zoom: 7
+			});
+		}
+	</script>
 
 </head>
 

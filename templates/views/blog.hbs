@@ -1,40 +1,56 @@
 {{!< info}}
-	<div class="container-info">
-		<div class="container">
-			<h1 class="py-4">Blog</h1>
+<div class="container-info container border-left border-right bg-light">
+	<div class="row">
+		<div class="col-12 py-4">
+			<h1 class="display-4 d-none d-sm-block"> Новости </h1>
+            <h1 class="d-block d-sm-none"> Новости </h1>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-8 col-md-9">
-					<h4 class="text-weight-normal">Showing {{ data.posts.results.length}} post.</h4>
-					<div class="blog">
-						{{# each data.posts.results}}
-						<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="post">
-							<h2><a href="{{postUrl slug}}">{{{title}}}</a></h2>
-							<p class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
-								{{#if author.name.first}}by {{author.name.first}}{{/if}}
-							</p>
-							{{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}"
-								class="img pull-right">{{/if}}
-							<p>{{{content.brief}}}</p>
-							{{#if content.extended}}<p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>
-							{{/if}}
-						</div>
-						{{/each}}
-					</div>
-				</div>
-				<div class="col-sm-4 col-md-3">
-					<h2>Categories</h2>
-					<div class="list-group">
-						<a href="/blog" class="active list-group-item list-group-item-action">All Categories</a>
-						{{# each data.categories }}
-						<a href="{{categoryUrl key}}" class="list-group-item list-group-item-action">{{name}}</a>
-						{{/each}}
-
-					</div> <!-- list-group -->
-				</div>
-			</div>
-			{{>pagination}}
-		</div>
-
 	</div>
+	<div class="row">
+		<div class="col-sm-8 col-md-9">
+			<h4 class="text-weight-normal text-right" style="font-size: 1.25rem;">Всего постов
+				{{ data.posts.results.length}}.</h4>
+			<div class="blog">
+				{{# each data.posts.results}}
+				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}"
+					class="post border py-2 pl-3 rounded mb-2">
+					<h2>
+						<a href="{{postUrl slug}}" class="text-dark">{{{title}}}</a>
+					</h2>
+					{{!-- {{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}"
+								class="img pull-right">{{/if}} --}}
+					<p>{{{content.brief}}}</p>
+
+					{{#if content.extended}}
+					<p class="read-more">
+						<a href="{{postUrl slug}}" class="btn btn-outline-info">
+							<i class="fa fa-sticky-note" aria-hidden="true"></i>
+							Читать
+						</a>
+					</p>
+					{{/if}}
+					<hr>
+					<p class="lead text-muted">
+						{{{categoryList categories prefix="Добавлено в "}}}
+						{{#if author.name.first}} <span style="font-size: 0.9rem;">Автор:
+							{{author.name.first}}</span>{{/if}}
+					</p>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		<div class="col-sm-4 col-md-3">
+			<h2>Категории</h2>
+			<div class="list-group">
+				<a href="/blog" class="active list-group-item list-group-item-action">Все категории</a>
+				{{# each data.categories }}
+				<a href="{{categoryUrl key}}" class="list-group-item list-group-item-action">{{name}}</a>
+				{{/each}}
+
+			</div> <!-- list-group -->
+		</div>
+	</div>
+	<div class="mt-2 mt-sm-0">
+		{{>pagination}}
+	</div>
+</div>

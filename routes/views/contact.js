@@ -33,5 +33,5 @@ exports = module.exports = function (req, res) {
 		});
 	});
 
-	view.render('contact', { layout: 'info'});
+	view.render('contact', { layout: 'contact'});
 };

@@ -73,6 +73,14 @@ html, body
     height: 100%;
 }
 
+.categories
+{
+    position: fixed;
+    top: 8rem; 
+    height: calc(100% - 200px); 
+    overflow-y:auto;
+}
+
 
 @media(max-width: 576px)
 {

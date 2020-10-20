@@ -13672,6 +13672,12 @@ h6 {
   display: block;
 }
 
+@media screen and (min-width: 1200px) {
+  #scroller .expander.active .col {
+    font-size: 14rem;
+  }
+}
+
 @media (max-width: 991px) {
   .container {
     max-width: 100%;

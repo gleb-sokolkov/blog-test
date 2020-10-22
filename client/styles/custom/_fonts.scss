@@ -1,19 +1,30 @@
 /* Your custom fonts */
 @font-face
 {
-    src: url('RobotoRegular.ttf'), url('RobotoRegularIE.eot');
+    src: url('./Roboto/RobotoRegular.ttf'), url('./Roboto/RobotoRegularIE.eot');
 
     font-family: Roboto;
 }
 
 @font-face
 {
-    src: url('georgia.ttf'), url('georgiaIE.eot');
+    src: url('./Georgia/georgia.ttf'), url('./Georgia/georgiaIE.eot');
     font-family: Georgia;
 }
 
 @font-face
 {
-    src: url('MagistralC.ttf'), url('MagistralIE.eot');
+    src: url('./Magistral/MagistralC.ttf'), url('./Magistral/MagistralIE.eot');
     font-family: Magistral;
+}
+
+@font-face
+{
+    src: 
+        url('./Exo2/Exo2-VariableFont_wght.ttf') format('woff2 supports variations'), 
+        url('./Exo2/Exo2-VariableFont_wght.ttf') format('woff2-variations'),
+        url('./Exo2/Exo2-RegularIE.eot');
+    font-family: Exo2;
+    font-weight: 100 1000;
+    font-stretch: 25% 150%;
 }

@@ -13,18 +13,25 @@
 /* Your custom fonts */
 
 @font-face {
-  src: url(/public/fonts/RobotoRegular.ttf), url(/public/fonts/RobotoRegularIE.eot);
+  src: url(/public/fonts/Roboto/RobotoRegular.ttf), url(/public/fonts/Roboto/RobotoRegularIE.eot);
   font-family: Roboto;
 }
 
 @font-face {
-  src: url(/public/fonts/georgia.ttf), url(/public/fonts/georgiaIE.eot);
+  src: url(/public/fonts/Georgia/georgia.ttf), url(/public/fonts/Georgia/georgiaIE.eot);
   font-family: Georgia;
 }
 
 @font-face {
-  src: url(/public/fonts/MagistralC.ttf), url(/public/fonts/MagistralIE.eot);
+  src: url(/public/fonts/Magistral/MagistralC.ttf), url(/public/fonts/Magistral/MagistralIE.eot);
   font-family: Magistral;
+}
+
+@font-face {
+  src: url(/public/fonts/Exo2/Exo2-VariableFont_wght.ttf) format("woff2 supports variations"), url(/public/fonts/Exo2/Exo2-VariableFont_wght.ttf) format("woff2-variations"), url(/public/fonts/Exo2/Exo2-RegularIE.eot);
+  font-family: Exo2;
+  font-weight: 100 1000;
+  font-stretch: 25% 150%;
 }
 
 /* --------------------------------------------------------
@@ -13445,7 +13452,7 @@ body {
 }
 
 ._footer .col {
-  background-color: #14161a;
+  background-color: #2a2e35;
   height: 76px;
 }
 
@@ -13474,7 +13481,7 @@ body {
 }
 
 .dropdown-menu a:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(86, 199, 247, 0.23);
   font-weight: bold;
 }
 
@@ -13577,7 +13584,7 @@ body {
 }
 
 #scroller .expander {
-  font-family: Georgia;
+  font-family: Exo2;
 }
 
 #scroller .expander.active .col {
@@ -13637,7 +13644,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Georgia;
+  font-family: Exo2;
 }
 
 .short-description::-webkit-scrollbar {

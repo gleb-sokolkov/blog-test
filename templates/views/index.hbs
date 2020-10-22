@@ -1,5 +1,5 @@
 {{!< default}}
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center"> 
   <div class="container-fluid position-absolute" id="scroll-container">
     <div id="scroller">
       <div class="row">
@@ -376,7 +376,7 @@
           </div>
           {{else}}
           <form class="h-100 d-flex flex-column justify-content-between" method="post">
-            <p style="font-size: 1.5rem;">Напишите нам</p>
+            <h2>Напишите нам</h2>
             <input type="hidden" name="action" value="home">
             <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
               <input type="text" name="name.full" class="form-control" placeholder="Имя и фамилия"

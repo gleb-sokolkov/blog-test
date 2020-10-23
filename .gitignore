@@ -30,4 +30,4 @@ node_modules
 .DS_Store
 
 *.bundle.js
-./public/styles/site.css
+/public/styles/site.css

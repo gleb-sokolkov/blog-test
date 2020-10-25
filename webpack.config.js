@@ -26,9 +26,11 @@ module.exports = {
       allChunks: false
     }),
     /* Copy static images from client folder to to public */
-    new CopyWebpackPlugin([
-      { from: path.resolve(__dirname, 'client/images'),  to: 'images/' }
-    ]),
+    new CopyWebpackPlugin({
+      patterns : [
+        { from: path.resolve(__dirname, 'client/images'),  to: 'images/' }
+      ]
+    }),
     // new ServiceWorkerWebpackPlugin({
     //   entry: path.join(__dirname, 'client/service-worker.js'),
     // }),

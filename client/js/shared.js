@@ -5,9 +5,9 @@
 *
 */
 import 'bootstrap.native/dist/bootstrap-native-v4';
-import './../styles/site.scss';
+import '../styles/site.scss';
 import './sidenav';
 import './navbar-dropdown';
+import 'font-awesome/scss/font-awesome.scss';
 
-console.log("shared JS imported");
  

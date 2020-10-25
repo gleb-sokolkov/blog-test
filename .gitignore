@@ -31,3 +31,5 @@ node_modules
 
 *.bundle.js
 public/styles/site.css
+
+.env

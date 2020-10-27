@@ -14,9 +14,12 @@
 				{{# each data.posts.results}}
 				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}"
 					class="post border py-2 px-3 rounded mb-2 bg-white">
-					<h2>
+					<h2 class="d-none d-sm-block">
 						<a href="{{postUrl slug}}" class="text-dark">{{{title}}}</a>
 					</h2>
+					<h4 class="d-sm-block d-sm-none">
+						<a href="{{postUrl slug}}" class="text-dark">{{{title}}}</a>
+					</h4>
 					{{!-- {{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}"
 								class="img pull-right">{{/if}} --}}
 					<p>{{{content.brief}}}</p>
@@ -32,7 +35,7 @@
 					<hr>
 					<p class="lead text-muted">
 						{{{categoryList categories prefix="Добавлено в "}}}
-						{{#if author.name.first}} <span style="font-size: 0.9rem;">Автор:
+						{{#if author.name.first}} <br class="d-block"> <span style="font-size: 0.9rem;">Автор:
 							{{author.name.first}}</span>{{/if}}
 					</p>
 				</div>

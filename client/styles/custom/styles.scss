@@ -1,5 +1,5 @@
-html, body
-{
+html,
+body {
     font-size: 16px;
     margin: 0;
     font-family: Roboto;
@@ -12,8 +12,7 @@ html, body
     height: 100%;
 }
 
-#navbar 
-{
+#navbar {
     font-family: Magistral;
     transition: 0.2s linear;
     -moz-transition: 0.2s linear;
@@ -23,62 +22,50 @@ html, body
     z-index: 99;
 }
 
-#navbar .dd-old
-{
+#navbar .dd-old {
     display: none;
 }
 
-.container-fluid
-{
+.container-fluid {
     max-width: 1920px;
 }
 
-._header .col
-{
+._header .col {
     height: 176px;
 }
-._header > *
-{
+._header > * {
     font-size: 1.25rem;
 }
 
-
-._email
-{
+._email {
     background-color: rgb(52, 56, 68);
 }
 
-._email .col
-{
-    height: 559px; 
+._email .map {
+    height: 559px;
 }
 
-._footer .col
-{
+._footer .col {
     background-color: rgb(42, 46, 53);
-    height: 76px; 
+    height: 76px;
 }
 
-.blue
-{
+.blue {
     background-color: rgb(28, 32, 36);
-    color: rgb(161,200,230);
+    color: rgb(161, 200, 230);
 }
-.blue a:link
-{
-    color: white;    
+.blue a:link {
+    color: white;
 }
 
-.dropdown-menu
-{
+.dropdown-menu {
     border-radius: 0%;
     border: none;
     padding: 0 0;
     margin-top: 0;
 }
 
-.dropdown-menu a
-{
+.dropdown-menu a {
     text-decoration: none;
     display: block;
     padding: 0.5rem;
@@ -86,33 +73,27 @@ html, body
     text-align: center;
 }
 
-.dropdown-menu a:hover
-{
+.dropdown-menu a:hover {
     background-color: rgba(86, 199, 247, 0.23);
     font-weight: bold;
 }
 
-.nav-link:active
-{
+.nav-link:active {
     border: none;
 }
 
-.dropdown button
-{
-    border: none; 
+.dropdown button {
+    border: none;
     background-color: transparent;
 }
 
-.dropdown button:focus
-{
+.dropdown button:focus {
     outline: none;
 }
 
-
-.service
-{
+.service {
     text-decoration: none;
-    
+
     transition: 0.5s;
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
@@ -120,8 +101,7 @@ html, body
     -webkit-transition: 0.5s;
 }
 
-.service .capital
-{
+.service .capital {
     min-width: 300px;
     max-width: 300px;
     height: 300px;
@@ -134,9 +114,7 @@ html, body
     -webkit-transition: 0.5s;
 }
 
-
-.service .service-name
-{    
+.service .service-name {
     min-width: 300px;
     max-width: 300px;
     height: 110px;
@@ -144,14 +122,12 @@ html, body
     opacity: 0;
 }
 
-.service .service-name p 
-{
+.service .service-name p {
     font-size: 3rem;
     margin-bottom: 0;
 }
 
-.service .service-image
-{
+.service .service-image {
     min-width: 300px;
     max-width: 300px;
     height: 300px;
@@ -159,47 +135,37 @@ html, body
     text-align: center;
 }
 
-.empty-service
-{
+.empty-service {
     height: 100px;
 }
 
-.empty-service-end
-{
-    height: 300px
+.empty-service-end {
+    height: 300px;
 }
 
-.bgd
-{
+.bgd {
     margin-bottom: 100px;
 }
 
-
-._boffset li
-{
+._boffset li {
     padding: 0.5rem;
 }
 
-._boffset .row
-{
-    height: 715px; 
-    margin-top: -250px; 
+._boffset .row {
+    height: 715px;
+    margin-top: -250px;
     overflow-x: hidden;
 }
 
-.company
-{
+.company {
     background-color: rgb(206, 241, 203);
 }
 
-
-#scroll-container::-webkit-scrollbar
-{
+#scroll-container::-webkit-scrollbar {
     display: none;
 }
 
-#scroll-container
-{
+#scroll-container {
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: none;
@@ -211,18 +177,15 @@ html, body
     -ms-overflow-style: none;
 }
 
-#scroller .expander
-{
+#scroller .expander {
     font-family: Exo2;
 }
 
-#scroller .expander.active .col
-{
+#scroller .expander.active .col {
     font-size: calc(2rem + 10vw);
 }
 
-#scroller .expander .col
-{
+#scroller .expander .col {
     font-size: 2rem;
     text-align: center;
 
@@ -233,13 +196,11 @@ html, body
     -webkit-transition: 0.5s;
 }
 
-.mt
-{
+.mt {
     margin-top: -300px;
 }
 
-.short-description
-{
+.short-description {
     height: 600px;
     visibility: hidden;
     opacity: 0;
@@ -256,8 +217,7 @@ html, body
     -webkit-transition: 0.5s;
 }
 
-.short-description .content
-{
+.short-description .content {
     margin-top: 1000px;
 
     transition: 0.5s;
@@ -267,48 +227,42 @@ html, body
     -webkit-transition: 0.5s;
 }
 
-.short-description.active
-{
+.short-description.active {
     visibility: visible;
     opacity: 1;
 }
 
-.short-description.active .content 
-{
+.short-description.active .content {
     margin-top: 0px;
 }
 
-h1, h2, h3, h4, h5, h6
-{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: Exo2;
 }
 
-.short-description::-webkit-scrollbar
-{
+.short-description::-webkit-scrollbar {
     display: none;
 }
 
-
-
-.short-description a 
-{
+.short-description a {
     text-decoration: none;
     color: black;
 }
 
-#canvas
-{
+#canvas {
     overflow-x: hidden;
     width: 1900px;
-    margin-top: -127px;
 }
 
-.filler
-{
+.filler {
     background-color: rgb(52, 56, 68);
     flex: 1 0 none;
 }
-
 
 .old-dropdown ul {
     margin-left: 0;
@@ -320,36 +274,28 @@ h1, h2, h3, h4, h5, h6
     display: block;
 }
 
-
-
 @media screen and (min-width: 1200px) {
     #scroller .expander.active .col {
-       font-size: 14rem;
+        font-size: 14rem;
     }
-  }
+}
 
-@media (max-width: 991px) 
-{
-    .container 
-    {
-      max-width: 100%;
+@media (max-width: 991px) {
+    .container {
+        max-width: 100%;
     }
 
-    #scroll-container
-    {
+    #scroll-container {
         margin-top: -56px;
     }
 
-    #canvas
-    {
+    #canvas {
         margin-top: -56px;
     }
 }
 
-@media (max-width: 600px)
-{
-    .service .capital
-    {
+@media (max-width: 600px) {
+    .service .capital {
         min-height: 190px;
         height: 190px;
         min-width: 190px;
@@ -358,21 +304,21 @@ h1, h2, h3, h4, h5, h6
         margin-top: -10px;
     }
 
-    .service .service-name
-    {
+    .service .service-name {
         text-align: center;
     }
 
-    ul
-    {
+    ul {
         padding: 0 20px;
     }
 }
 
-@media (max-width: 576px)
-{
-    .short-description
-    {
+@media (max-width: 576px) {
+    .short-description {
         font-size: 4vw;
+    }
+
+    ._email .map {
+        height: 359px;
     }
 }

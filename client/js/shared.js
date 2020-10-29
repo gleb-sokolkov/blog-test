@@ -6,8 +6,9 @@
 */
 import 'bootstrap.native/dist/bootstrap-native-v4';
 import '../styles/site.scss';
-import './sidenav';
-import './navbar-dropdown';
+import './custom/sidenav';
+import './custom/navbar';
+import './custom/navbar-dropdown';
 import 'font-awesome/scss/font-awesome.scss';
 
  

@@ -51,9 +51,8 @@
     "lint": "eslint .",
     "devkey": "nodemon keystone.js",
     "key": "node keystone.js",
-    "dev": "webpack --watch",
     "blocks": "webpack --config ./webpack.blocks.config.js",
-    "test-webpack-5": "webpack --config ./webpack-5.config.js",
-    "prod": "webpack"
+    "dev": "",
+    "prod": "webpack --config ./webpack.prod.config.js"
   }
 }

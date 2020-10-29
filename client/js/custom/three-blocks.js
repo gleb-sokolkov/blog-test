@@ -139,6 +139,26 @@ cubes.forEach(function (item) {
   scene.add(item.mesh);
 });
 
+//Time 
+var clock = new THREE.Clock(true);
+var quad_uniform = {
+  time: {
+    type: 'f',
+    value: 0
+  },
+};
+
+//shitty background quad
+var quad_geometry = new THREE.PlaneGeometry(100, 100);
+var quad_material = new THREE.ShaderMaterial({
+  vertexShader: document.getElementById("vertex_shader").textContent,
+  fragmentShader: document.getElementById("fragment_shader").textContent,
+  uniforms : quad_uniform
+}); 
+var quad = new THREE.Mesh(quad_geometry, quad_material);
+
+scene.add(quad);
+
 export var onScroll = function onScroll(scrollContainer, scroller) {
   var scroll = scrollContainer.scrollTop;
   var accel = oldScroll - scroll;
@@ -152,6 +172,7 @@ export var onScroll = function onScroll(scrollContainer, scroller) {
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
+  quad_uniform.time.value = clock.getElapsedTime();
 }
 
 animate();

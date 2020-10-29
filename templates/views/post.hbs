@@ -1,6 +1,6 @@
 <div class="container container-info border-left border-right bg-light">
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+		<div class="col-10 col-md-offset-2 mx-auto">
 			<article>
 				<p><a href="/blog">&larr; Назад к новостям</a></p>
 				<hr>
@@ -11,11 +11,13 @@
 						{{#if author.name.first}}by {{author.name.first}}{{/if}}
 					</h5>
 				</header>
-				<div class="post">
+				<div class="post text-center">
 					{{#if data.post.image}}<img
 						src="{{{cloudinaryUrl data.post.image width=750 height=450 crop='fit' }}}"
 						class="img-fluid my-3 rounded">{{/if}}
-					{{{data.post.content.extended}}}
+					<div class="text-justify">
+						{{{data.post.content.extended}}}
+					</div>
 				</div>
 			</article>
 		</div>

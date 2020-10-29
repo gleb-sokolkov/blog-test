@@ -20,10 +20,22 @@ body {
     -o-transition: 0.2s linear;
     -webkit-transition: 0.2s linear;
     z-index: 99;
-}
 
-#navbar .dd-old {
-    display: none;
+    .dd-old {
+        display: none;
+    }
+
+    & .navbar-brand {
+        transition: 0.2s;
+        -moz-transition: 0.2s;
+        -ms-transition: 0.2s;
+        -o-transition: 0.2s;
+        -webkit-transition: 0.2s;
+
+        &:hover{
+            background-color: rgb(200, 230, 247);
+        }
+    }
 }
 
 .container-fluid {
@@ -153,7 +165,7 @@ body {
 
 ._boffset .row {
     height: 715px;
-    margin-top: -250px;
+    margin-top: -300px;
     overflow-x: hidden;
 }
 
@@ -208,6 +220,8 @@ body {
     overflow-y: scroll;
     font-size: 1.25rem;
 
+    padding: 1rem 0;
+
     scrollbar-width: none;
 
     transition: 0.5s;
@@ -215,6 +229,14 @@ body {
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
     -webkit-transition: 0.5s;
+
+    a {
+        font-size: 1rem;
+
+        & .text-block {
+            background-color: rgba(255, 255, 255, 0.623);
+        }
+    }
 }
 
 .short-description .content {

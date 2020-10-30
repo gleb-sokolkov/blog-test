@@ -1,0 +1,18 @@
+.placement .head {
+    padding: 0 4rem;
+    padding-top: 14rem;
+    padding-bottom: 5rem;
+}
+
+@include media-breakpoint-down(lg) {
+    .placement .head {
+        padding-top: 6rem;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .placement .head {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}

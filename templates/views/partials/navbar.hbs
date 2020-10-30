@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100 _header border-bottom p-0" id="navbar">
-	<button class="navbar-toggler bg-light m-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+	<button class="navbar-toggler border-light btn btn-sm ml-2 p-0 mt-1" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<div class="collapse navbar-collapse flex-column flex-md-row justify-content-md-around align-items-start ml-3"
+	<div class="collapse navbar-collapse flex-column flex-md-row justify-content-md-around align-items-start ml-2"
 		id="navbarSupportedContent">
 		<a class="navbar-brand d-flex justify-content-center align-items-start my-2 px-2 my-lg-0" href="/">
 			<img src="https://res.cloudinary.com/do9pkxeqs/image/upload/w_90,h_75/v1601818296/default/logo_r.png" alt="icon1"
@@ -16,7 +16,7 @@
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Клиентам
 					</button>
-					<div class="dropdown-menu border" aria-labelledby="dropdownMenuButton">
+					<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
 						<a href="/clients/rent" data-scrollTarget="#rent">Аренда оборуднования</a>
 						<a href="/clients/placement" data-scrollTarget="#placement">Размещение оборудования</a>
 						<a href="/clients/cservices" data-scrollTarget="#cloud-services">Облачные сервисы</a>
@@ -31,7 +31,7 @@
 							<a id='dLabel' href='#' data-target='#' data-hover='old-dropdown' role='button'
 								aria-haspopup='true' aria-expanded='false'
 								class="nav-link font-weight-bold">Клиентам</a>
-							<ul class='dropdown-menu border' aria-labelledby='dLabel'>
+							<ul class='dropdown-menu border  rounded-bottom' aria-labelledby='dLabel'>
 								<li>
 									<ul>
 										<li><a href='/clients/rent'>Аренда оборуднования</a></li>
@@ -54,7 +54,7 @@
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Партнерам
 					</button>
-					<div class="dropdown-menu border" aria-labelledby="dropdownMenuButton">
+					<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
 						<a href="/partners">Информация о <br />партнерских программах</a>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 							<a id='dLabel' href='#' data-target='#' data-hover='old-dropdown' role='button'
 								aria-haspopup='true' aria-expanded='false'
 								class="nav-link font-weight-bold">Партнерам</a>
-							<ul class='dropdown-menu border' aria-labelledby='dLabel'>
+							<ul class='dropdown-menu border rounded-bottom' aria-labelledby='dLabel'>
 								<li>
 									<ul>
 										<li><a href='/partners'>Информация о <br />партнерских программах</a></li>
@@ -88,7 +88,7 @@
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						О нас
 					</button>
-					<div class="dropdown-menu border" aria-labelledby="dropdownMenuButton">
+					<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
 						<a href="/about">О компании</a>
 						<a href="/carier">Карьера</a>
 						<a href="/blog">Новости</a>
@@ -104,7 +104,7 @@
 						<div class='old-dropdown dropdown'>
 							<a id='dLabel' href='#' data-target='#' data-hover='old-dropdown' role='button'
 								aria-haspopup='true' aria-expanded='false' class="nav-link font-weight-bold">О нас</a>
-							<ul class='dropdown-menu border' aria-labelledby='dLabel'>
+							<ul class='dropdown-menu border rounded-bottom' aria-labelledby='dLabel'>
 								<li>
 									<ul>
 										<li><a href='/about'>О компании</a></li>
@@ -125,18 +125,18 @@
 			<input class="form-control mr-4 w-100" type="search" placeholder="Search" aria-label="Search">
 		</form>
 	</div>
-	<div class="ml-3 mr-0 mr-lg-3 my-1">
-		<form class="form-inline pr-3">
+	<div class="ml-2 mr-2 mr-lg-5 my-1">
+		<form class="form-inline">
 			{{#if user}}
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<a href="/keystone" type="button" class="btn btn-outline-primary my-2 my-sm-0"><i class="fa fa-user"
+				<a href="/keystone" type="button" class="btn btn-outline-primary"><i class="fa fa-user"
 						aria-hidden="true"></i></a>
-				<a href="/keystone/signout" type="button" class="btn btn-outline-success my-2 my-sm-0">
+				<a href="/keystone/signout" type="button" class="btn btn-outline-success">
 					<i class="fa fa-sign-out" aria-hidden="true"></i>
 				</a>
 			</div>
 			{{else}}
-			<a href="/keystone/signin" class="btn btn-outline-success my-2 my-sm-0">
+			<a href="/keystone/signin" class="btn btn-outline-success">
 				<i class="fa fa-sign-in" aria-hidden="true"></i>
 			</a>
 			{{/if}}

@@ -1,8 +1,43 @@
+//lilac
+$lilac-light: #d4d6f1;
+//blue
+$blue-light: rgb(86, 199, 247);
+$blue:  rgb(74, 157, 235); 
+//yellow
+$yellow: rgb(250, 220, 175);
+//dark
+$dark: rgb(52, 56, 69);
+$dark-light: rgb(70, 74, 86);
+//green
+$green-light: rgb(182, 250, 198);
+//red
+$red-light: rgb(255, 200, 194);
+
+
+$font-big-xl: 3rem;
+$font-big-lg: 2.5rem;
+$font-big-md: 2rem;
+$font-big-sm: 1.5rem;
+
+$font-normal-xl: 1.25rem;
+$font-normal-lg: 1.16rem;
+$font-normal-md: 1.08rem;
+$font-normal-sm: 1rem;
+
+$font-small-xl: 1rem;
+$font-small-lg: 0.917rem;
+$font-small-md: 0.834rem;
+$font-small-sm: 0.75rem;
+
+$font-Exo2: Exo2;
+$font-Roboto: Roboto;
+$font-Magistral: Magistral;
+
 html,
 body {
     font-size: 16px;
     margin: 0;
-    font-family: Roboto;
+    font-family: $font-Roboto;
     background-color: rgb(255, 255, 255);
     transition: 0.5s linear;
     -moz-transition: 0.5s linear;
@@ -13,7 +48,7 @@ body {
 }
 
 #navbar {
-    font-family: Magistral;
+    font-family: $font-Magistral;
     transition: 0.2s linear;
     -moz-transition: 0.2s linear;
     -ms-transition: 0.2s;
@@ -32,7 +67,7 @@ body {
         -o-transition: 0.2s;
         -webkit-transition: 0.2s;
 
-        &:hover{
+        &:hover {
             background-color: rgb(200, 230, 247);
         }
     }
@@ -264,7 +299,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Exo2;
+    font-family: $font-Exo2;
 }
 
 .short-description::-webkit-scrollbar {
@@ -296,13 +331,152 @@ h6 {
     display: block;
 }
 
-@media screen and (min-width: 1200px) {
-    #scroller .expander.active .col {
-        font-size: 14rem;
+.container-info {
+    font-size: 1.25rem;
+    padding: 14rem 4rem;
+
+    .head {
+        display: block;
+        font-size: $font-big-xl;
+        font-family: $font-Exo2;
+        font-weight: $font-weight-light;
+        margin-bottom: 1rem; 
+    }
+
+    .content {
+        font-size: $font-normal-xl;
     }
 }
 
-@media (max-width: 991px) {
+.jumbotron.main {
+    font-size: 1.25rem;
+    padding-top: 10rem;
+    /* background-color: rgb(86, 199, 247);    */
+}
+
+.garants {
+    background-color: rgb(250, 220, 175);
+    font-size: 1.25rem;
+}
+
+.features {
+    font-size: 1rem;
+    /* background-color: rgb(127, 205, 229); */
+    background-color: $dark;
+
+    .lead {
+        color: rgb(236, 236, 236);
+        font-size: 2rem;
+    }
+
+    .text-block {
+        color: rgb(184, 184, 184);
+        background-color: $dark-light;
+
+        &.energy {
+            border-bottom: 5px solid $blue-light;
+
+            h1,h4 {
+                color: $blue-light; 
+            }
+        }
+
+        &.climate {
+            
+            border-bottom: 5px solid $green-light; 
+
+            h1,h4 {
+                color: $green-light;
+            }
+        }
+
+        &.firefighting {
+            border-bottom: 5px solid $red-light;
+
+            h1, h4 {
+                color: $red-light;
+            }
+        }
+
+        &.security {
+            border-bottom: 5px solid $blue;
+            
+            h1, h4 {
+                color: $blue;
+            }
+        }
+    }
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    font-size: 1.25rem;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+.filler {
+    background-color: white;
+}
+
+.gallery {
+    overflow: hidden;
+}
+
+.gallery img {
+    max-height: 600px;
+    width: auto;
+}
+
+.pl-text-1 {
+    font-size: clamp(0.9rem, 1.25rem, 2vw);
+}
+
+.pl-text-2 {
+    font-size: clamp(1.5rem, 3rem, 4vw);
+}
+
+.vd {
+    border-left: 1px solid rgb(196, 201, 206);
+    height: 100%;
+}
+
+.categories {
+    position: fixed;
+    top: 8rem;
+    height: calc(100% - 200px);
+    overflow-y: auto;
+}
+
+
+//-----------------------------------
+//----------Media queries------------
+//-----------------------------------
+
+@include media-breakpoint-down(xl) {
+    #scroller .expander.active .col {
+        font-size: 14rem;
+    }
+
+    .container-info .head {
+        font-size: $font-big-xl;
+    }
+
+    .container-info .content {
+        font-size: $font-normal-xl;
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .jumbotron.main {
+        padding-top: 6rem;
+    }
+
     .container {
         max-width: 100%;
     }
@@ -313,6 +487,64 @@ h6 {
 
     #canvas {
         margin-top: -56px;
+    }
+
+    .container-info .head {
+        font-size: $font-big-lg;
+    }
+
+    .container-info .content {
+        font-size: $font-normal-lg;
+    }
+}
+
+@include media-breakpoint-down(md) {
+    .gallery img {
+        max-height: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .container-info {
+        padding: 0rem 1rem;
+        padding-top: 5rem;
+        padding-bottom: 1rem;
+    }
+
+    .container-info .head {
+        font-size: $font-big-md;
+    }
+
+    .container-info .content {
+        font-size: $font-normal-md;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .centered {
+        font-size: 3vw;
+    }
+
+    .container-info {
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+    }
+
+    .container-info .head {
+        font-size: $font-big-sm;
+        font-weight: $font-weight-bold;
+    }
+
+    .container-info .content {
+        font-size: $font-normal-sm;
+    }
+
+    .short-description {
+        font-size: 4vw;
+    }
+
+    ._email .map {
+        height: 359px;
     }
 }
 
@@ -335,12 +567,5 @@ h6 {
     }
 }
 
-@media (max-width: 576px) {
-    .short-description {
-        font-size: 4vw;
-    }
-
-    ._email .map {
-        height: 359px;
-    }
-}
+@import "./rent.scss";
+@import "./placement.scss";

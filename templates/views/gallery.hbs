@@ -1,10 +1,8 @@
 <div class="container-info md-n5" style="background-color: rgb(233, 236, 239);">
 	<div>
 		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1 class="display-4 py-4">Галерея</h1>
-				</div>
+			<div class="row head">
+				<span>Галерея</span>
 			</div>
 		</div>
 		{{#if galleries}}
@@ -17,7 +15,7 @@
 					<img src="{{cloudinaryUrl heroImage width='680' height='680'}}" class="img-rounded">
 				</div>
 				{{/if}} --}}
-				<h1 class="mx-3">{{name}}</h1>
+				<h1 class="mx-1 my-1 mx-md-3 head">{{name}}</h1>
 				<div class="col-12 p-0">
 					<div class="row no-gutters">
 						{{#each images}}

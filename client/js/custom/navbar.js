@@ -16,7 +16,8 @@ function unobtrusify()
     });
 }
 
-if(window.navigator.userAgent.match(/MSIE|Trident/) === null)
+if(window.navigator.userAgent.match(/MSIE|Trident/) === null && document.body.clientWidth > 992)
 {
+
     unobtrusify();
 }

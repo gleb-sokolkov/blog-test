@@ -1,19 +1,52 @@
+//lilac
+$lilac-light: #d4d6f1;
+//blue
+$blue-light: rgb(86, 199, 247);
+$blue: rgb(74, 157, 235);
+//yellow
+$yellow: rgb(250, 220, 175);
+//dark
+$dark: rgb(52, 56, 69);
+$dark-light: rgb(70, 74, 86);
+//green
+$green-light: rgb(182, 250, 198);
+//red
+$red-light: rgb(255, 200, 194);
+
+$font-big-xl: 3rem;
+$font-big-lg: 2.5rem;
+$font-big-md: 2rem;
+$font-big-sm: 1.5rem;
+
+$font-normal-xl: 1.25rem;
+$font-normal-lg: 1.16rem;
+$font-normal-md: 1.08rem;
+$font-normal-sm: 1rem;
+
+$font-small-xl: 1rem;
+$font-small-lg: 0.917rem;
+$font-small-md: 0.834rem;
+$font-small-sm: 0.75rem;
+
+$font-Exo2: Exo2;
+$font-Roboto: Roboto;
+$font-Magistral: Magistral;
+
 html,
 body {
     font-size: 16px;
     margin: 0;
-    font-family: Roboto;
+    font-family: $font-Roboto;
     background-color: rgb(255, 255, 255);
     transition: 0.5s linear;
     -moz-transition: 0.5s linear;
     -ms-transition: 0.5s;
     -o-transition: 0.5s linear;
     -webkit-transition: 0.5s linear;
-    height: 100%;
 }
 
 #navbar {
-    font-family: Magistral;
+    font-family: $font-Magistral;
     transition: 0.2s linear;
     -moz-transition: 0.2s linear;
     -ms-transition: 0.2s;
@@ -32,7 +65,7 @@ body {
         -o-transition: 0.2s;
         -webkit-transition: 0.2s;
 
-        &:hover{
+        &:hover {
             background-color: rgb(200, 230, 247);
         }
     }
@@ -230,6 +263,15 @@ body {
     -o-transition: 0.5s;
     -webkit-transition: 0.5s;
 
+    &.active {
+        visibility: visible;
+        opacity: 1;
+
+        .content {
+            margin-top: 0px;
+        }
+    }
+
     a {
         font-size: 1rem;
 
@@ -237,25 +279,16 @@ body {
             background-color: rgba(255, 255, 255, 0.623);
         }
     }
-}
 
-.short-description .content {
-    margin-top: 1000px;
-
-    transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-    -webkit-transition: 0.5s;
-}
-
-.short-description.active {
-    visibility: visible;
-    opacity: 1;
-}
-
-.short-description.active .content {
-    margin-top: 0px;
+    .content {
+        margin-top: 1000px;
+    
+        transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -o-transition: 0.5s;
+        -webkit-transition: 0.5s;
+    }
 }
 
 h1,
@@ -264,7 +297,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Exo2;
+    font-family: $font-Exo2;
 }
 
 .short-description::-webkit-scrollbar {
@@ -296,16 +329,147 @@ h6 {
     display: block;
 }
 
-@media screen and (min-width: 1200px) {
-    #scroller .expander.active .col {
-        font-size: 14rem;
+.container {
+    
+    padding-bottom: 1rem;
+
+    .head {
+        display: block;
+        font-size: $font-big-xl;
+        font-family: $font-Exo2;
+        font-weight: $font-weight-light;
+        padding: 1rem 0rem;
+        text-align: center;
+    }
+
+    .content {
+        font-size: $font-normal-xl;
     }
 }
 
-@media (max-width: 991px) {
-    .container {
-        max-width: 100%;
+.garants {
+    background-color: rgb(250, 220, 175);
+    font-size: 1.25rem;
+}
+
+.features {
+    font-size: 1rem;
+    /* background-color: rgb(127, 205, 229); */
+    background-color: $dark;
+
+    .lead {
+        color: rgb(236, 236, 236);
+        font-size: 2rem;
     }
+
+    .text-block {
+        color: rgb(184, 184, 184);
+        background-color: $dark-light;
+
+        &.energy {
+            border-bottom: 5px solid $blue-light;
+
+            h1,
+            h4 {
+                color: $blue-light;
+            }
+        }
+
+        &.climate {
+            border-bottom: 5px solid $green-light;
+
+            h1,
+            h4 {
+                color: $green-light;
+            }
+        }
+
+        &.firefighting {
+            border-bottom: 5px solid $red-light;
+
+            h1,
+            h4 {
+                color: $red-light;
+            }
+        }
+
+        &.security {
+            border-bottom: 5px solid $blue;
+
+            h1,
+            h4 {
+                color: $blue;
+            }
+        }
+    }
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    font-size: 1.25rem;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+.filler {
+    background-color: white;
+}
+
+.gallery {
+    overflow: hidden;
+}
+
+.gallery img {
+    max-height: 600px;
+    width: auto;
+}
+
+.pl-text-1 {
+    font-size: clamp(0.9rem, 1.25rem, 2vw);
+}
+
+.pl-text-2 {
+    font-size: clamp(1.5rem, 3rem, 4vw);
+}
+
+.vd {
+    border-left: 1px solid rgb(196, 201, 206);
+    height: 100%;
+}
+
+.categories {
+    position: fixed;
+    top: 8rem;
+    height: calc(100% - 200px);
+    overflow-y: auto;
+}
+
+//-----------------------------------
+//----------Media queries------------
+//-----------------------------------
+
+@include media-breakpoint-down(lg) {
+    #scroller .expander.active .col {
+        font-size: 14rem;
+    }
+
+    .container {
+        .head {
+            font-size: $font-big-xl;
+        }
+
+        .content {
+            font-size: $font-normal-xl;
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
 
     #scroll-container {
         margin-top: -56px;
@@ -313,6 +477,64 @@ h6 {
 
     #canvas {
         margin-top: -56px;
+    }
+
+    .container {
+        max-width: 100%;
+
+        .head {
+            font-size: $font-big-lg;
+        }
+
+        .content {
+            font-size: $font-normal-lg;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .gallery img {
+        max-height: 100%;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .container {
+        .head {
+            font-size: $font-big-md;
+        }
+
+        .content {
+            font-size: $font-normal-md;
+        }
+    }
+}
+
+@include media-breakpoint-down(xs) {
+    .centered {
+        font-size: 3vw;
+    }
+
+    .container {
+
+        padding-bottom: 0rem;
+
+        .head {
+            font-size: $font-big-sm;
+            font-weight: $font-weight-bold;
+        }
+
+        .content {
+            font-size: $font-normal-sm;
+        }
+    }
+
+    .short-description {
+        font-size: 4vw;
+    }
+
+    ._email .map {
+        height: 359px;
     }
 }
 
@@ -335,12 +557,5 @@ h6 {
     }
 }
 
-@media (max-width: 576px) {
-    .short-description {
-        font-size: 4vw;
-    }
-
-    ._email .map {
-        height: 359px;
-    }
-}
+@import "./rent.scss";
+@import "./placement.scss";

@@ -18,7 +18,7 @@
     {
         float _time = time * 0.1;
         vec2 uv = f_uv;
-        uv.y = uv.y + ((sin(uv.y*100.0)*0.5+0.5)*0.01);
+        uv.y = uv.y + ((sin(uv.y*100.0-time)*0.5+0.5)*0.01);
 
         float stepX = step(sin(uv.x*uv.y*3.14159*10.0+_time)*0.5+0.5, 0.5);
 

@@ -1,11 +1,11 @@
 <div class="container container-info border-left border-right bg-light">
 	<div class="row">
-		<div class="col-10 col-md-offset-2 mx-auto">
+		<div class="col-12 px-3 px-sm-5">
 			<article>
-				<p><a href="/blog">&larr; Назад к новостям</a></p>
+				<p class="mt-3"><a href="/blog">&larr; Назад к новостям</a></p>
 				<hr>
 				<header>
-					<h1 class="text-dark">{{data.post.title}}</h1>
+					<h2 class="text-dark">{{data.post.title}}</h1>
 					<h5 class="text-muted">
 						{{{categoryList data.post.categories prefix="Добавлено в "}}}
 						{{#if author.name.first}}by {{author.name.first}}{{/if}}

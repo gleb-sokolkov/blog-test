@@ -2,7 +2,7 @@
 $lilac-light: #d4d6f1;
 //blue
 $blue-light: rgb(86, 199, 247);
-$blue:  rgb(74, 157, 235); 
+$blue: rgb(74, 157, 235);
 //yellow
 $yellow: rgb(250, 220, 175);
 //dark
@@ -12,7 +12,6 @@ $dark-light: rgb(70, 74, 86);
 $green-light: rgb(182, 250, 198);
 //red
 $red-light: rgb(255, 200, 194);
-
 
 $font-big-xl: 3rem;
 $font-big-lg: 2.5rem;
@@ -44,7 +43,6 @@ body {
     -ms-transition: 0.5s;
     -o-transition: 0.5s linear;
     -webkit-transition: 0.5s linear;
-    height: 100%;
 }
 
 #navbar {
@@ -265,6 +263,15 @@ body {
     -o-transition: 0.5s;
     -webkit-transition: 0.5s;
 
+    &.active {
+        visibility: visible;
+        opacity: 1;
+
+        .content {
+            margin-top: 0px;
+        }
+    }
+
     a {
         font-size: 1rem;
 
@@ -272,25 +279,16 @@ body {
             background-color: rgba(255, 255, 255, 0.623);
         }
     }
-}
 
-.short-description .content {
-    margin-top: 1000px;
-
-    transition: 0.5s;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-    -webkit-transition: 0.5s;
-}
-
-.short-description.active {
-    visibility: visible;
-    opacity: 1;
-}
-
-.short-description.active .content {
-    margin-top: 0px;
+    .content {
+        margin-top: 1000px;
+    
+        transition: 0.5s;
+        -moz-transition: 0.5s;
+        -ms-transition: 0.5s;
+        -o-transition: 0.5s;
+        -webkit-transition: 0.5s;
+    }
 }
 
 h1,
@@ -331,27 +329,22 @@ h6 {
     display: block;
 }
 
-.container-info {
-    font-size: 1.25rem;
-    padding: 14rem 4rem;
+.container {
+    
+    padding-bottom: 1rem;
 
     .head {
         display: block;
         font-size: $font-big-xl;
         font-family: $font-Exo2;
         font-weight: $font-weight-light;
-        margin-bottom: 1rem; 
+        padding: 1rem 0rem;
+        text-align: center;
     }
 
     .content {
         font-size: $font-normal-xl;
     }
-}
-
-.jumbotron.main {
-    font-size: 1.25rem;
-    padding-top: 10rem;
-    /* background-color: rgb(86, 199, 247);    */
 }
 
 .garants {
@@ -376,16 +369,17 @@ h6 {
         &.energy {
             border-bottom: 5px solid $blue-light;
 
-            h1,h4 {
-                color: $blue-light; 
+            h1,
+            h4 {
+                color: $blue-light;
             }
         }
 
         &.climate {
-            
-            border-bottom: 5px solid $green-light; 
+            border-bottom: 5px solid $green-light;
 
-            h1,h4 {
+            h1,
+            h4 {
                 color: $green-light;
             }
         }
@@ -393,15 +387,17 @@ h6 {
         &.firefighting {
             border-bottom: 5px solid $red-light;
 
-            h1, h4 {
+            h1,
+            h4 {
                 color: $red-light;
             }
         }
 
         &.security {
             border-bottom: 5px solid $blue;
-            
-            h1, h4 {
+
+            h1,
+            h4 {
                 color: $blue;
             }
         }
@@ -453,33 +449,27 @@ h6 {
     overflow-y: auto;
 }
 
-
 //-----------------------------------
 //----------Media queries------------
 //-----------------------------------
 
-@include media-breakpoint-down(xl) {
+@include media-breakpoint-down(lg) {
     #scroller .expander.active .col {
         font-size: 14rem;
     }
 
-    .container-info .head {
-        font-size: $font-big-xl;
-    }
+    .container {
+        .head {
+            font-size: $font-big-xl;
+        }
 
-    .container-info .content {
-        font-size: $font-normal-xl;
+        .content {
+            font-size: $font-normal-xl;
+        }
     }
 }
 
-@include media-breakpoint-down(lg) {
-    .jumbotron.main {
-        padding-top: 6rem;
-    }
-
-    .container {
-        max-width: 100%;
-    }
+@include media-breakpoint-down(md) {
 
     #scroll-container {
         margin-top: -56px;
@@ -489,54 +479,54 @@ h6 {
         margin-top: -56px;
     }
 
-    .container-info .head {
-        font-size: $font-big-lg;
-    }
+    .container {
+        max-width: 100%;
 
-    .container-info .content {
-        font-size: $font-normal-lg;
+        .head {
+            font-size: $font-big-lg;
+        }
+
+        .content {
+            font-size: $font-normal-lg;
+        }
     }
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(sm) {
     .gallery img {
         max-height: 100%;
         height: auto;
         max-width: 100%;
     }
 
-    .container-info {
-        padding: 0rem 1rem;
-        padding-top: 5rem;
-        padding-bottom: 1rem;
-    }
+    .container {
+        .head {
+            font-size: $font-big-md;
+        }
 
-    .container-info .head {
-        font-size: $font-big-md;
-    }
-
-    .container-info .content {
-        font-size: $font-normal-md;
+        .content {
+            font-size: $font-normal-md;
+        }
     }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(xs) {
     .centered {
         font-size: 3vw;
     }
 
-    .container-info {
-        padding-right: 0.75rem;
-        padding-left: 0.75rem;
-    }
+    .container {
 
-    .container-info .head {
-        font-size: $font-big-sm;
-        font-weight: $font-weight-bold;
-    }
+        padding-bottom: 0rem;
 
-    .container-info .content {
-        font-size: $font-normal-sm;
+        .head {
+            font-size: $font-big-sm;
+            font-weight: $font-weight-bold;
+        }
+
+        .content {
+            font-size: $font-normal-sm;
+        }
     }
 
     .short-description {

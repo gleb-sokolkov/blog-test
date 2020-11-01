@@ -81,7 +81,7 @@ var Block = /*#__PURE__*/function () {
 var scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff); //var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000.0);
 
-var MAX_HEIGHT = 990;
+var MAX_HEIGHT = 890;
 var MAX_WIDTH = 1920;
 var hh = MAX_HEIGHT;
 var hw = MAX_WIDTH - 3;
@@ -101,43 +101,63 @@ camera.updateProjectionMatrix();
 var cubes = [];
 var blockSize = 4;
 var cubeA = new Block(blockSize, blockSize, blockSize, 24);
-cubeA.setPosition(0, 16, 3);
+cubeA.setPosition(0, 18, 3);
 cubeA.setRotation(0.610865, -0.785398, 0);
 cubeA.setRotationSpeed(0.0833, 0.0833, 0.0833);
 cubes.push(cubeA);
 var cubeB = new Block(blockSize, blockSize, blockSize, 40);
-cubeB.setPosition(16, 34, 3);
+cubeB.setPosition(16, 36, 3);
 cubeB.setRotation(0.610865, -0.785398, 0);
 cubeB.setRotationSpeed(-0.05, 0.05, -0.05);
 cubes.push(cubeB);
 var cubeC = new Block(blockSize, blockSize, blockSize, 40);
-cubeC.setPosition(-14, 30, 3);
+cubeC.setPosition(-14, 32, 3);
 cubeC.setRotation(0.610865, -0.785398, 0);
 cubeC.setRotationSpeed(-0.05, 0.05, -0.05);
 cubes.push(cubeC);
 var cubeD = new Block(blockSize, blockSize, blockSize, 40);
-cubeD.setPosition(-20, 31, 3);
+cubeD.setPosition(-20, 33, 3);
 cubeD.setRotation(0.610865, -0.785398, 0);
 cubeD.setRotationSpeed(-0.05, -0.05, 0.05);
 cubes.push(cubeD);
 var cubeF = new Block(blockSize, blockSize, blockSize, 30);
-cubeF.setPosition(-6, 20, 3);
+cubeF.setPosition(-6, 22, 3);
 cubeF.setRotation(0.610865, -0.785398, 0);
 cubeF.setRotationSpeed(-0.06667, 0.06667, 0.06667);
 cubes.push(cubeF);
 var cubeG = new Block(blockSize, blockSize, blockSize, 80);
-cubeG.setPosition(8, 70, 3);
+cubeG.setPosition(8, 72, 3);
 cubeG.setRotation(0.610865, -0.785398, 0);
 cubeG.setRotationSpeed(-0.05, 0.05, -0.05);
 cubes.push(cubeG);
 var cubeH = new Block(blockSize, blockSize, blockSize, 40);
-cubeH.setPosition(22, 32, 3);
+cubeH.setPosition(22, 34, 3);
 cubeH.setRotation(0.610865, -0.785398, 0);
 cubeH.setRotationSpeed(0.05, -0.05, -0.05);
 cubes.push(cubeH);
 cubes.forEach(function (item) {
   scene.add(item.mesh);
 });
+
+//Time 
+var clock = new THREE.Clock(true);
+var quad_uniform = {
+  time: {
+    type: 'f',
+    value: 0
+  },
+};
+
+//shitty background quad
+var quad_geometry = new THREE.PlaneGeometry(100, 100);
+var quad_material = new THREE.ShaderMaterial({
+  vertexShader: document.getElementById("vertex_shader").textContent,
+  fragmentShader: document.getElementById("fragment_shader").textContent,
+  uniforms : quad_uniform
+}); 
+var quad = new THREE.Mesh(quad_geometry, quad_material);
+
+scene.add(quad);
 
 export var onScroll = function onScroll(scrollContainer, scroller) {
   var scroll = scrollContainer.scrollTop;
@@ -152,6 +172,7 @@ export var onScroll = function onScroll(scrollContainer, scroller) {
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
+  quad_uniform.time.value = clock.getElapsedTime();
 }
 
 animate();

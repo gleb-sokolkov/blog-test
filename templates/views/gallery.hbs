@@ -1,27 +1,29 @@
 <div class="container-info md-n5" style="background-color: rgb(233, 236, 239);">
 	<div>
 		<div class="container">
-			<div class="row">
+			<div class="row head">
 				<div class="col">
-					<h1 class="display-4 py-4">Галерея</h1>
+					<span>Галерея</span>
 				</div>
 			</div>
 		</div>
-		<div class="container bg-light shadow rounded">
+		{{#if galleries}}
+		{{#each galleries}}
+		<div class="container bg-light shadow rounded my-3">
 			<!-- if galleries -->
-			{{#if galleries}}
-			{{#each galleries}}
-			<div class="row gallery-images py-2 pl-1 pr-2 pr-md-3">
+			<div class="row gallery-images py-1 pl-1 pr-2 pr-md-3">
 				{{!-- {{#if heroImage}}
 				<div class="col-sm-4 col-md-4 gallery-image">
 					<img src="{{cloudinaryUrl heroImage width='680' height='680'}}" class="img-rounded">
 				</div>
 				{{/if}} --}}
+				<h3 class="p-2 p-sm-3 m-0">{{name}}</h1>
+				
 				<div class="col-12 p-0">
 					<div class="row no-gutters">
 						{{#each images}}
 						<div class="col-12 col-md-6 gallery">
-							<div class="py-2 px-3">
+							<div class="p-0 py-sm-2 px-sm-3">
 								<img src="{{cloudinaryUrl quality='25'}}" loading="lazy">
 							</div>
 						</div>
@@ -29,11 +31,11 @@
 					</div>
 				</div>
 			</div>
-			{{/each}}
-			{{else}}
-			<!-- else -->
-			<h3 class="text-muted">There are no image galleries yet.</h3>
-			{{/if}}
 		</div>
+		{{/each}}
+		{{else}}
+		<!-- else -->
+		<h3 class="text-muted">There are no image galleries yet.</h3>
+		{{/if}}
 	</div>
 </div>

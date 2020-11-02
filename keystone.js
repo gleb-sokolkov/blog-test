@@ -5,6 +5,8 @@ require('dotenv').config();
 // Require keystone
 var keystone = require('keystone');
 var handlebars = require('express-handlebars');
+const { paths } = require('keystone');
+const path = require('path');
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -38,6 +40,8 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'Y',
+	'ssl': true,
+	'ssl key': path.resolve(__dirname, process.env.SSL_PATH),
 });
 
 // Load your project's Models

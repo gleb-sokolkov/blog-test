@@ -33,3 +33,5 @@ node_modules
 public/styles/shared.css
 
 .env
+
+/web/

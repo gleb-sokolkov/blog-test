@@ -1,4 +1,4 @@
-<div class="container-info md-n5" style="background-color: rgb(233, 236, 239);">
+<div class="container-info pb-3" style="background-color: rgb(233, 236, 239);">
 	<div>
 		<div class="container">
 			<div class="row head">
@@ -9,7 +9,7 @@
 		</div>
 		{{#if galleries}}
 		{{#each galleries}}
-		<div class="container bg-light shadow rounded my-3">
+		<div class="container pb-3 bg-light shadow rounded mt-3">
 			<!-- if galleries -->
 			<div class="row gallery-images py-1 pl-1 pr-2 pr-md-3">
 				{{!-- {{#if heroImage}}
@@ -17,9 +17,9 @@
 					<img src="{{cloudinaryUrl heroImage width='680' height='680'}}" class="img-rounded">
 				</div>
 				{{/if}} --}}
-				<h3 class="p-2 p-sm-3 m-0">{{name}}</h1>
+				<h4 class="p-2 p-sm-3 m-0 w-100 border-bottom text-muted">{{name}}</h4>
 				
-				<div class="col-12 p-0">
+				<div class="col-12 p-0 pt-3">
 					<div class="row no-gutters">
 						{{#each images}}
 						<div class="col-12 col-md-6 gallery">

@@ -40,8 +40,6 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'Y',
-	'ssl': true,
-	'ssl key': path.resolve(__dirname, process.env.SSL_PATH),
 });
 
 // Load your project's Models

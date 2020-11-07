@@ -1,5 +1,5 @@
 {{!< info}}
-<div class="container-info container border-left border-right bg-light">
+<div class="container">
 	<div class="row head py-4 pl-3 text-left">
 		<span>Новости</span>
 	</div>
@@ -11,12 +11,12 @@
 				{{#each data.posts.results}}
 				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}"
 					class="post border py-2 px-3 rounded mb-2 bg-white">
-					<h2 class="d-none d-sm-block">
+					<h3 class="d-none d-sm-block">
 						<a href="{{postUrl slug}}" class="text-dark">{{{title}}}</a>
-					</h2>
-					<h4 class="d-block d-sm-none">
+					</h3>
+					<h5 class="d-block d-sm-none">
 						<a href="{{postUrl slug}}" class="text-dark">{{{title}}}</a>
-					</h4>
+					</h5>
 					{{!-- {{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}"
 								class="img pull-right">{{/if}} --}}
 					<p>{{{content.brief}}}</p>

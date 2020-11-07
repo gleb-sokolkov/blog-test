@@ -5,7 +5,7 @@ html,
 body {
     font-size: 16px;
     margin: 0;
-    font-family: $font-Roboto;
+    font-family: $font-Inter;
     @include transition(0.5s linear);
 }
 
@@ -58,6 +58,10 @@ body {
         a {
             color: white;
         }
+    }
+
+    @media (max-width: $sm) {
+        font-size: $font-size-sm;
     }
 }
 
@@ -195,10 +199,9 @@ body {
     font-size: 1.25rem;
 
     padding: 1rem 0;
-
-    scrollbar-width: none;
-
+    
     @include transition(0.5s ease);
+    @include scrollbar-none;
 
     &.active {
         visibility: visible;
@@ -233,16 +236,6 @@ h6 {
     font-family: $font-Exo2;
 }
 
-.short-description {
-    &::-webkit-scrollbar {
-        display: none;
-    }
-}
-
-.short-description::-webkit-scrollbar {
-    display: none;
-}
-
 .short-description a {
     text-decoration: none;
     color: black;
@@ -269,17 +262,55 @@ h6 {
 }
 
 .container {
+
+    padding: $offset-sm $offset-lg;
+
     .head {
         display: block;
-        font-size: $font-big-xl;
+        font-size: $h3-font-size;
         font-family: $font-Exo2;
-        font-weight: $font-weight-light;
-        padding: 1.25rem 0rem;
-        text-align: center;
+        font-weight: $font-weight-bold;
+        padding: $offset-xs 0rem;
     }
 
     .content {
-        font-size: $font-normal-xl;
+        font-size: $font-size-base;
+        font-weight: $font-weight-light;
+        
+        p {
+            font-weight: $font-weight-normal;
+        }
+
+        ul {
+            padding-right: 0rem;
+            &.list-group.with-header {
+                li {
+                    &:first-child {
+                        font-weight: $font-weight-normal;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: $lg) {
+        padding: $offset-sm $offset-md;
+    }
+
+    @media (max-width: $md) {
+        padding: $offset-sm $offset-sm;
+    }
+
+    @media (max-width: $sm) {
+        
+        padding: $offset-xs $offset-xs;
+
+        .head {
+            font-size: $h5-font-size;
+        }
+        .content {
+            font-size: $font-size-sm;
+        }
     }
 }
 
@@ -393,16 +424,6 @@ h6 {
     #scroller .expander.active .col {
         font-size: 14rem;
     }
-
-    .container {
-        .head {
-            font-size: $font-big-xl;
-        }
-
-        .content {
-            font-size: $font-normal-xl;
-        }
-    }
 }
 
 @include media-breakpoint-down(md) {
@@ -413,18 +434,6 @@ h6 {
     #canvas {
         margin-top: -56px;
     }
-
-    .container {
-        max-width: 100%;
-
-        .head {
-            font-size: $font-big-lg;
-        }
-
-        .content {
-            font-size: $font-normal-lg;
-        }
-    }
 }
 
 @include media-breakpoint-down(sm) {
@@ -433,34 +442,11 @@ h6 {
         height: auto;
         max-width: 100%;
     }
-
-    .container {
-        .head {
-            font-size: $font-big-md;
-        }
-
-        .content {
-            font-size: $font-normal-md;
-        }
-    }
 }
 
 @include media-breakpoint-down(xs) {
     .centered {
         font-size: 3vw;
-    }
-
-    .container {
-        padding-bottom: 0rem;
-
-        .head {
-            font-size: $font-big-sm;
-            font-weight: $font-weight-bold;
-        }
-
-        .content {
-            font-size: $font-normal-sm;
-        }
     }
 
     .short-description {

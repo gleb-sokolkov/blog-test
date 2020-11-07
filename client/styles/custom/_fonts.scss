@@ -1,23 +1,22 @@
 /* Your custom fonts */
-@font-face
-{
-    src: url('../fonts/Roboto/RobotoRegular.ttf'), url('../fonts/Roboto/RobotoRegularIE.eot');
-
-    font-family: Roboto;
+@font-face {
+    src: url("../fonts/Inter/Inter-VariableFont_slnt,wght.ttf") format("woff2 supports variations"),
+         url("../fonts/Inter/Inter-VariableFont_slnt,wght.ttf") format("woff2-variations"),
+         url("../fonts/Inter/Inter-Regular.eot");
+    font-family: Inter;
+    font-weight: 100 1000;
+    font-stretch: 25% 150%;
 }
 
-@font-face
-{
-    src: url('../fonts/Magistral/MagistralC.ttf'), url('../fonts/Magistral/MagistralIE.eot');
+@font-face {
+    src: url("../fonts/Magistral/MagistralC.ttf"), url("../fonts/Magistral/MagistralIE.eot");
     font-family: Magistral;
 }
 
-@font-face
-{
-    src: 
-        url('../fonts/Exo2/Exo2-VariableFont_wght.ttf') format('woff2 supports variations'), 
-        url('../fonts/Exo2/Exo2-VariableFont_wght.ttf') format('woff2-variations'),
-        url('../fonts/Exo2/Exo2-RegularIE.eot');
+@font-face {
+    src: url("../fonts/Exo2/Exo2-VariableFont_wght.ttf") format("woff2 supports variations"),
+         url("../fonts/Exo2/Exo2-VariableFont_wght.ttf") format("woff2-variations"),
+         url("../fonts/Exo2/Exo2-RegularIE.eot");
     font-family: Exo2;
     font-weight: 100 1000;
     font-stretch: 25% 150%;

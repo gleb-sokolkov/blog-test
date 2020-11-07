@@ -13,3 +13,8 @@
     -ms-transition: $x;
     -o-transition: $x;
 }
+
+@mixin normal-border {
+    border: $border-width solid $border-color;
+    border-radius: $border-radius-sm;
+}

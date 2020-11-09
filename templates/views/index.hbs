@@ -386,27 +386,27 @@
               alt="Lol" loading="lazy">
           </div>
           {{else}}
-          <form class="h-100 d-flex flex-column justify-content-between" method="post">
-            <h2>Напишите нам</h2>
+          <form class="h-100 d-flex flex-column justify-content-between py-md-5" method="post">
+            <h3>Напишите нам</h3>
             <input type="hidden" name="action" value="home">
             <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
-              <input type="text" name="name.full" class="form-control" placeholder="Имя и фамилия"
+              <input type="text" name="name.full" class="form-control form-control-sm" placeholder="Имя и фамилия"
                 value="{{formData.[name.full]}}">
             </div>
             <div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
-              <input type="email" name="email" class="form-control" placeholder="Электронная почта"
+              <input type="email" name="email" class="form-control form-control-sm" placeholder="Электронная почта"
                 value="{{formData.email}}">
             </div>
             <div class="form-group">
-              <input type="text" name="company" placeholder="Название компании" class="form-control"
+              <input type="text" name="company" placeholder="Название компании" class="form-control form-control-sm"
                 value="{{formData.company}}">
             </div>
             <div class="form-group {{#if validationErrors.message}}has-error{{/if}} ">
               <textarea name="message" placeholder="Сообщение..." rows="8"
-                class="form-control">{{formData.message}}</textarea>
+                class="form-control form-control-sm">{{formData.message}}</textarea>
             </div>
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-block">Отправить сообщение</button>
+              <button type="submit" class="btn btn-primary btn-block btm-sm">Отправить сообщение</button>
             </div>
           </form>
           {{/if}}

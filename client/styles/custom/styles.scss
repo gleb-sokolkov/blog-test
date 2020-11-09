@@ -57,6 +57,10 @@ body {
 
         a {
             color: rgb(161, 200, 230);
+
+            &.btn {
+                color: white;
+            }
         }
 
         ul {

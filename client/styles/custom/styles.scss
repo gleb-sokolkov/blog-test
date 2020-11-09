@@ -53,10 +53,34 @@ body {
 
     &.blue {
         background-color: $dark-medium;
-        color: rgb(161, 200, 230);
+        color: map-get($map: $theme-colors, $key: "secondary");
 
         a {
-            color: white;
+            color: rgb(161, 200, 230);
+        }
+
+        ul {
+            padding-right: 0rem;
+
+            li {
+                margin-bottom: $offset-xs;
+            }
+        }
+
+        .main-text {
+            color: map-get($map: $grays, $key: "300");
+        }
+
+        .links {
+            font-size: $font-size-sm;
+        }
+    }
+
+    .footer-copyright {
+        background-color: $dark-0;
+
+        a {
+            font-family: $font-Magistral;
         }
     }
 

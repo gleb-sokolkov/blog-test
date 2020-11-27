@@ -57,6 +57,10 @@ body {
 
         a {
             color: rgb(161, 200, 230);
+
+            &.btn {
+                color: white;
+            }
         }
 
         ul {
@@ -238,10 +242,18 @@ body {
 
     a {
         font-size: 1rem;
+        text-decoration: none;
+        color: black;
 
         & .text-block {
             background-color: rgba(255, 255, 255, 0.623);
+            @include transition(0.5s ease);
         }
+
+        &:hover .text-block {
+            background-color: rgba($blue-light, 0.623);
+        }
+
     }
 
     .content {
@@ -258,11 +270,6 @@ h4,
 h5,
 h6 {
     font-family: $font-Exo2;
-}
-
-.short-description a {
-    text-decoration: none;
-    color: black;
 }
 
 #canvas {
@@ -438,6 +445,15 @@ h6 {
     top: 8rem;
     height: calc(100% - 200px);
     overflow-y: auto;
+}
+
+.admin-bar {
+
+    a {
+        @media (max-width: $lg) {
+            border: none;
+        }
+    }
 }
 
 //-----------------------------------

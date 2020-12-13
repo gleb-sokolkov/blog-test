@@ -45,7 +45,7 @@ body {
     background-color: $dark;
 
     .map {
-        height: 559px;
+        height: clamp(300px, calc(50vh+150px), 500px);
     }
 }
 
@@ -456,6 +456,49 @@ h6 {
     }
 }
 
+.enquiry-panel {
+    @extend .bg-white, .rounded, .px-3;
+
+    form {
+
+        display: flex;
+        @extend .flex-column, .justify-content-between, .pb-3;
+
+        h3 {
+            @extend .text-dark, .mt-2, .font-weight-bolder, .mb-3;
+        }
+    }
+
+    #success-enquiry { 
+        
+        display: none;
+        @include transition(0.5s ease);
+
+        .success-enquiry-content {
+            @extend .text-dark, .d-flex, .justify-content-around, .p-5, .rounded;
+
+            h4 {
+                @extend .text-center, .m-0;
+            }
+        }
+    }
+
+    #enquiry-errors { 
+
+        display: none;
+        @include transition(0.5s ease);
+
+        .enquiry-errors-content {
+            @extend .text-danger, .text-center;
+        }
+
+        h4 {
+            margin: 0;
+            @extend .pt-3;
+        }
+    }
+}
+
 //-----------------------------------
 //----------Media queries------------
 //-----------------------------------
@@ -491,10 +534,6 @@ h6 {
 
     .short-description {
         font-size: 4vw;
-    }
-
-    ._email .map {
-        height: 359px;
     }
 }
 

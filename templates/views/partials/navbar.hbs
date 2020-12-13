@@ -17,9 +17,10 @@
 						Клиентам
 					</button>
 					<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
-						<a href="/clients/rent" data-scrollTarget="#rent">Аренда оборуднования</a>
-						<a href="/clients/placement" data-scrollTarget="#placement">Размещение оборудования</a>
-						<a href="/clients/cservices" data-scrollTarget="#cloud-services">Облачные сервисы</a>
+						<a href="/clients/rent">Аренда оборуднования</a>
+						<a href="/clients/placement">Размещение оборудования</a>
+						<a href="/clients/cservices">Облачные сервисы</a>
+						<a href="/clients/calc">Калькулятор</a>
 					</div>
 				</div>
 
@@ -37,6 +38,7 @@
 										<li><a href='/clients/rent'>Аренда оборуднования</a></li>
 										<li><a href='/clients/placement'>Размещение оборудования</a></li>
 										<li><a href='/clients/cservices'>Облачные сервисы</a></li>
+								        <li><a href="/clients/calc">Калькулятор</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -126,7 +128,7 @@
 		</form>
 	</div>
 	<div class="ml-2 mr-2 mr-lg-5 my-1">
-		<form class="form-inline">
+		<form class="form-inline admin-bar">
 			{{#if user}}
 			<div class="btn-group" role="group" aria-label="Basic example">
 				<a href="/keystone" type="button" class="btn btn-outline-primary"><i class="fa fa-user"

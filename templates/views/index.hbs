@@ -1,5 +1,4 @@
-{{!< default}}
-<div class="d-flex justify-content-center">
+{{!< default}} <div class="d-flex justify-content-center">
   <div class="container-fluid position-absolute" id="scroll-container">
     <div id="scroller">
       <div class="row">
@@ -358,62 +357,109 @@
   <div id="canvas">
     <canvas id="c"></canvas>
   </div>
-</div>
-
-<div class="container-fluid _boffset">
-  <div class="row">
-    <div class="col p-0">
-      <img src="https://res.cloudinary.com/do9pkxeqs/image/upload/v1602060174/default/bg.png" alt="" loading="lazy">
-    </div>
   </div>
-</div>
 
-<div class="container-fluid _email">
-  <div class="row pb-3">
-    <!--Yandex maps-->
-    <div class="col order-12 order-md-1 col-12 col-md-6 p-3 p-md-4 p-xl-5 border-secondary map">
-      <div class="w-100 h-100 d-flex justify-content-center align-items-center bg-light" id="map">
+  <div class="container-fluid _boffset">
+    <div class="row">
+      <div class="col p-0">
+        <img src="https://res.cloudinary.com/do9pkxeqs/image/upload/v1602060174/default/bg.png" alt="" loading="lazy">
       </div>
     </div>
-    <!---->
-    <div class="col order-1 order-md-12 col-12 col-md-6 py-3 text-light">
-      <div class="row h-100">
-        <div class="col-md-10 col-lg-9 m-2 m-md-0">
-          {{#if enquirySubmitted}}
-          <div class="text d-flex align-items-center justify-content-around p-5 shadow rounded">
-            <p class="text-center m-0" style="font-size: 1.5rem;">Спасибо, что связались c нами!</p>
-            <img src="https://res.cloudinary.com/do9pkxeqs/image/upload/w_44,h_50/v1603045278/default/logoY.png"
-              alt="Lol" loading="lazy">
-          </div>
-          {{else}}
-          <form class="h-100 d-flex flex-column justify-content-between" method="post">
-            <h2>Напишите нам</h2>
+  </div>
+
+  <div class="container-fluid _email">
+    <div class="row pb-3">
+      <!--Yandex maps-->
+      <div class="order-12 order-lg-1 col-12 col-lg-6 col-xl-7 p-3 px-md-4 px-xl-5 border-secondary map">
+        <div class="w-100 h-100 d-flex justify-content-center align-items-center bg-light" id="map">
+        </div>
+      </div>
+      <!---->
+      <div class="order-1 order-lg-12 col col-lg-6 col-xl-4 py-3">
+        <div class="enquiry-panel">
+          <form method="post" id="contact-form">
+            <h3 class="text-dark font-weight-bolder mt-2">Напишите нам</h3>
             <input type="hidden" name="action" value="home">
             <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
-              <input type="text" name="name.full" class="form-control" placeholder="Имя и фамилия"
+              <input type="text" name="name.full" class="form-control form-control-sm" placeholder="Имя и фамилия"
                 value="{{formData.[name.full]}}">
             </div>
             <div class="form-group {{#if validationErrors.email}}has-error{{/if}}">
-              <input type="email" name="email" class="form-control" placeholder="Электронная почта"
+              <input type="email" name="email" class="form-control form-control-sm" placeholder="Электронная почта"
                 value="{{formData.email}}">
             </div>
             <div class="form-group">
-              <input type="text" name="company" placeholder="Название компании" class="form-control"
+              <input type="text" name="company" placeholder="Название компании" class="form-control form-control-sm"
                 value="{{formData.company}}">
             </div>
             <div class="form-group {{#if validationErrors.message}}has-error{{/if}} ">
               <textarea name="message" placeholder="Сообщение..." rows="8"
-                class="form-control">{{formData.message}}</textarea>
+                class="form-control form-control-sm">{{formData.message}}</textarea>
+            </div>
+            <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="6LccvAAaAAAAALvsjBi6EbF8jZwUIkWNWcjiHcEy"
+                id="g-recaptcha-response"></div>
             </div>
             <div class="form-actions">
-              <button type="submit" class="btn btn-primary btn-block">Отправить сообщение</button>
+              <button type="submit" class="btn btn-primary btn-block btm-sm">Отправить сообщение</button>
+            </div>
+
+            <div id="enquiry-errors">
+              <div class="enquiry-errors-content">
+                <h4><span class="badge badge-danger">Ошибка, проверьте введенные данные</span></h4>
+              </div>
             </div>
           </form>
-          {{/if}}
-        </div>
-        <div class="col-md-2 col-lg-3">
+          <div id="success-enquiry">
+            <div class="success-enquiry-content">
+              <h4>Спасибо, что связались c нами! <i class="fa fa-check text-success" aria-hidden="true"></i> </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <script>
+    document.getElementById('contact-form').addEventListener("submit", (ev) => {
+      ev.preventDefault();
+
+      const action = document.querySelector('[name="action"]').value;
+      const nameFull = document.querySelector('[name="name.full"]').value;
+      const email = document.querySelector('[name="email"]').value;
+      const company = document.querySelector('[name="company"]').value;
+      const message = document.querySelector('[name="message"]').value;
+      const captcha = document.getElementById("g-recaptcha-response").value;
+
+      fetch('/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: action,
+          'name.full': nameFull,
+          email: email,
+          company: company,
+          message: message,
+          captcha: captcha
+        })
+      })
+        .then(res => res.json())
+        .then(res => {
+
+          console.log(res);
+
+          if (res.success) {
+            document.getElementById("success-enquiry").style.display = "block";
+            document.getElementById("contact-form").remove();
+          }
+          else {
+            document.getElementById("enquiry-errors").style.display = "block";
+          }
+        })
+        .catch(error => console.error(error));
+
+    });
+
+  </script>

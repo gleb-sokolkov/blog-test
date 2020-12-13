@@ -1,5 +1,6 @@
 var keystone = require('keystone');
 var Enquiry = keystone.list('Enquiry');
+const fetch = require('node-fetch');
 
 exports = module.exports = function (req, res) {
 
@@ -16,21 +17,45 @@ exports = module.exports = function (req, res) {
 	// On POST requests, add the Enquiry item to the database
 	view.on('post', { action: 'home' }, function (next) {
 
-		var newEnquiry = new Enquiry.model();
-		var updater = newEnquiry.getUpdateHandler(req);
+		if (req.body.captcha === undefined ||
+			req.body.captcha === null ||
+			req.body.captcha === '') {
+			return res.json({"success": false, "msg": "Please, select captcha" });
+		}
 
-		updater.process(req.body, {
-			flashErrors: true,
-			fields: 'name, email, company, message',
-			errorMessage: 'There was a problem submitting your enquiry:',
-		}, function (err) {
-			if (err) {
-				locals.validationErrors = err.errors;
-			} else {
-				locals.enquirySubmitted = true;
-			}
-			next();
-		});
+		const secret = process.env.RECAPTCHA_SECRET_KEY;
+		const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secret}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
+
+		fetch(verifyURL)
+			.then(res => res.json())
+			.then(body => {
+				if (body.success !== undefined && !body.success) {
+					res.json({ "success" : false, "msg" : "Failed captcha verification"});
+				}
+				else {
+					reqData();
+				}
+			});
+
+		function reqData() {
+			var newEnquiry = new Enquiry.model();
+			var updater = newEnquiry.getUpdateHandler(req);
+
+			updater.process(req.body, {
+				flashErrors: true,
+				fields: 'name, email, company, message',
+				errorMessage: 'There was a problem submitting your enquiry:',
+			}, function (err) {
+				if (err) {
+					//locals.validationErrors = err.errors;
+					res.json({ "success" : false, "msg" : "Wrong enquiry"});
+				} else {
+					locals.enquirySubmitted = true;
+					res.json({ "success" : true, "msg" : "Success enquiry"});
+				}
+				//next();
+			});
+		}
 	});
 
 

@@ -20,9 +20,39 @@ body {
 
     & .navbar-brand {
         @include transition(0.2s linear);
+        position: relative;
+
+        .substrate {
+            position: absolute;
+            height: 10px;
+            left: 50%;
+            right: 50%;
+            bottom: -10px;
+            background-color: $blue;
+            opacity: 0;
+            @include transition(0.33s ease);
+        }
+
+        .select {
+            margin: 0;
+            width: 100%;
+            @include transition(0.2s linear);
+        }
 
         &:hover {
-            background-color: rgb(200, 230, 247);
+
+            @extend .shadow;
+
+            .substrate {
+                left: 0;
+                right: 0;
+                @extend .rounded-bottom;
+                opacity: 1;
+            }
+
+            .select {
+                width: 0%;
+            }
         }
     }
 }
@@ -44,13 +74,14 @@ body {
 ._email {
     background-color: $dark;
 
-    .map {
-        height: clamp(300px, calc(50vh+150px), 500px);
+    @media(max-width: $lg){
+        .map {
+            height: clamp(300px, calc(50vh+150px), 500px);
+        }
     }
 }
 
 .page-footer {
-
     &.blue {
         background-color: $dark-medium;
         color: map-get($map: $theme-colors, $key: "secondary");
@@ -227,7 +258,7 @@ body {
     font-size: 1.25rem;
 
     padding: 1rem 0;
-    
+
     @include transition(0.5s ease);
     @include scrollbar-none;
 
@@ -253,7 +284,6 @@ body {
         &:hover .text-block {
             background-color: rgba($blue-light, 0.623);
         }
-
     }
 
     .content {
@@ -293,7 +323,6 @@ h6 {
 }
 
 .container {
-
     padding: $offset-sm $offset-lg;
 
     .head {
@@ -307,7 +336,7 @@ h6 {
     .content {
         font-size: $font-size-base;
         font-weight: $font-weight-light;
-        
+
         p {
             font-weight: $font-weight-normal;
         }
@@ -333,7 +362,6 @@ h6 {
     }
 
     @media (max-width: $sm) {
-        
         padding: $offset-xs $offset-xs;
 
         .head {
@@ -448,7 +476,6 @@ h6 {
 }
 
 .admin-bar {
-
     a {
         @media (max-width: $lg) {
             border: none;
@@ -460,7 +487,6 @@ h6 {
     @extend .bg-white, .rounded, .px-3;
 
     form {
-
         display: flex;
         @extend .flex-column, .justify-content-between, .pb-3;
 
@@ -469,8 +495,7 @@ h6 {
         }
     }
 
-    #success-enquiry { 
-        
+    #success-enquiry {
         display: none;
         @include transition(0.5s ease);
 
@@ -483,8 +508,7 @@ h6 {
         }
     }
 
-    #enquiry-errors { 
-
+    #enquiry-errors {
         display: none;
         @include transition(0.5s ease);
 
@@ -492,10 +516,14 @@ h6 {
             @extend .text-danger, .text-center;
         }
 
-        h4 {
+        p {
             margin: 0;
-            @extend .pt-3;
+            @extend .mb-3;
         }
+    }
+
+    #enquiry-indicator {
+        display: none;
     }
 }
 

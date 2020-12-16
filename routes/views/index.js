@@ -23,7 +23,7 @@ exports = module.exports = function (req, res) {
 			return res.json({"success": false, "msg": "Please, select captcha" });
 		}
 
-		const secret = process.env.RECAPTCHA_SECRET_KEY;
+		const secret = process.env.TRECAPTCHA_SECRET_KEY;
 		const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secret}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
 
 		fetch(verifyURL)

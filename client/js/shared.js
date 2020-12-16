@@ -4,11 +4,13 @@
 * basic configuration includes bootstrap-native-v4, and site.scss for entry point to sass loader
 *
 */
+import './polyfills';
 import 'bootstrap.native/dist/bootstrap-native-v4';
 import '../styles/site.scss';
 import './custom/sidenav';
 //import './custom/navbar';
 import './custom/navbar-dropdown';
 import 'font-awesome/scss/font-awesome.scss';
+import './custom/recaptcha';
 
  

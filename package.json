@@ -8,6 +8,7 @@
     "bootstrap.native": "^2.0.27",
     "cloudinary": "^1.23.0",
     "dotenv": "8.2.0",
+    "element-remove": "^1.0.4",
     "exports-loader": "^1.1.1",
     "express-handlebars": "^5.2.0",
     "express-html-minify": "^1.0.4",
@@ -20,7 +21,7 @@
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
     "node-sass-middleware": "0.11.0",
-    "popper.js": "^1.12.6"
+    "whatwg-fetch": "^3.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

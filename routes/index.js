@@ -21,6 +21,7 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -49,4 +50,10 @@ exports = module.exports = function (app) {
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 
+	const options = {
+		target: "http://localhost:5000",
+		changeOrigin: true,
+		pathRewrite: {'^/clients/calc' : '/'}
+	};
+	app.use('/clients/calc', createProxyMiddleware(options));
 };

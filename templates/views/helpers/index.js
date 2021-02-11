@@ -239,7 +239,7 @@ module.exports = function () {
 			// create boolean flag state if currentPage
 			var isActivePage = ((page === currentPage) ? true : false);
 			// need an active class indicator
-			var liClass = ((isActivePage) ? ' class="page-item active"' : 'class="page-item"');
+			var liClass = ((isActivePage) ? ' class="page-item active"' : ' class="page-item"');
 
 			// if '...' is sent from keystone then we need to override the url
 			if (page === '...') {
@@ -250,7 +250,7 @@ module.exports = function () {
 			// get the pageUrl using the integer value
 			var pageUrl = _helpers.pageUrl(page);
 			// wrapup the html
-			html += '<li' + liClass + '>' + paginationLinkTemplate({ url: pageUrl, text: pageText }) + '</li>\n';
+			html += '<li ' + liClass + '>' + paginationLinkTemplate({ url: pageUrl, text: pageText }) + '</li>\n';
 		});
 		return html;
 	};
@@ -325,6 +325,11 @@ module.exports = function () {
 
 	_helpers.underscoreFormat = function (obj, underscoreMethod) {
 		return obj._[underscoreMethod].format();
+	};
+
+	_helpers.substring = function(str, start, length) {
+		var result = str.substring(start, length);
+		return new hbs.SafeString(result);
 	};
 
 	return _helpers;

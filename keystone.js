@@ -40,6 +40,18 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'Y',
+	'wysiwyg override toolbar': true,
+	'wysiwyg menubar': true,
+	'wysiwyg cloudinary images': true,
+	'wysiwyg skin': 'lightgray',
+	'wysiwyg additional buttons':
+		"bold italic " +
+		"alignleft aligncenter alignright alignjustify " +
+		"outdent indent removeformat link " +
+		"fontsizeselect blockquote " +
+		"bullist hr " +
+		"forecolor backcolor ",
+	'wysiwyg additional plugins': 'table hr autolink image lists advlist nonbreaking visualblocks textcolor colorpicker',
 });
 
 // Load your project's Models
@@ -65,19 +77,22 @@ keystone.set('nav', {
 	galleries: 'galleries',
 	enquiries: 'enquiries',
 	ys: 'ys',
+	services: 'services',
+	"service-cards": 'service-cards',
 });
+
 
 // Start Keystone to connect to your database and initialise the web server
 
 
 if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
 	console.log('----------------------------------------'
-	+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
-	+ '\n----------------------------------------'
-	+ '\nYou have opted into email sending but have not provided'
-	+ '\nmailgun credentials. Attempts to send will fail.'
-	+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
-	+ '\nset up your mailgun integration');
+		+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
+		+ '\n----------------------------------------'
+		+ '\nYou have opted into email sending but have not provided'
+		+ '\nmailgun credentials. Attempts to send will fail.'
+		+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
+		+ '\nset up your mailgun integration');
 }
 
 

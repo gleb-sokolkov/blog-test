@@ -7,20 +7,69 @@ body {
     margin: 0;
     font-family: $font-Inter;
     @include transition(0.5s linear);
+
+    @media (max-width: map-get($map: $grid-breakpoints, $key: "lg")) {
+        font-size: 1rem;
+    }
+
+    @media (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
+        font-size: 0.92rem;
+    }
+
+    @media (max-width: map-get($map: $grid-breakpoints, $key: "sm")) {
+        font-size: 0.84rem;
+    }
+
+    @media (max-width: map-get($map: $grid-breakpoints, $key: "xs")) {
+        font-size: 0.76rem;
+    }
 }
 
-#navbar {
+html, body, * {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+.index-wrapper {
+    @extend .d-flex, .justify-content-center;
+}
+
+.main-navbar {
+
+    @extend .navbar, .navbar-expand-lg, .navbar-light, .bg-light, .border-bottom, .p-0, .sticky-top;
     font-family: $font-Magistral;
     @include transition(0.2s linear);
     z-index: 99;
+
+    .navbar-toggler {
+        @extend .border-light, .btn, .btn-sm, .ml-2, .p-0, .mt-1;
+    }
 
     .dd-old {
         display: none;
     }
 
+    .collapse {
+        @extend .navbar-collapse, .flex-column, .flex-md-row, .justify-content-md-around, .align-items-start, .ml-2;
+
+        .navbar-nav {
+            @extend .w-50, .my-auto, .d-flex, .justify-content-around, .bg-white, .shadow-sm, .rounded, .text-center;
+            font-size: 1.25rem;
+        }
+    }
+
     & .navbar-brand {
+        @extend .my-2, .px-2, .my-lg-0;
         @include transition(0.2s linear);
         position: relative;
+
+        &:not(:last-child) {
+            display: inline-block;
+        }
+
+        .title {
+            @extend .text-secondary, .d-inline-block, .ml-2;
+        }
 
         .substrate {
             position: absolute;
@@ -40,7 +89,6 @@ body {
         }
 
         &:hover {
-
             @extend .shadow;
 
             .substrate {
@@ -61,22 +109,24 @@ body {
     max-width: 1920px;
 }
 
-._header {
-    .col {
-        height: 176px;
-    }
-
-    & > * {
-        font-size: 1.25rem;
-    }
-}
-
 ._email {
     background-color: $dark;
 
-    @media(max-width: $lg){
+    @media (max-width: map-get($map: $grid-breakpoints, $key: "lg")) {
         .map {
             height: clamp(300px, calc(50vh+150px), 500px);
+        }
+    }
+
+    .map-wrapper {
+        @extend .pb-3;
+
+        & > * {
+            @extend .p-3, .px-md-4, .px-xl-5, .border-secondary;
+
+            #map {
+                @extend .w-100, .h-100, .d-flex, .justify-content-center, .align-items-center, .bg-light;
+            }
         }
     }
 }
@@ -119,7 +169,7 @@ body {
         }
     }
 
-    @media (max-width: $sm) {
+    @media (max-width: map-get($map: $grid-breakpoints, $key: "sm")) {
         font-size: $font-size-sm;
     }
 }
@@ -219,7 +269,8 @@ body {
     background-color: rgb(206, 241, 203);
 }
 
-#scroll-container {
+.scroll-container {
+    @extend .container-fluid, .position-absolute;
     overflow-y: scroll;
     overflow-x: hidden;
     max-height: 990px;
@@ -230,67 +281,110 @@ body {
     @include scrollbar-none;
 }
 
-#scroller .expander {
-    font-family: Exo2;
-}
+.scroller {
+    .letters {
+        .expander {
+            @extend .d-flex, .align-items-center;
+            height: 300px;
+            font-family: Exo2;
 
-#scroller .expander.active .col {
-    font-size: calc(2rem + 10vw);
-}
+            &.end {
+                height: 355px;
+            }
 
-#scroller .expander .col {
-    font-size: 2rem;
-    text-align: center;
+            &.active .col {
+                font-size: calc(2rem + 10vw);
+            }
 
-    @include transition(0.5s ease);
+            .col {
+                font-size: 2rem;
+                text-align: center;
+
+                @include transition(0.5s ease);
+            }
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            height: 355px;
+        }
+    }
+
+    .services {
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            height: 177.5px;
+        }
+
+        .short-description {
+            @extend .p-sm-3;
+
+            height: 600px;
+            visibility: hidden;
+            opacity: 0;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            font-size: 1.25rem;
+
+            padding: 1rem 0;
+
+            @include transition(0.5s ease);
+            @include scrollbar-none;
+
+            &.active {
+                visibility: visible;
+                opacity: 1;
+
+                .content {
+                    margin-top: 0px;
+                }
+            }
+
+            a {
+                @extend .d-flex, .flex-wrap, .w-100, .py-2;
+
+                font-size: 1rem;
+                text-decoration: none;
+                color: black;
+
+                & .text-block {
+                    background-color: rgba(255, 255, 255, 0.623);
+                    @include transition(0.5s ease);
+                    @extend .rounded, .shadow-sm, .p-3;
+                }
+
+                &:hover .text-block {
+                    background-color: rgba($blue-light, 0.623);
+                }
+            }
+
+            .wrapper {
+                @extend .d-flex, .align-items-center, .h-100;
+            }
+
+            .content {
+                margin-top: 1000px;
+
+                @extend .w-100, .h-100;
+                @include transition(0.5s ease);
+
+                .title {
+                    @extend .align-self-end;
+
+                    & > * {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .mt {
     margin-top: -300px;
-}
-
-.short-description {
-    height: 600px;
-    visibility: hidden;
-    opacity: 0;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    font-size: 1.25rem;
-
-    padding: 1rem 0;
-
-    @include transition(0.5s ease);
-    @include scrollbar-none;
-
-    &.active {
-        visibility: visible;
-        opacity: 1;
-
-        .content {
-            margin-top: 0px;
-        }
-    }
-
-    a {
-        font-size: 1rem;
-        text-decoration: none;
-        color: black;
-
-        & .text-block {
-            background-color: rgba(255, 255, 255, 0.623);
-            @include transition(0.5s ease);
-        }
-
-        &:hover .text-block {
-            background-color: rgba($blue-light, 0.623);
-        }
-    }
-
-    .content {
-        margin-top: 1000px;
-
-        @include transition(0.5s ease);
-    }
 }
 
 h1,
@@ -320,57 +414,6 @@ h6 {
 
 .old-dropdown:hover .dropdown-menu {
     display: block;
-}
-
-.container {
-    padding: $offset-sm $offset-lg;
-
-    .head {
-        display: block;
-        font-size: $h3-font-size;
-        font-family: $font-Exo2;
-        font-weight: $font-weight-bold;
-        padding: $offset-xs 0rem;
-    }
-
-    .content {
-        font-size: $font-size-base;
-        font-weight: $font-weight-light;
-
-        p {
-            font-weight: $font-weight-normal;
-        }
-
-        ul {
-            padding-right: 0rem;
-            &.list-group.with-header {
-                li {
-                    &:first-child {
-                        font-weight: $font-weight-normal;
-                    }
-                }
-            }
-        }
-    }
-
-    @media (max-width: $lg) {
-        padding: $offset-sm $offset-md;
-    }
-
-    @media (max-width: $md) {
-        padding: $offset-sm $offset-sm;
-    }
-
-    @media (max-width: $sm) {
-        padding: $offset-xs $offset-xs;
-
-        .head {
-            font-size: $h5-font-size;
-        }
-        .content {
-            font-size: $font-size-sm;
-        }
-    }
 }
 
 .garants {
@@ -477,7 +520,7 @@ h6 {
 
 .admin-bar {
     a {
-        @media (max-width: $lg) {
+        @media (max-width: map-get($map: $grid-breakpoints, $key: "lg")) {
             border: none;
         }
     }
@@ -490,8 +533,17 @@ h6 {
         display: flex;
         @extend .flex-column, .justify-content-between, .pb-3;
 
-        h3 {
-            @extend .text-dark, .mt-2, .font-weight-bolder, .mb-3;
+        .header {
+            @extend .text-dark,
+                .mt-2,
+                .mb-3,
+                .font-weight-bold,
+                .d-flex,
+                .justify-content-between;
+
+            .title {
+                font-weight: bold;
+            }
         }
     }
 
@@ -591,3 +643,4 @@ h6 {
 @import "./rent.scss";
 @import "./placement.scss";
 @import "./sidenav.scss";
+@import "./wysiwyg.scss"

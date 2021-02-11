@@ -1,0 +1,28 @@
+.text-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+    .title {
+        margin-bottom: 2rem;
+    }
+
+    ul {
+        @extend .list-group;
+    }
+
+    li {
+        @extend .list-group-item;
+    }
+
+    img {
+        @extend .img-fluid, .rounded;
+    }
+
+    blockquote {
+        @extend .blockquote;
+    }
+
+    a {
+        @extend .badge, .badge-light;
+    }
+}

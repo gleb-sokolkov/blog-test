@@ -8,29 +8,19 @@ exports = module.exports = function (req, res) {
 
 	// Set locals
 	locals.section = 'contact';
-	locals.formData = req.body || {};
-	locals.validationErrors = {};
-	locals.enquirySubmitted = false;
 
-	// On POST requests, add the Enquiry item to the database
-	view.on('post', { action: 'contact' }, function (next) {
+	locals.data = {
+		service : {},
+	};
 
-		var newEnquiry = new Enquiry.model();
-		var updater = newEnquiry.getUpdateHandler(req);
-
-		updater.process(req.body, {
-			flashErrors: true,
-			fields: 'name, email, company, message',
-			errorMessage: 'There was a problem submitting your enquiry:',
-		}, function (err) {
-			if (err) {
-				locals.validationErrors = err.errors;
-			} else {
-				locals.enquirySubmitted = true;
-			}
-			next();
+	view.on('init', function(next){
+		var q = keystone.list("Service").model.findOne({name: 'contact'});
+		q.exec(function(err, res){
+			locals.data.service = res;
+			next(err);
 		});
 	});
+
 
 	view.render('contact', { layout: 'contact'});
 };

@@ -1,355 +1,35 @@
-{{!< default}} <div class="d-flex justify-content-center">
-  <div class="container-fluid position-absolute" id="scroll-container">
-    <div id="scroller">
+{{!< default}} <div class="index-wrapper">
+  <div class="scroll-container" id="scroll-container">
+    <div class="scroller" id="scroller">
       <div class="row">
-        <div class="col-0 col-sm-1"></div>
-        <div class="col-2 m-3">
-          <div class="row" style="height: 355px;">
-            <div class="col">
-
-            </div>
+        <div class="col-0 col-sm-1 left-divider"></div>
+        <div class="col-2 m-3 letters">
+          {{#each data.services}}
+          <div class="row expander {{#if @first}} active {{/if}}">
+            <div class="col">{{{substring this.title 0 1}}}</div>
           </div>
-          <div class="row expander active d-flex align-items-center" style="height: 300px;">
-            <div class="col">C</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">O</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">R</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">E</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">D</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">A</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">T</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">A</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">N</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">E</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 300px;">
-            <div class="col">T</div>
-          </div>
-          <div class="row expander d-flex align-items-center" style="height: 355px">
-            <div class="col">
-
-            </div>
+          {{/each}}
+          <div class="row expander end">
           </div>
         </div>
-        <div class="col-8 col-md-8">
-          <div class="row" style="height: 177.5px;">
-            <div class="col">
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description active">
-            <div class="col-12 d-flex align-items-center h-100">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Colocation</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Colocation</h3>
+        <div class="col-8 col-md-8 services">
+          {{#each data.services}}
+          <div class="row short-description {{#if @first}} active {{else}} mt {{/if}}">
+            <div class="col-12 wrapper">
+              <div class="row content">
+                <div class="col-12 title">
+                  <h1>{{this.title}}</h1>
                 </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 py-2 rounded shadow-sm text-block">
-                    <div class="p-2">
-                      Услуга по размещению серверного оборудования (colocation) адресована организациям всех отраслей
-                      экономики – образовательным учерждениям, банкам, операторам связи, госструктурам, промышленным
-                      холдингам, коммерческим компаниям, чей бизнес зависит от бесперебойной работы ИТ-инфраструктуры.
-                      Инфраструктура дата-центра:
-                    </div>
-                    <ul>
-                      <li>132 свободныe стойки (4 машинных зала)</li>
-                      <li>1 000 кв.м. общей площади </li>
-                      <li>1 МВт мощности </li>
-                    </ul>
-                    <hr>
-                    В зависимости от размера вашей ИТ-инфраструктуры, мы предлагаем услуги по размещению серверного
-                    оборудования:
-                    <ul>
-                      <li>Аренда стойко-места</li>
-                      <li>Аренда выделенного периметра в машинном зале</li>
-                      <li>Аренда сервера</li>
-                    </ul>
+                <a href="/">
+                  <div class="col-12 col-lg-8 text-block text-container">
+                    {{{this.content}}}
                   </div>
                   {{> description-image}}
                 </a>
               </div>
             </div>
           </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Outsourcing</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Outsourcing</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 py-2 rounded shadow-sm text-block">
-                    <div class="p-2">
-                      Мы предлагаем возможность делегировать текущее обслуживание, настройку, тестирование и
-                      восстановление работоспособности размещенного оборудования специалистам инженерно-технического
-                      отдела дата-центра. Услуга позволяет сэкономить время и человеческие ресурсы на обслуживание
-                      серверного оборудования. Мы следим за вашим оборудованием 24/7 и оказываем техническую поддержку.
-                      <p></p>
-                      Круглосуточное техническое обслуживание:
-                    </div>
-                    <ul>
-                      <li>Специалисты техотдела по всем системам ЦОД - в рабочие часы</li>
-                      <li>Дежурный инженер - в ночные часы и выходные дни</li>
-                      <li>Выполнение дополнительных работ по запросам клиентов</li>
-                    </ul>
-                    <hr>
-                    <div class="p-2">
-                      Если вы воспользовались услугой Colocation, то автоматически получаете базовый объем технической
-                      поддержки (визуальный осмотр оборудования и выполнение стандартных действий с серверами).
-                      <p></p>
-                      Кроме того, мы предоставляем расширенный уровень технической поддержки. В него входят работы
-                      дежурных инженеров с оборудованием (монтаж/демонтаж, диагностика, установка памяти, апгрейды и
-                      проч.) и работы системных администраторов с программным обеспечением (тестирования на исправность,
-                      установка и настройка ОС, приложений и прочего сетевого оборудования).
-                      <p></p>
-                      Также, по желанию заказчика, любые технические работы могут производиться под видеонаблюдением.
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Reserved</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Reserved</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 py-2 rounded shadow-sm text-block">
-                    <div class="p-2">
-                      <h5>Автономность</h5>
-                      Копия хранится на сервере для бэкапа, вне действующей инфраструктуры организации - так
-                      администратор сможет восстановить рабочую базу независимо от обстоятельств.
-                      <p></p>
-                      <h5>Автоматизация</h5>
-                      Автоматическое резервное копирование исключает «человеческий фактор». Администратор только задает
-                      расписание, настраивает пути копирования, а остальное обрабатывает программа.
-                      <p></p>
-                      RTO (Recovery Time Objective). Восстановление информации не должно занимать сутки или двое -
-                      оптимальный вариант: два-три часа. В противном случае, бизнес несёт убытки.
-                      <p></p>
-                      <h5>Целостность</h5>
-                      Система должны быть настроена на полный бэкап, а не фрагментарный.
-                      <p></p>
-                      RPO (Recovery Point Objective). Ежедневное копирование поддерживает актуальное состояние архива.
-                      <p></p>
-                      <h5>Безопасность</h5>
-                      Доступ к резервному архиву ограничивается для большинства сотрудников компании и хранится в
-                      надежном месте.
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Energy</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Energy</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 py-2 rounded shadow-sm text-block">
-                    <div class="p-2">
-                      <div class="p-2">
-                        Электричество есть всегда. Для непрерывной работы систем дата-центра CoreDataNet бесперебойное
-                        электропитание обеспечено двумя независимыми вводами мощностью 1,2 МВт каждый.
-                        <hr>
-                        Кроме того, при возможном возникновении форс-мажорных ситуаций планируется использование двух
-                        дизельных генераторов, с помощью которых дата-центр продолжитработу в автономном режиме до 24
-                        часов. Переход с подстанции на ДГУ происходит за минуту, в это время работу оборудования
-                        обеспечивают источники бесперебойного питания.
-                      </div>
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Dedicated</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Dedicated</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 rounded shadow-sm py-2 text-block">
-                    <div class="p-2">
-                      Аренда сервера (dedicated server) - одна из разновидностей хостинга. Выбирая эту услугу, вы
-                      получаете в пользование отдельную физическую машину, целый сервер и получаете полный контроль над
-                      его конфигурацией. Как правило, на выделенных серверах размещаются крупные проекты с высокой
-                      посещаемостью, а также те, которым требуются особенные, уникальные настройки сервера. Данная
-                      услуга подойдет компаниям, у которых есть свои технические специалисты - настройка и поддержание
-                      работы сервера требует знаний и опыта.
-                      <hr>
-                      Выделенный сервер - самый защищенный вариант хостинга из всех возможных. Большим плюсом является
-                      то, что вы не делите сервер с другими сайтами, которые могут быть уязвимы. У выделенных серверов
-                      выше время непрерывной работы и ниже вероятность ошибок ПО. Сервер выдерживает гораздо более
-                      высокие нагрузки.
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Analysis</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Analysis</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 rounded shadow-sm py-2 text-block">
-                    <div class="p-2">
-                      Анализ и хранение данных. Анализ инфраструктуры и бизнеса-процессов заказчика. Аналитика речи и
-                      распознавание голоса как дополнительный сервис.
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Traffic</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Traffic</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 rounded shadow-sm py-2 text-block">
-                    <div class="p-2">
-                      Высокую скорость передачи данных между дата-центром и инфраструктурой
-                      Клиента обеспечивают три независимые каналы связи пропускной способностью 10
-                      Гбит каждый, один из которых соединяет CoreДataNet с М-IX в г. Москва.
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Accounting</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Accounting</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 rounded shadow-sm py-2 text-block">
-                    <div class="p-2">
-                      CoreDataNet - индивидуальный и дифферинцированный подход к бизнесам-задачам клиента на каждом
-                      этапе. Персональный аккаунт-менеджер. Сопровождение от момента постановки задачи до последнего
-                      реализации проекта.
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Network</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Network</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 rounded shadow-sm py-2 text-block">
-                    <div class="p-2">
-                      СoreDataNet обеспечивает быструю, безопасную и безотказную связь между объектами бизнеса. Каждый
-                      элемент нашей сети – это выверенное решение. Ничего лишнего, только
-                      надёжная связь. Наши линии связи отвечают всем необходимым стандартам, нормам и правилам.
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Efficiency</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Efficiency</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 rounded shadow-sm py-2 text-block">
-                    <div class="p-2">
-                      Эффективность CoreDataNet связана с возможностями оптимизации ИТ-инфраструктуры, внедрением
-                      методов виртуализации, с использованием современных средств развертывания ИТ-средств и управления
-                      ими.
-                      <p></p>
-                      По мере роста нагрузки на ЦОД возможно добавлять модули систем электропитания, охлаждения,
-                      сетевого оборудования, а также вычислительные модули.
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row p-sm-3 short-description mt">
-            <div class="col-12 d-flex align-items-center">
-              <div class="row content w-100 h-100">
-                <div class="col-12 align-self-end">
-                  <h1 class="font-weight-bold d-none d-sm-block">Technology</h1>
-                  <h3 class="font-weight-bold d-block d-sm-none">Technology</h3>
-                </div>
-                <a href="/" class="d-flex flex-wrap w-100 py-2">
-                  <div class="col-12 col-lg-8 rounded shadow-sm py-2 text-block">
-                    <div class="p-2">
-                      Центр обработки данных CoreDataNet отвечает современным требованиям безопасности. Это означает,
-                      что в случае непредвиденных технологических сбоев дата-центр продолжит обслуживать все системы без
-                      остановки сервиса.
-                      Высокий уровень инфраструктуры CoreDataNet подтверждает международный сертификат надежности TIER
-                      уровня III. Он подразумевает:
-                      <ul>
-                        <li>Безотказную работу ЦОД</li>
-                        <li>Ремонт без остановки оборудования</li>
-                        <li>Мощный резервный канал связи</li>
-                      </ul>
-                    </div>
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row" style="height: 177.5px;">
-            <div class="col">
-            </div>
-          </div>
+          {{/each}}
         </div>
       </div>
     </div>
@@ -368,24 +48,24 @@
   </div>
 
   <div class="container-fluid _email">
-    <div class="row pb-3">
+    <div class="row map-wrapper">
       <!--Yandex maps-->
-      <div class="order-12 order-lg-1 col-12 col-lg-6 col-xl-7 p-3 px-md-4 px-xl-5 border-secondary map">
-        <div class="w-100 h-100 d-flex justify-content-center align-items-center bg-light" id="map">
+      <div class="order-12 order-lg-1 col-12 col-lg-6 col-xl-7 map">
+        <div id="map">
         </div>
       </div>
       <!---->
       <div class="order-1 order-lg-12 col col-lg-6 col-xl-4 py-3">
         <div class="enquiry-panel">
           <form method="post" id="contact-form">
-            <h3 class="text-dark font-weight-bolder d-flex justify-content-between">
-              <div class="d-inline-block">
+            <div class="header">
+              <h3 class="title">
                 Напишите нам
-              </div>
-              <div class="spinner-grow text-secondary" role="status" id="enquiry-indicator">
+              </h3>
+              <div class="spinner-border text-primary" role="status" id="enquiry-indicator">
                 <span class="sr-only">Loading...</span>
               </div>
-            </h3>
+            </div>
             <input type="hidden" name="action" value="home">
             <div class="form-group {{#if validationErrors.name}}has-error{{/if}}">
               <input type="text" name="name.full" class="form-control form-control-sm" placeholder="Имя и фамилия"

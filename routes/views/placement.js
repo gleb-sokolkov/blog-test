@@ -6,7 +6,7 @@ exports = module.exports = function (req, res) {
 	var locals = res.locals;
 
 	// Set locals
-	locals.section = 'partners';
+	locals.section = 'placement';
 
 	locals.data = {
 		service : {},

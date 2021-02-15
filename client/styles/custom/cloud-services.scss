@@ -1,0 +1,87 @@
+.cloud-services {
+    .service-header {
+        @extend .mb-0;
+        background: $main-gradient-light;
+
+        .description {
+            @extend .d-flex, .flex-wrap, .justify-content-center;
+
+            &-text {
+                @extend .m-3, .p-3, .d-flex, .flex-column, .justify-content-center, .align-items-start;
+                font-size: 1.25rem;
+
+                &-container {
+                    max-width: 32rem;
+
+                    .header {
+                        @extend .mb-4;
+                        font-weight: 300;
+                    }
+                }
+            }
+
+            &-image {
+                @extend .m-3, .p-2, .p-sm-0;
+                max-width: 32rem; 
+                flex: 0 1 100%;
+
+                img {
+                    @extend .img-fluid;
+                    border-radius: 1rem; box-shadow: 1rem 1rem $light-shadow-color;
+                }
+            }
+        }
+
+        .feature-cards {
+            @extend .my-5;
+            @include cards(22rem, map-get($map: $spacers, $key: 2), center, stretch, card);
+
+            .card {
+                @extend .border-0, .shadow-sm;
+
+                &-title {
+                    @extend .text-success;
+                }
+            }
+        }
+
+        .price {
+            @extend .d-flex, .flex-column, .align-items-center;
+
+            &-header {
+                font-weight: normal;
+            }
+
+            &-label {
+                @extend .d-flex, .align-items-center, .justify-content-center, .rounded-circle, .shadow, .mb-3, .bg-white;
+                width: 10rem; 
+                height: 10rem;
+
+                &-container {
+                    .value {
+                        .amount {
+                            font-weight: 600; 
+                            font-size: 2.5rem;
+                        }
+
+                        .currency {
+
+                        }
+                    }
+
+                    .h-divider {
+                        @extend .mb-2, .mt-n2;
+                    }
+
+                    .desc-small {
+                        @extend .text-center, .mt-n2;
+                    }
+                }
+            }
+
+            .rent-server {
+                @extend .btn, .btn-warning, .align-self-center;
+            }
+        }
+    }
+}

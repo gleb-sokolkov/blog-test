@@ -1,4 +1,5 @@
 var keystone = require('keystone');
+const { keys } = require('lodash');
 
 exports = module.exports = function (req, res) {
 
@@ -7,6 +8,17 @@ exports = module.exports = function (req, res) {
 
 	// Set locals
 	locals.section = 'partners';
+	locals.data = {
+		service: {},
+	};
+
+	view.on('init', function(next) {
+		var q = keystone.list('Service').model.findOne({name: 'partners'});
+		q.exec(function(err, res) {
+			locals.data.service = res;
+			next(err);
+		});
+	})
 
 	// Render the view
 	view.render('partners', { layout: 'info' });

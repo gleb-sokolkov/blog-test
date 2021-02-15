@@ -5,18 +5,15 @@
 	</h4>
 	<div class="row content">
 		<div class="col-sm-8 col-md-9">
-			<h4 class="text-weight-normal text-right d-none" style="font-size: 1.25rem;">Всего постов
-				{{ data.posts.results.length}}.</h4>
+			<h4 class="text-weight-bold text-right text-muted d-none" style="font-size: 1.0rem;">Всего постов:
+				{{ data.posts.results.length}}</h4>
 			<div class="blog border-bottom">
 				{{#each data.posts.results}}
 				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}"
 					class="post border py-2 px-3 rounded mb-2 bg-white">
-					<h3 class="d-none d-sm-block">
+					<h4>
 						<a href="{{postUrl slug}}" class="text-dark">{{{title}}}</a>
-					</h3>
-					<h5 class="d-block d-sm-none">
-						<a href="{{postUrl slug}}" class="text-dark">{{{title}}}</a>
-					</h5>
+					</h4>
 					{{!-- {{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}"
 								class="img pull-right">{{/if}} --}}
 					<p>{{{content.brief}}}</p>

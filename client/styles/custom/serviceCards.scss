@@ -1,0 +1,54 @@
+.service-cards {
+
+    padding: 4rem 0;
+    background-color: $dark;
+
+    &::before {
+        content: "";
+        @include arrow(3rem, 100%, top, $dark-0);
+    }
+
+    &::after {
+        content: "";
+        @include arrow(3rem, 100%, bottom, $dark-0);
+    }
+
+    .container-fluid {
+        background-color: $dark-0;
+
+        .main-title {
+            color: white;
+            font-weight: 100;
+            text-align: center;
+        }
+
+        .lead {
+            @extend .mb-0;
+
+            text-align: center;
+            font-weight: 200;
+            color: white;
+            mark {
+                background-color: map-get($map: $colors, $key: "purple");
+                color: white;
+            }
+        }
+
+        .title-divider {
+            @extend .bg-secondary, .mb-0;
+        }
+
+        .cards {
+            @include cards(18rem, map-get($map: $spacers, $key: 3), center, stretch, card);
+
+            .card {
+                @extend .text-white, .bg-dark;
+                @include transition(0.35s);
+
+                &:hover {
+                    @extend .shadow-lg;
+                }
+            }
+        }
+    }
+}

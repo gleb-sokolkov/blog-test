@@ -132,6 +132,9 @@ html, body, * {
 }
 
 .page-footer {
+
+    position: relative;
+
     &.blue {
         background-color: $dark-medium;
         color: map-get($map: $theme-colors, $key: "secondary");
@@ -406,16 +409,6 @@ h6 {
     flex: 1 0 none;
 }
 
-.old-dropdown ul {
-    margin-left: 0;
-    padding-left: 0;
-    list-style: none;
-}
-
-.old-dropdown:hover .dropdown-menu {
-    display: block;
-}
-
 .garants {
     background-color: rgb(250, 220, 175);
     font-size: 1.25rem;
@@ -579,6 +572,10 @@ h6 {
     }
 }
 
+.map * {
+    touch-action: auto
+}
+
 //-----------------------------------
 //----------Media queries------------
 //-----------------------------------
@@ -643,4 +640,6 @@ h6 {
 @import "./rent.scss";
 @import "./placement.scss";
 @import "./sidenav.scss";
-@import "./wysiwyg.scss"
+@import "./wysiwyg.scss";
+@import "./serviceCards.scss";
+@import "./cloud-services.scss";

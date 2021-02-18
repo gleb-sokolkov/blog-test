@@ -340,7 +340,7 @@ module.exports = function () {
 			options.hash.navID = Math.random().toString(36).substring(7);
 		}
 
-		navs = `<div class="nav-container"><div class="nav" id="${options.hash.navID}" role="tablist" aria-orientation="vertical">`;
+		navs = `<div class="nav-container"><div class="nav nav-scrollable" id="${options.hash.navID}" role="tablist" aria-orientation="vertical">`;
 
 		if(options.hash.tabID === "") {
 			options.hash.tabID = Math.random().toString(36).substring(7);

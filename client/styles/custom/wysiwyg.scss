@@ -54,6 +54,10 @@
             padding: 2rem;
             max-width: 60rem;
             flex: 1 1 100%;
+
+            @media(max-width: map-get($map: $grid-breakpoints, $key: sm)) {
+                padding: 2rem 1rem;
+            }
         }
     }
 }

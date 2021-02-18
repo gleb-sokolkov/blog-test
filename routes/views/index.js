@@ -23,7 +23,7 @@ exports = module.exports = function (req, res) {
 			return res.json({ "success": false, "msg": "Please, select captcha" });
 		}
 
-		const secret = process.env.TRECAPTCHA_SECRET_KEY;
+		const secret = (process.env.APP_STATE === "dev") ? process.env.TRECAPTCHA_SECRET_KEY : process.env.RECAPTCHA_SECRET_KEY;
 		const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secret}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
 
 		fetch(verifyURL)
@@ -63,7 +63,7 @@ exports = module.exports = function (req, res) {
 	};
 
 	view.on('init', function (next) {
-		var query = keystone.list('ServiceCard').model.find().sort('sortOrder');
+		var query = keystone.list('ServiceCard').model.find();
 		query.exec(function (err, results) {
 			locals.data.services = results;
 			next(err);

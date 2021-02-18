@@ -28,6 +28,9 @@ exports.initLocals = function (req, res, next) {
 		{ label: 'Carier', key: 'carier', href: '/carier'}
 	];
 	res.locals.user = req.user;
+
+	res.locals.isProd = process.env.APP_STATE === "prod";
+
 	next();
 };
 

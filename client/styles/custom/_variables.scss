@@ -4,24 +4,21 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 
-
-
-//lilac
 $lilac-light: #d4d6f1;
-//blue
 $blue-light: rgb(86, 199, 247);
 $blue: rgb(74, 157, 235);
-//yellow
 $yellow: rgb(250, 220, 175);
-//dark
 $dark-0: rgb(38, 42, 48);
 $dark: rgb(52, 56, 69);
 $dark-medium: rgb(42, 46, 53);
 $dark-light: rgb(70, 74, 86);
-//green
 $green-light: rgb(182, 250, 198);
-//red
 $red-light: rgb(255, 200, 194);
+$purple-light: #8383a9;
+
+$main-gradient-light: linear-gradient(45deg, rgba(147,223,255,1) 25%, rgba(250,255,211,1) 75%);
+
+$light-shadow-color: rgba(108, 117, 125, 0.5);
 
 $font-Exo2: Exo2;
 $font-Inter: Inter;

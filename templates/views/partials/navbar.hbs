@@ -1,132 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light _header border-bottom p-0 sticky-top" id="navbar">
-	<button class="navbar-toggler border-light btn btn-sm ml-2 p-0 mt-1" type="button" data-toggle="collapse"
-		data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-		aria-label="Toggle navigation">
+<nav class="main-navbar" id="navbar">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<div class="collapse navbar-collapse flex-column flex-md-row justify-content-md-around align-items-start ml-2"
-		id="navbarSupportedContent">
-		<a class="navbar-brand my-2 px-2 my-lg-0" href="/">
-			<img src="https://res.cloudinary.com/do9pkxeqs/image/upload/w_60,h_60/v1601818296/default/logo_r0.png"
+	<div class="collapse" id="navbarSupportedContent">
+		<a class="navbar-brand" href="/">
+			<img src="https://res.cloudinary.com/do9pkxeqs/image/upload/w_50,h_50/v1601818296/default/logo_r0.png"
 				alt="icon1" class="d-inline-block" loading="lazy">
-			<div class="text-secondary d-inline-block ml-2">
+			<div class="title">
 				<div>CoreDataNet</div>
 				<hr class="select">
 			</div>
 			<div class="substrate"></div>
 		</a>
-		<ul class="navbar-nav w-50 my-auto d-flex justify-content-around bg-white shadow-sm rounded text-center">
-			<li class="nav-item">
-				<div class="dd-new dropdown">
-					<button class="nav-link font-weight-bold" type="button" id="dropdownMenuButton"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Клиентам
-					</button>
-					<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
-						<a href="/clients/rent">Аренда оборуднования</a>
-						<a href="/clients/placement">Размещение оборудования</a>
-						<a href="/clients/cservices">Облачные сервисы</a>
-						<a href="/clients/calc">Калькулятор</a>
-					</div>
+		<ul class="navbar-nav">
+			<li class="nav-item dropdown">
+				<button class="nav-link font-weight-bold dropdown-toggle" type="button" id="dropdownMenuButton"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Клиентам
+				</button>
+				<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
+					<a href="/clients/cservices">Облачные сервисы</a>
+					<a href="/clients/calc">Калькулятор</a>
 				</div>
-
-
-				{{! IE Dropdown ------------------}}
-				<div class="dd-old">
-					<td align=left style='text-indent:10px;'>
-						<div class='old-dropdown dropdown'>
-							<a id='dLabel' href='#' data-target='#' data-hover='old-dropdown' role='button'
-								aria-haspopup='true' aria-expanded='false'
-								class="nav-link font-weight-bold">Клиентам</a>
-							<ul class='dropdown-menu border  rounded-bottom' aria-labelledby='dLabel'>
-								<li>
-									<ul>
-										<li><a href='/clients/rent'>Аренда оборуднования</a></li>
-										<li><a href='/clients/placement'>Размещение оборудования</a></li>
-										<li><a href='/clients/cservices'>Облачные сервисы</a></li>
-										<li><a href="/clients/calc">Калькулятор</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</td>
-				</div>
-				{{!-------------------------------}}
 			</li>
-
-
-
-			<li class="nav-item">
-				<div class="dd-new dropdown">
-					<button class="nav-link font-weight-bold" type="button" id="dropdownMenuButton"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Партнерам
-					</button>
-					<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
-						<a href="/partners">Информация о <br />партнерских программах</a>
-					</div>
+			<li class="nav-item mb-2 mb-lg-0 dropdown">
+				<button class="nav-link font-weight-bold dropdown-toggle" type="button" id="dropdownMenuButton"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					О нас
+				</button>
+				<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
+					<a href="/about">О компании</a>
+					<a href="/carier">Карьера</a>
+					<a href="/blog">Новости</a>
+					<a href="/gallery">Галерея</a>
+					<a href="/contact">Контакты</a>
 				</div>
-
-
-				{{! IE Dropdown ------------------}}
-				<div class="dd-old">
-					<td align=left style='text-indent:10px;'>
-						<div class='old-dropdown dropdown'>
-							<a id='dLabel' href='#' data-target='#' data-hover='old-dropdown' role='button'
-								aria-haspopup='true' aria-expanded='false'
-								class="nav-link font-weight-bold">Партнерам</a>
-							<ul class='dropdown-menu border rounded-bottom' aria-labelledby='dLabel'>
-								<li>
-									<ul>
-										<li><a href='/partners'>Информация о <br />партнерских программах</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</td>
-				</div>
-				{{!-------------------------------}}
-			</li>
-
-
-
-			<li class="nav-item mb-2 mb-lg-0">
-				<div class="dd-new dropdown">
-					<button class="nav-link font-weight-bold" type="button" id="dropdownMenuButton"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						О нас
-					</button>
-					<div class="dropdown-menu border rounded-bottom" aria-labelledby="dropdownMenuButton">
-						<a href="/about">О компании</a>
-						<a href="/carier">Карьера</a>
-						<a href="/blog">Новости</a>
-						<a href="/gallery">Галерея</a>
-						<a href="/contact">Контакты</a>
-					</div>
-				</div>
-
-
-				{{! IE Dropdown ------------------}}
-				<div class="dd-old">
-					<td align=left style='text-indent:10px;'>
-						<div class='old-dropdown dropdown'>
-							<a id='dLabel' href='#' data-target='#' data-hover='old-dropdown' role='button'
-								aria-haspopup='true' aria-expanded='false' class="nav-link font-weight-bold">О нас</a>
-							<ul class='dropdown-menu border rounded-bottom' aria-labelledby='dLabel'>
-								<li>
-									<ul>
-										<li><a href='/about'>О компании</a></li>
-										<li><a href='/carier'>Карьера</a></li>
-										<li><a href='/blog'>Новости</a></li>
-										<li><a href='/gallery'>Галерея</a></li>
-										<li><a href='/contact'>Контакты</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</td>
-				</div>
-				{{!-------------------------------}}
 			</li>
 		</ul>
 		<form class="form-inline d-flex my-auto pt-2 pt-lg-0">

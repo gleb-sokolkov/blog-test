@@ -20,7 +20,7 @@ exports = module.exports = function (req, res) {
 		if (req.body.captcha === undefined ||
 			req.body.captcha === null ||
 			req.body.captcha === '') {
-			return res.json({"success": false, "msg": "Please, select captcha" });
+			return res.json({ "success": false, "msg": "Please, select captcha" });
 		}
 
 		const secret = process.env.TRECAPTCHA_SECRET_KEY;
@@ -30,7 +30,7 @@ exports = module.exports = function (req, res) {
 			.then(res => res.json())
 			.then(body => {
 				if (body.success !== undefined && !body.success) {
-					res.json({ "success" : false, "msg" : "Failed captcha verification"});
+					res.json({ "success": false, "msg": "Failed captcha verification" });
 				}
 				else {
 					reqData();
@@ -48,16 +48,27 @@ exports = module.exports = function (req, res) {
 			}, function (err) {
 				if (err) {
 					//locals.validationErrors = err.errors;
-					res.json({ "success" : false, "msg" : "Wrong enquiry"});
+					res.json({ "success": false, "msg": "Wrong enquiry" });
 				} else {
 					locals.enquirySubmitted = true;
-					res.json({ "success" : true, "msg" : "Success enquiry"});
+					res.json({ "success": true, "msg": "Success enquiry" });
 				}
 				//next();
 			});
 		}
 	});
 
+	locals.data = {
+		services : []
+	};
+
+	view.on('init', function (next) {
+		var query = keystone.list('ServiceCard').model.find().sort('sortOrder');
+		query.exec(function (err, results) {
+			locals.data.services = results;
+			next(err);
+		});
+	});
 
 	// Render the view
 	view.render('index');

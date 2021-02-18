@@ -239,7 +239,7 @@ module.exports = function () {
 			// create boolean flag state if currentPage
 			var isActivePage = ((page === currentPage) ? true : false);
 			// need an active class indicator
-			var liClass = ((isActivePage) ? ' class="page-item active"' : 'class="page-item"');
+			var liClass = ((isActivePage) ? ' class="page-item active"' : ' class="page-item"');
 
 			// if '...' is sent from keystone then we need to override the url
 			if (page === '...') {
@@ -250,7 +250,7 @@ module.exports = function () {
 			// get the pageUrl using the integer value
 			var pageUrl = _helpers.pageUrl(page);
 			// wrapup the html
-			html += '<li' + liClass + '>' + paginationLinkTemplate({ url: pageUrl, text: pageText }) + '</li>\n';
+			html += '<li ' + liClass + '>' + paginationLinkTemplate({ url: pageUrl, text: pageText }) + '</li>\n';
 		});
 		return html;
 	};
@@ -325,6 +325,55 @@ module.exports = function () {
 
 	_helpers.underscoreFormat = function (obj, underscoreMethod) {
 		return obj._[underscoreMethod].format();
+	};
+
+	_helpers.substring = function(str, start, length) {
+		var result = str.substring(start, length);
+		return new hbs.SafeString(result);
+	};
+
+	_helpers.tabs = function(context, options) {
+		var navs = "";
+		var tabs = "";
+
+		if(options.hash.navID === "") {
+			options.hash.navID = Math.random().toString(36).substring(7);
+		}
+
+		navs = `<div class="nav-container"><div class="nav" id="${options.hash.navID}" role="tablist" aria-orientation="vertical">`;
+
+		if(options.hash.tabID === "") {
+			options.hash.tabID = Math.random().toString(36).substring(7);
+		}
+
+		tabs = `<div class="tab-content" id="${options.hash.tabID}">`;
+
+		for (let i = 0; i < context.length; i++) {
+
+			var item = context[i];
+			var navID = options.hash.navID + "-" + item.name;
+			var tabID = options.hash.tabID + "-" + item.name;
+
+			navs += `<a class="nav-link ${(i == 0) ? "active" : ""}" `;
+			navs += `id="${navID}" `;
+			navs += `data-toggle="pill" `;
+			navs += `href="#${tabID}" `;
+			navs += `aria-controls="${tabID}" `;
+			navs += `aria-selected="false">`;
+			navs += item.title + "</a>";
+
+			tabs += `<div class="tab-pane fade ${(i == 0) ? "show active" : ""}" `;
+			tabs += `id="${tabID}"`;
+			tabs += `role="tabpanel" `;
+			tabs += `aria-labelledby="${navID}">`;
+			tabs += `<h4 class="title">${item.title}</h4>`;
+			tabs += item.content + "</div>";
+		}
+
+		navs += "</div></div>";
+		tabs += "</div>";
+
+		return new hbs.SafeString(navs + tabs);
 	};
 
 	return _helpers;

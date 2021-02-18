@@ -18,3 +18,54 @@
     border: $border-width solid $border-color;
     border-radius: $border-radius-sm;
 }
+
+@mixin arrow($size, $width, $direction, $color) {
+    height: 0px;
+    width: $width;
+    border-color: transparent;
+    border-style: solid;
+    border-width: $size;
+    display: block;
+
+    @if $direction == "top" 
+    {
+        border-bottom-color: $color;
+        border-top-width: 0px;
+    }
+    @else if $direction == "bottom" 
+    {
+        border-top-color: $color;
+        border-bottom-width: 0px;
+    }
+    @else if $direction == "left" 
+    {
+        border-right-color: $color;
+        border-left-width: 0px;
+    }
+    @else if $direction == "right" 
+    {
+        border-left-color: $color;
+        border-right-width: 0px;
+    }
+}
+
+@mixin cards($max-size, $offset, $justify, $align, $subclass) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: wrap;
+
+    .#{$subclass} {
+        max-width: $max-size;
+        margin: $offset $offset;
+        flex: 1 1 100%;
+    }
+}
+
+@mixin static-skewY($angle) {
+    transform: skewY($angle);
+
+    & > * {
+        transform: skewY(-$angle);
+    }
+}

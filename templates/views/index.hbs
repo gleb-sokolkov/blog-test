@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  {{> serviceCards}}
+  {{!-- {{> serviceCards}} --}}
 
   <div class="container-fluid _email">
     <div class="row map-wrapper">
@@ -86,8 +86,13 @@
                 class="form-control form-control-sm">{{formData.message}}</textarea>
             </div>
             <div class="form-group">
-              <div class="g-recaptcha" data-sitekey="6LccvAAaAAAAALvsjBi6EbF8jZwUIkWNWcjiHcEy"
-                id="g-recaptcha-response"></div>
+              {{#if isProd}}
+                <div class="g-recaptcha" data-sitekey="6LccvAAaAAAAALvsjBi6EbF8jZwUIkWNWcjiHcEy"
+                  id="g-recaptcha-response"></div>
+              {{else}}
+                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                  id="g-recaptcha-response"></div>
+              {{/if}}
             </div>
             <div id="enquiry-errors">
               <div class="enquiry-errors-content">

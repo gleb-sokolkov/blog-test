@@ -1,6 +1,6 @@
 .cloud-services {
     .service-header {
-        @extend .mb-0;
+        @extend .mb-0, .jumbotron, .jumbotron-fluid;
         background: $main-gradient-light;
 
         .description {
@@ -22,12 +22,13 @@
 
             &-image {
                 @extend .m-3, .p-2, .p-sm-0;
-                max-width: 32rem; 
+                max-width: 32rem;
                 flex: 0 1 100%;
 
                 img {
                     @extend .img-fluid;
-                    border-radius: 1rem; box-shadow: 1rem 1rem $light-shadow-color;
+                    border-radius: 1rem;
+                    box-shadow: 1rem 1rem $light-shadow-color;
                 }
             }
         }
@@ -53,19 +54,24 @@
             }
 
             &-label {
-                @extend .d-flex, .align-items-center, .justify-content-center, .rounded-circle, .shadow, .mb-3, .bg-white;
-                width: 10rem; 
+                @extend .d-flex,
+                    .align-items-center,
+                    .justify-content-center,
+                    .rounded-circle,
+                    .shadow,
+                    .mb-3,
+                    .bg-white;
+                width: 10rem;
                 height: 10rem;
 
                 &-container {
                     .value {
                         .amount {
-                            font-weight: 600; 
+                            font-weight: 600;
                             font-size: 2.5rem;
                         }
 
                         .currency {
-
                         }
                     }
 
@@ -80,7 +86,107 @@
             }
 
             .rent-server {
-                @extend .btn, .btn-warning, .align-self-center;
+                @extend .btn, .btn-warning, .align-self-center, .shadow-sm;
+            }
+        }
+    }
+
+    .service-table {
+        @extend .bg-dark, .text-white, .mb-0, .jumbotron, .jumbotron-fluid;
+
+        .header {
+            @extend .mb-5, .text-center;
+        }
+
+        .table-responsive {
+            text-align: center;
+
+            thead {
+                background-color: map-get($map: $colors, $key: "secondary");
+            }
+
+            th,
+            td {
+                vertical-align: middle;
+            }
+
+            .value {
+                font-size: 1.25rem;
+            }
+
+            .order-bottom {
+                @extend .btn, .btn-outline-warning;
+            }
+        }
+    }
+
+    .service-features {
+        @extend .jumbotron, .jumbotron-fluid, .mb-0, .bg-white;
+
+        .header {
+            text-align: center;
+
+            .title {
+                font-weight: 300;
+            }
+
+            .subtitle {
+                @extend .lead;
+
+                .badge {
+                    @extend .badge-light, .text-success;
+                }
+            }
+        }
+
+        .body {
+            .nav {
+                @extend .nav-pills, .mb-2;
+            }
+
+            .tab-content {
+                @extend .border, .border-top-0, .rounded, .p-3;
+            }
+        }
+    }
+
+    .service-references {
+
+        & > .wrapper {
+            @extend .jumbotron, .jumbotron-fluid, .mb-0;
+            text-align: center;
+        }
+
+        .container {
+            .header {
+                .title {
+                    font-weight: 300;
+                }
+
+                .subtitle {
+                    @extend .lead;
+                }
+            }
+
+            .body {
+                @extend .bg-white, .p-3, .rounded, .shadow-sm;
+
+                .wrapper {
+                    @extend .d-flex, .justify-content-around, .align-items-center, .flex-wrap;
+                }
+
+                .rounded-link {
+                    @extend .m-2;
+
+                    .link {
+                        @extend .text-white, .mx-auto, .mb-2, .d-flex, .justify-content-center, .align-items-center;
+                        width: 5rem;
+                        height: 5rem;
+                        border-radius: 50%;
+                        font-size: 2rem;
+                        text-decoration: none;
+                    }
+                }
             }
         }
     }

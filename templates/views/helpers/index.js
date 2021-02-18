@@ -332,5 +332,49 @@ module.exports = function () {
 		return new hbs.SafeString(result);
 	};
 
+	_helpers.tabs = function(context, options) {
+		var navs = "";
+		var tabs = "";
+
+		if(options.hash.navID === "") {
+			options.hash.navID = Math.random().toString(36).substring(7);
+		}
+
+		navs = `<div class="nav-container"><div class="nav" id="${options.hash.navID}" role="tablist" aria-orientation="vertical">`;
+
+		if(options.hash.tabID === "") {
+			options.hash.tabID = Math.random().toString(36).substring(7);
+		}
+
+		tabs = `<div class="tab-content" id="${options.hash.tabID}">`;
+
+		for (let i = 0; i < context.length; i++) {
+
+			var item = context[i];
+			var navID = options.hash.navID + "-" + item.name;
+			var tabID = options.hash.tabID + "-" + item.name;
+
+			navs += `<a class="nav-link ${(i == 0) ? "active" : ""}" `;
+			navs += `id="${navID}" `;
+			navs += `data-toggle="pill" `;
+			navs += `href="#${tabID}" `;
+			navs += `aria-controls="${tabID}" `;
+			navs += `aria-selected="false">`;
+			navs += item.title + "</a>";
+
+			tabs += `<div class="tab-pane fade ${(i == 0) ? "show active" : ""}" `;
+			tabs += `id="${tabID}"`;
+			tabs += `role="tabpanel" `;
+			tabs += `aria-labelledby="${navID}">`;
+			tabs += `<h4 class="title">${item.title}</h4>`;
+			tabs += item.content + "</div>";
+		}
+
+		navs += "</div></div>";
+		tabs += "</div>";
+
+		return new hbs.SafeString(navs + tabs);
+	};
+
 	return _helpers;
 };

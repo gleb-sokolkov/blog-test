@@ -1,9 +1,7 @@
 .text-container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    
     .title {
         margin-bottom: 2rem;
+        font-weight: 700;
     }
 
     ul {
@@ -22,7 +20,40 @@
         @extend .blockquote;
     }
 
-    a {
-        @extend .badge, .badge-light;
+    .row {
+        @extend .d-flex;
+
+        .nav-container {
+            @extend .p-3;
+            background-color: map-get($map: $grays, $key: "200");
+            max-width: 30rem;
+            flex: 1 1 auto;
+            border-right: 1px solid $border-color;
+            border-bottom: 1px solid transparent;
+
+            @media (max-width: map-get($map: $grid-breakpoints, $key: lg)) {
+                max-width: 100%;
+                border-right: 1px solid transparent;
+                border-bottom: 1px solid $border-color;
+            }
+        }
+
+        .nav {
+            @extend .nav-pills;
+            display: block !important;
+
+            @media (min-width: map-get($map: $grid-breakpoints, $key: xl)) {
+                position: sticky;
+                height: calc(100vh - 100px);
+                overflow-y: auto;
+                top: 5rem;
+            }
+        }
+
+        .tab-content {
+            padding: 2rem;
+            max-width: 60rem;
+            flex: 1 0 100%;
+        }
     }
 }

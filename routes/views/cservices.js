@@ -9,19 +9,19 @@ exports = module.exports = function (req, res) {
 	locals.section = 'cservices';
 
 	locals.data = {
-		service : {},
+		services : [],
 	};
 
 	view.on('init', function(next){
-		var q = keystone.list("Service").model.findOne({name: 'cservices'});
+		var q = keystone.list("Service").model.find();
 		q.exec(function(err, res){
-			locals.data.service = res;
+			locals.data.services = res;
 			next(err);
 		});
 	});
 
 
 	// Render the view
-	view.render('clients/cservices', { layout: 'info' });
+	view.render('cservices', { layout: 'info' });
 
 };

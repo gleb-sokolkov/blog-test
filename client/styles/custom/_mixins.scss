@@ -61,3 +61,11 @@
         flex: 1 1 100%;
     }
 }
+
+@mixin static-skewY($angle) {
+    transform: skewY($angle);
+
+    & > * {
+        transform: skewY(-$angle);
+    }
+}

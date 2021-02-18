@@ -1,5 +1,5 @@
 <div class="cloud-services">
-    <div class="jumbotron jumbotron-fluid service-header">
+    <div class="service-header">
         <div class="container">
             <div class="row description">
                 <div class="description-text">
@@ -66,83 +66,79 @@
             </div>
         </div>
     </div>
-    <div class="jumbotron jumbotron-fluid bg-dark text-white mb-0">
+    <div class="service-table">
         <div class="container">
-            <div class="mb-5 text-center">
+            <div class="header">
                 <h2>Выберите свой VDS</h2>
                 <p class="lead">работа в облаке, гарантированные ресурсы</p>
             </div>
-            <div class="table-responsive text-center">
+            <div class="table-responsive">
                 <table class="table table-hover table-dark">
-                    <thead class="bg-secondary">
+                    <thead>
                         <tr>
-                            <th scope="col" style="vertical-align: middle;">Базовая конфигурация</th>
-                            <th scope="col" style="vertical-align: middle;">Тариф <i class="fa fa-rub"
-                                    aria-hidden="true"></i></th>
-                            <th scope="col" style="vertical-align: middle;"></th>
+                            <th scope="col">Базовая конфигурация</th>
+                            <th scope="col">Тариф <i class="fa fa-rub" aria-hidden="true"></i></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="vertical-align: middle;">
+                            <td>
                                 step1 Ядер 1, Диск 10 Gb SSD, Память 1 Gb, ipv4 адрес1 шт. ОС: Linux
                             </td>
-                            <td style="font-size: 1.25rem; vertical-align: middle;">
+                            <td class="value">
                                 300
                             </td>
-                            <td style="vertical-align: middle;">
-                                <button class="btn btn-outline-warning">Заказать</button>
+                            <td>
+                                <button class="order-bottom">Заказать</button>
                             </td>
                         </tr>
                         <tr>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td><button class="btn btn-outline-warning">Заказать</button></td>
+                            <td>
+                                step1 Ядер 1, Диск 10 Gb SSD, Память 1 Gb, ipv4 адрес1 шт. ОС: Linux
+                            </td>
+                            <td class="value">
+                                300
+                            </td>
+                            <td>
+                                <button class="order-bottom">Заказать</button>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td><button class="btn btn-outline-warning">Заказать</button></td>
-                        </tr>
-                        <tr>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td><button class="btn btn-outline-warning">Заказать</button></td>
-                        </tr>
-                        <tr>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td><button class="btn btn-outline-warning">Заказать</button></td>
-                        </tr>
-                        <tr>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td><button class="btn btn-outline-warning">Заказать</button></td>
+                            <td>
+                                step1 Ядер 1, Диск 10 Gb SSD, Память 1 Gb, ipv4 адрес1 шт. ОС: Linux
+                            </td>
+                            <td class="value">
+                                300
+                            </td>
+                            <td>
+                                <button class="order-bottom">Заказать</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <div class="jumbotron jumbotron-fluid mb-0 bg-white">
+    <div class="service-features">
         <div class="container">
-            <div class="text-center">
-                <h2 style="font-weight: 300;">
+            <div class="header">
+                <h2 class="title">
                     <span>Все что необходимо для VDS сервера</span>
                 </h2>
-                <p class="lead">
-                    <span class="badge badge-light text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                <p class="subtitle">
+                    <span class="badge"><i class="fa fa-check-square-o" aria-hidden="true"></i>
                         Защита от DDoS</span>
-                    <span class="badge badge-light text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    <span class="badge"><i class="fa fa-check-square-o" aria-hidden="true"></i>
                         SSD диски</span>
-                    <span class="badge badge-light text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    <span class="badge"><i class="fa fa-check-square-o" aria-hidden="true"></i>
                         SLA</span>
-                    <span class="badge badge-light text-success"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    <span class="badge"><i class="fa fa-check-square-o" aria-hidden="true"></i>
                         99,96% Uptime</span>
                 </p>
             </div>
-            <div>
-                <ul class="nav nav-pills mb-2" id="myTab" role="tablist">
+            <div class="body">
+                <ul class="nav" id="featureTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
                             aria-controls="home" aria-selected="true">Home</a>
@@ -156,7 +152,7 @@
                             aria-controls="contact" aria-selected="false">Contact</a>
                     </li>
                 </ul>
-                <div class="tab-content border border-top-0 rounded p-3" id="myTabContent">
+                <div class="tab-content" id="featureTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit aspernatur impedit mollitia
                         repudiandae quaerat, maxime dicta nulla molestias exercitationem sint, dolor ex nihil sunt
@@ -181,43 +177,37 @@
             </div>
         </div>
     </div>
-    <div>
-        <div class="jumbotron jumbotron-fluid mb-0" style="transform: skewY(-4deg);">
-            <div class="container text-center" style="transform: skewY(4deg);">
-                <h2 style="font-weight: 300;">Используйте виртуальный сервер</h2>
-                <p class="lead">так, как нужно именно вам</p>
-                <div class="bg-white p-3 rounded shadow-sm">
-                    <div class="d-flex justify-content-around align-items-center flex-wrap">
-                        <div class="m-2">
-                            <a style="width: 5rem; height: 5rem; border-radius: 50%; font-size: 2rem; text-decoration: none"
-                                class="bg-danger text-white mx-auto mb-2 d-flex justify-content-center align-items-center"
-                                href="/">
+    <div class="service-references">
+        <div class="wrapper">
+            <div class="container">
+                <div class="header">
+                    <h2 class="title">Используйте виртуальный сервер</h2>
+                    <p class="subtitle">так, как нужно именно вам</p>
+                </div>
+                <div class="body">
+                    <div class="wrapper">
+                        <div class="rounded-link">
+                            <div class="link bg-danger" href="/">
                                 <i class="fa fa-calculator" aria-hidden="true"></i>
-                            </a>
+                            </div>
                             <div>1C Бухгалтерия</div>
                         </div>
-                        <div class="m-2">
-                            <a style="width: 5rem; height: 5rem; border-radius: 50%; font-size: 2rem; text-decoration: none"
-                                class="bg-warning text-white mx-auto mb-2 d-flex justify-content-center align-items-center"
-                                href="/">
+                        <div class="rounded-link">
+                            <div class="link bg-warning" href="/">
                                 <i class="fa fa-server" aria-hidden="true"></i>
-                            </a>
+                            </div>
                             <div>Apache</div>
                         </div>
-                        <div class="m-2">
-                            <a style="width: 5rem; height: 5rem; border-radius: 50%; font-size: 2rem; text-decoration: none"
-                                class="bg-primary text-white mx-auto mb-2 d-flex justify-content-center align-items-center"
-                                href="/">
+                        <div class="rounded-link">
+                            <div class="link bg-primary" href="/">
                                 <i class="fa fa-microphone" aria-hidden="true"></i>
-                            </a>
+                            </div>
                             <div>TeamSpeak</div>
                         </div>
-                        <div class="m-2">
-                            <a style="width: 5rem; height: 5rem; border-radius: 50%; font-size: 2rem; text-decoration: none"
-                                class="bg-warning text-white mx-auto mb-2 d-flex justify-content-center align-items-center"
-                                href="/">
+                        <div class="rounded-link">
+                            <div class="link bg-warning" href="/">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
-                            </a>
+                            </div>
                             <div>Asterisk</div>
                         </div>
                     </div>

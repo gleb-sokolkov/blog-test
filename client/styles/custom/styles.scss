@@ -45,16 +45,19 @@ html, body, * {
         @extend .border-light, .btn, .btn-sm, .ml-2, .p-0, .mt-1;
     }
 
-    .dd-old {
-        display: none;
-    }
-
     .collapse {
         @extend .navbar-collapse, .flex-column, .flex-md-row, .justify-content-md-around, .align-items-start, .ml-2;
 
         .navbar-nav {
-            @extend .w-50, .my-auto, .d-flex, .justify-content-around, .bg-white, .shadow-sm, .rounded, .text-center;
+            @extend .w-50, .my-auto, .d-flex, .justify-content-around, .shadow-sm, .rounded, .text-center;
+            background-color: white;
             font-size: 1.25rem;
+
+            @media(max-width:map-get($map: $grid-breakpoints, $key: lg)) {
+                box-shadow: none !important;
+                background-color: inherit;
+                padding-left: map-get($map: $spacers, $key: 3);
+            }
         }
     }
 

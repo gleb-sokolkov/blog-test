@@ -21,4 +21,5 @@ function init() {
 
     myMap.geoObjects.add(myPlacemark);
     myMap.behaviors.disable('scrollZoom');
+    map.behaviors.disable('drag');
 }

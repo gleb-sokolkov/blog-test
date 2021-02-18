@@ -7,8 +7,9 @@
 import './polyfills';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import '../styles/site.scss';
-import './custom/sidenav';
 import 'font-awesome/scss/font-awesome.scss';
+import './custom/sidenav';
 import './custom/recaptcha';
+import './custom/navScrollUp';
 
  

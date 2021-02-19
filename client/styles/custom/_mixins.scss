@@ -49,6 +49,17 @@
     }
 }
 
+@mixin wrap-center($offset) {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    & > *  {
+        margin: $offset;
+    }
+}
+
 @mixin cards($max-size, $offset, $justify, $align, $subclass) {
     display: flex;
     justify-content: $justify;

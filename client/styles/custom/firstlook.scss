@@ -1,0 +1,84 @@
+.firstlook {
+    @extend .jumbotron, .jumbotron-fluid, .mb-0, .bg-white, .border-bottom;
+    background: $main-gradient-light-inv;
+
+    .first-description {
+        @include wrap-center(map-get($map: $spacers, $key: 3));
+        align-items: flex-end;
+        margin-bottom: map-get($map: $spacers, $key: 5);
+
+        .text-block {
+            @extend .mx-3, .my-3;
+            max-width: 30rem;
+            flex: 1 1 auto;
+
+            &-title {
+                font-size: 3.5rem;
+                font-weight: 900;
+                font-family: $font-Exo2;
+
+                @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
+                    font-size: 2.5rem;
+                }
+            }
+
+            &-text {
+                @extend .lead, .p-4, .shadow-sm, .rounded, .bg-white;
+            }
+        }
+
+        .image-block {
+            @extend .mx-3, .my-3;
+            max-width: 50rem;
+            flex: 0 1 100%;
+
+            img {
+                @extend .img-fluid, .rounded, .shadow, .img-thumbnail;
+            }
+        }
+    }
+
+    .garanties {
+        display: block;
+        margin-top: map-get($map: $spacers, $key: 5);
+        padding: map-get($map: $spacers, $key: 3);
+
+        &-title {
+            font-family: $font-Exo2;
+            font-size: 2.5rem;
+
+            @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
+                font-size: 1.5rem;
+            }
+
+            .badge {
+                @extend .badge-pill, .badge-light, .font-weight-light, .shadow-sm;
+
+                & > .fa-check-circle {
+                    color: map-get($map: $theme-colors, $key: "success");
+
+                    @media(min-width: map-get($map: $grid-breakpoints, $key: sm)) {
+                        font-size: 2rem
+                    }
+                }
+            }
+        }
+
+        &-list {
+            @extend .list-group, .list-group-flush, .px-3, .pb-4, .shadow, .rounded, .mx-auto, .border, .border-success;
+            background-color: map-get($map: $grays, $key: "100");
+            max-width: 50rem;
+            margin-top: -1.4rem;
+            padding-top: 1.4rem;
+
+            @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
+                margin-top: -1.3rem;
+                padding-top: 1.3rem;
+            }
+
+            li {
+                @extend .list-group-item;
+            }
+        }
+    }
+}

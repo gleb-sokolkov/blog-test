@@ -283,7 +283,7 @@ html, body, * {
     width: 100%;
     height: 990px;
     padding: 0 0;
-    margin-top: -127px;
+    margin-top: -5rem;
     @include scrollbar-none;
 }
 
@@ -576,7 +576,7 @@ h6 {
 }
 
 .map * {
-    touch-action: auto
+    touch-action: auto !important;
 }
 
 //-----------------------------------
@@ -590,13 +590,6 @@ h6 {
 }
 
 @include media-breakpoint-down(md) {
-    #scroll-container {
-        margin-top: -56px;
-    }
-
-    #canvas {
-        margin-top: -56px;
-    }
 }
 
 @include media-breakpoint-down(sm) {
@@ -646,3 +639,4 @@ h6 {
 @import "./wysiwyg.scss";
 @import "./serviceCards.scss";
 @import "./cloud-services.scss";
+@import "./firstlook.scss";

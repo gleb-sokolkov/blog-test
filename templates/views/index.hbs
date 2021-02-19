@@ -1,42 +1,43 @@
-{{!< default}} <div class="index-wrapper">
-  <div class="scroll-container" id="scroll-container">
-    <div class="scroller" id="scroller">
-      <div class="row">
-        <div class="col-0 col-sm-1 left-divider"></div>
-        <div class="col-2 m-3 letters">
-          {{#each data.services}}
-          <div class="row expander {{#if @first}} active {{/if}}">
-            <div class="col">{{{substring this.title 0 1}}}</div>
-          </div>
-          {{/each}}
-          <div class="row expander end">
-          </div>
-        </div>
-        <div class="col-8 col-md-8 services">
-          {{#each data.services}}
-          <div class="row short-description {{#if @first}} active {{else}} mt {{/if}}">
-            <div class="col-12 wrapper">
-              <div class="row content">
-                <div class="col-12 title">
-                  <h1>{{this.title}}</h1>
-                </div>
-                <a href="/">
-                  <div class="col-12 col-lg-8 text-block text-container">
-                    {{{this.content}}}
-                  </div>
-                  {{> description-image}}
-                </a>
-              </div>
+{{!< default}} {{> firstlook}}
+  <div class="index-wrapper">
+    <div class="scroll-container" id="scroll-container">
+      <div class="scroller" id="scroller">
+        <div class="row">
+          <div class="col-0 col-sm-1 left-divider"></div>
+          <div class="col-2 m-3 letters">
+            {{#each data.services}}
+            <div class="row expander {{#if @first}} active {{/if}}">
+              <div class="col">{{{substring this.title 0 1}}}</div>
+            </div>
+            {{/each}}
+            <div class="row expander end">
             </div>
           </div>
-          {{/each}}
+          <div class="col-9 col-md-8 services">
+            {{#each data.services}}
+            <div class="row short-description {{#if @first}} active {{else}} mt {{/if}}">
+              <div class="col-12 wrapper">
+                <div class="row content">
+                  <div class="col-12 title">
+                    <h1>{{this.title}}</h1>
+                  </div>
+                  <a href="/">
+                    <div class="col-12 col-lg-8 text-block text-container">
+                      {{{this.content}}}
+                    </div>
+                    {{> description-image}}
+                  </a>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="canvas">
-    <canvas id="c"></canvas>
-  </div>
+    <div id="canvas">
+      <canvas id="c"></canvas>
+    </div>
   </div>
 
   <div class="container-fluid _boffset">
@@ -87,11 +88,11 @@
             </div>
             <div class="form-group">
               {{#if isProd}}
-                <div class="g-recaptcha" data-sitekey="6LccvAAaAAAAALvsjBi6EbF8jZwUIkWNWcjiHcEy"
-                  id="g-recaptcha-response"></div>
+              <div class="g-recaptcha" data-sitekey="6LccvAAaAAAAALvsjBi6EbF8jZwUIkWNWcjiHcEy"
+                id="g-recaptcha-response"></div>
               {{else}}
-                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                  id="g-recaptcha-response"></div>
+              <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                id="g-recaptcha-response"></div>
               {{/if}}
             </div>
             <div id="enquiry-errors">

@@ -6,6 +6,7 @@
     "async": "3.2.0",
     "bootstrap": "^4.5.3",
     "cloudinary": "^1.23.0",
+    "debounce": "^1.2.0",
     "dotenv": "8.2.0",
     "element-remove": "^1.0.4",
     "exports-loader": "^1.1.1",
@@ -20,6 +21,7 @@
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
     "node-sass-middleware": "0.11.0",
+    "validator": "^13.5.2",
     "whatwg-fetch": "^3.5.0"
   },
   "devDependencies": {
@@ -35,7 +37,6 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "express-minify-html": "^0.12.0",
-    "http-proxy-middleware": "^1.0.6",
     "mini-css-extract-plugin": "^1.2.0",
     "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "^5.0.4",

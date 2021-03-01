@@ -1,0 +1,178 @@
+.calc {
+    padding: 2rem 1rem;
+    background-color: map-get($map: $grays, $key: "200");
+
+    .container {
+        @extend .shadow-sm, .rounded, .px-3, .px-sm-5, .pt-3, .pt-sm-5;
+        background-color: white;
+
+        .price {
+            @extend .px-3, .text-right;
+            display: block;
+            font-family: $font-Exo2;
+
+            .price-title {
+                @extend .font-weight-light;
+                color: map-get($map: $theme-colors, $key: "secondary");
+            }
+
+            .price-value {
+                @extend .font-weight-bold;
+            }
+
+            &.total-price {
+                @extend .p-2, .rounded, .bg-warning, .shadow;
+                display: inline-block;
+
+                .price-title {
+                    color: black !important;
+                }
+            }
+        }
+
+        .main-divider {
+            @extend .mx-sm-n5, .mx-n3;
+            margin: 3rem 0rem;
+        }
+
+        .virtual {
+            @include hideArrowsOnNumInput();
+
+            .virtual-title {
+                @extend .mb-4;
+                font-weight: 300;
+                text-align: center;
+            }
+
+            &-body {
+                .client {
+                    @extend .mb-5;
+
+                    &-line-left-title {
+                        display: flex;
+
+                        .text {
+                            font-weight: 900;
+                        }
+
+                        .line {
+                            @extend .ml-2;
+                            flex-grow: 1;
+                        }
+                    }
+                }
+
+                .server-config {
+                    @extend .border, .rounded;
+                    min-height: 30rem;
+                    height: 30rem;
+                    overflow-y: auto;
+                    position: relative;
+                    resize: vertical;
+                    overflow-x: hidden;
+
+                    .header {
+                        @extend .p-1, .border-bottom;
+                        background-color: rgb(233, 236, 239);
+                        position: sticky;
+                        top: 0;
+                        z-index: 1;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        button {
+                            @extend .btn, .rounded-circle, .shadow;
+
+                            &.add {
+                                @extend .btn-success;
+                            }
+
+                            &.delete {
+                                @extend .btn-danger;
+                            }
+                        }
+                    }
+
+                    .body {
+                        @extend .p-3;
+
+                        &-name {
+                            .col-form-label {
+                                @extend .font-weight-light, .d-flex;
+                                font-size: 1.25rem;
+                            }
+
+                            .server-count {
+                                @extend .d-flex, .align-items-center, .mb-1, .mb-sm-0;
+                            }
+
+                            .server-name {
+                                @extend .d-flex, .align-items-center;
+                            }
+                        }
+
+                        .name-divider {
+                            @extend .mx-n3;
+                        }
+
+                        &-config {
+                            &-range {
+                                @extend .d-flex, .flex-column, .justify-content-end;
+                            }
+
+                            &-input {
+                                display: flex;
+                                align-items: flex-end;
+                            }
+                        }
+                    }
+
+                    .footer {
+                        @extend .p-1, .border-top;
+                        background-color: map-get($map: $grays, $key: "200");
+                        position: sticky;
+                        bottom: 0;
+                        display: flex;
+                        justify-content: space-between;
+                        flex-flow: row wrap;
+                        z-index: 1;
+
+                        .gen-kp,
+                        .gen-vr {
+                            @extend .btn, .btn-light, .shadow, .m-1;
+                        }
+                    }
+                }
+            }
+        }
+
+        .physic {
+            .price {
+                @extend .mb-3;
+            }
+
+            .physic-title {
+                @extend .font-weight-light, .text-center, .mb-4;
+            }
+
+            .save {
+                @extend .btn, .btn-outline-primary, .shadow, .m-1, .m-sm-0;
+            }
+
+            .gen-kp,
+            .gen-vr {
+                @extend .btn, .btn-light, .shadow, .m-1;
+            }
+        }
+
+        & > #calc-progress {
+            @extend .mt-3, .mt-sm-5, .mx-n3, .mx-sm-n5;
+            position: sticky;
+            bottom: 0;
+            opacity: 0;
+            transition: 0.5s;
+            z-index: 2;
+        }
+    }
+}

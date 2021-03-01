@@ -3,7 +3,7 @@
         display: none;
     }
     scrollbar-width: none;
-    -ms-overflow-style: none;   
+    -ms-overflow-style: none;
 }
 
 @mixin transition($x) {
@@ -27,23 +27,16 @@
     border-width: $size;
     display: block;
 
-    @if $direction == "top" 
-    {
+    @if $direction == "top" {
         border-bottom-color: $color;
         border-top-width: 0px;
-    }
-    @else if $direction == "bottom" 
-    {
+    } @else if $direction == "bottom" {
         border-top-color: $color;
         border-bottom-width: 0px;
-    }
-    @else if $direction == "left" 
-    {
+    } @else if $direction == "left" {
         border-right-color: $color;
         border-left-width: 0px;
-    }
-    @else if $direction == "right" 
-    {
+    } @else if $direction == "right" {
         border-left-color: $color;
         border-right-width: 0px;
     }
@@ -55,7 +48,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    & > *  {
+    & > * {
         margin: $offset;
     }
 }
@@ -78,5 +71,18 @@
 
     & > * {
         transform: skewY(-$angle);
+    }
+}
+
+@mixin hideArrowsOnNumInput() {
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
     }
 }

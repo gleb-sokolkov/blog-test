@@ -477,10 +477,6 @@ h6 {
     font-size: 1.25rem;
 }
 
-.wrapper {
-    height: 100%;
-}
-
 .filler {
     background-color: white;
 }
@@ -640,3 +636,4 @@ h6 {
 @import "./serviceCards.scss";
 @import "./cloud-services.scss";
 @import "./firstlook.scss";
+@import "./calc.scss";

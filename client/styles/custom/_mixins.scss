@@ -76,13 +76,30 @@
 
 @mixin hideArrowsOnNumInput() {
 
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
 
-    input[type="number"] {
+    &[type="number"] {
         -moz-appearance: textfield;
+    }
+}
+
+@mixin bg-animation($color) {
+    animation-name: bg;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    background: rgba($color, 0.5);
+
+    @keyframes bg {
+        0% {
+            background: rgba($color, 0.0);
+        }
+
+        100% {
+            background: rgba($color, 0.5);
+        }
     }
 }

@@ -79,6 +79,7 @@ keystone.set('nav', {
 	ys: 'ys',
 	services: 'services',
 	"service-cards": 'service-cards',
+	calculators: 'calculators',
 });
 
 

@@ -2,13 +2,13 @@
     <div class="container">
         <div class="virtual">
             <h4 class="virtual-title">
-                Конфигуратор виртуальных ресурсов
+                {{data.calculator.virtualName}}
             </h4>
             <div class="virtual-body">
                 <form method="POST" id="virtual-form" class="needs-validation">
                     <input type="hidden" name="action" value="virtual">
                     <div class="client">
-                        <div class="client-line-left-title">
+                        <div class="line-title">
                             <h5 class="text">Клиент <i class="fa fa-user text-primary" aria-hidden="true"></i>
                             </h5>
                             <div class="line">
@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label for="name">Название:</label>
                             <input type="text" class="form-control" name="name" aria-describedby="nameHelp"
-                                placeholder="Введите Название" required>
+                                placeholder="Введите Название">
                             <small id="nameHelp" class="form-text text-muted">Название может быть организацией или
                                 конкретным клиентом (Ф.И.О).
                             </small>
@@ -30,7 +30,7 @@
                             <div class="col">
                                 <label for="address">Адрес места нахождения:</label>
                                 <input type="text" name="address" aria-describedby="addressHelp" class="form-control"
-                                    placeholder="Введите адрес" required>
+                                    placeholder="Введите адрес">
                                 <small id="addressHelp" class="form-text text-muted"></small>
                                 <div class="invalid-feedback">
                                     Поле пустое
@@ -39,7 +39,7 @@
                             <div class="col">
                                 <label for="addressFact">Адрес фактический:</label>
                                 <input type="text" name="addressFact" aria-describedby="addressFactHelp"
-                                    class="form-control" placeholder="Введите адрес" required>
+                                    class="form-control" placeholder="Введите адрес">
                                 <small id="addressFactHelp" class="form-text text-muted"></small>
                                 <div class="invalid-feedback">
                                     Поле пустое
@@ -48,8 +48,8 @@
                         </div>
                         <div class="form-group">
                             <label for="numberPhone">Телефон или Факс:</label>
-                            <input type="number" name="numberPhone" aria-describedby="numberPhoneHelp"
-                                class="form-control" placeholder="Введите Телефон/Факс">
+                            <input type="tel" name="numberPhone" aria-describedby="numberPhoneHelp" class="form-control"
+                                placeholder="Введите Телефон/Факс">
                             <small id="numberPhoneHelp" class="form-text text-muted"></small>
                             <div class="invalid-feedback">
                                 Неверный формат
@@ -61,7 +61,7 @@
                                 placeholder="Введите эл. почту">
                             <small id="emailHelp" class="form-text text-muted"></small>
                             <div class="invalid-feedback">
-                                Неверный формат
+                                Неверный формат (Пример: info@example.ru)
                             </div>
                         </div>
                         <div class="form-row mb-3">
@@ -88,7 +88,7 @@
                             <div class="col">
                                 <label for="BIK">БИК:</label>
                                 <input type="text" class="form-control" name="BIK" aria-describedby="BIKHelp"
-                                    placeholder="Введите БИК" required>
+                                    placeholder="Введите БИК">
                                 <small id="BIKHelp" class="form-text text-muted">
                                     Банковский идентификационный код.</small>
                                 <div class="invalid-feedback">
@@ -97,18 +97,18 @@
                             </div>
                             <div class="col">
                                 <label for="INN">ИНН:</label>
-                                <input type="number" class="form-control" name="INN" aria-describedby="INNHelp"
-                                    placeholder="Введите ИНН" required>
+                                <input type="number" class="form-control no-num-arrows" name="INN"
+                                    aria-describedby="INNHelp" placeholder="Введите ИНН">
                                 <small id="INNHelp" class="form-text text-muted">
                                     Идентификационный номер налогоплательщика.</small>
                                 <div class="invalid-feedback">
-                                    Поле должно содержать только цифры
+                                    Поле должно содержать только числа
                                 </div>
                             </div>
                             <div class="col">
                                 <label for="OGRN">ОГРН:</label>
                                 <input type="text" class="form-control" name="OGRN" aria-describedby="OGRNHelp"
-                                    placeholder="Введите ОГРН" required>
+                                    placeholder="Введите ОГРН">
                                 <small id="OGRNHelp" class="form-text text-muted">
                                     Основной государственный регистрационный номер.</small>
                                 <div class="invalid-feedback">
@@ -117,110 +117,41 @@
                             </div>
                         </div>
                     </div>
+                    <div class="line-title">
+                        <h5 class="text mb-3">
+                            Конфигурация серверов <i class="fa fa-cog text-primary" aria-hidden="true"></i>
+                        </h5>
+                        <div class="line">
+                            <hr>
+                        </div>
+                    </div>
                     <div class="server-config">
                         <div class="header">
                             <div>
-                                <button class="add">
+                                <button type="button" class="btn add" data-toggle="tooltip" title="Добавить сервер">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                 </button>
-                                <button class="delete">
-                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                <button type="button" class="btn delete" data-toggle="tooltip" title="Удалить сервер">
+                                    <i class="fa fa-minus minus" aria-hidden="true"></i>
+                                    <i class="fa fa-trash trash" aria-hidden="true"></i>
                                 </button>
+                                <div class="delete-group">
+                                    <div type="button" class="btn-group" role="group">
+                                        <button type="button" class="select-all">
+                                            <span>Все</span>
+                                            <small class="all">(1)</small>
+                                        </button>
+                                        <button type="button" class="select-clear">Очистить</button>
+                                    </div>
+                                    <button type="button" class="cancel">Отмена</button>
+                                    <div class="select-info">Выделено: <span class="selected">0</span></div>
+                                </div>
                             </div>
-                            <div id="config-progress" class="spinner-border text-secondary m-1" style="opacity: 0;" role="status">
+                            <div id="config-progress" class="spinner-border" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
                         </div>
-                        <div class="body" id="config1">
-                            <div class="form-group row body-name">
-                                <label for="serverCount" class="col-sm-2 col-form-label">
-                                    Сервер №1
-                                </label>
-                                <div class="col-sm-5 server-count">
-                                    <input type="text" class="form-control" name="serverCount"
-                                        placeholder="Количество" >
-                                </div>
-                                <div class="col-sm-5 server-name">
-                                    <input type="text" class="form-control" name="serverName" placeholder="Название" >
-                                </div>
-                            </div>
-                            <hr class="name-divider">
-                            <div class="form-group row body-config">
-                                <div class="col-sm-9 body-config-range">
-                                    <label for="coreInput">Количество ядер (2-144 шт.):</label>
-                                    <input type="range" class="custom-range" name="core-input" >
-                                </div>
-                                <div class="col-sm-3 body-config-input">
-                                    <input type="number" class="form-control" name="core-output" >
-                                </div>
-                            </div>
-                            <div class="row price">
-                                <span class="price-title">Цена по прайсу: </span>
-                                <span class="price-value" name="coreRes">100</span>
-                                <i class="fa fa-rub" aria-hidden="true"></i>
-                            </div>
-                            <hr>
-                            <div class="form-group row body-config">
-                                <div class="col-sm-9 body-config-range">
-                                    <label for="ramInput">Объём памяти (2-1024 gB):</label>
-                                    <input type="range" class="custom-range" name="ram-input" >
-                                </div>
-                                <div class="col-sm-3 body-config-input">
-                                    <input type="number" class="form-control" name="ram-output" >
-                                </div>
-                            </div>
-                            <div class="row price">
-                                <span class="price-title">Цена по прайсу: </span>
-                                <span class="price-value" name="ramRes">100</span>
-                                <i class="fa fa-rub" aria-hidden="true"></i>
-                            </div>
-                            <hr>
-                            <div class="form-group row body-config">
-                                <div class="col-sm-9 body-config-range">
-                                    <label for="sataInput">Объём дискового пространства SATA (2-512000
-                                        gB):</label>
-                                    <input type="range" class="custom-range" name="sata-input" >
-                                </div>
-                                <div class="col-sm-3 body-config-input">
-                                    <input type="number" class="form-control" name="sata-output" >
-                                </div>
-                            </div>
-                            <div class="row price">
-                                <span class="price-title">Цена по прайсу: </span>
-                                <span class="price-value" id="sataRes">100</span>
-                                <i class="fa fa-rub" aria-hidden="true"></i>
-                            </div>
-                            <hr>
-                            <div class="form-group row body-config">
-                                <div class="col-sm-9 body-config-range">
-                                    <label for="sasInput">Объём дискового пространства SAS (2-512000
-                                        gB):</label>
-                                    <input type="range" class="custom-range" name="sas-input" >
-                                </div>
-                                <div class="col-sm-3 body-config-input">
-                                    <input type="number" class="form-control" name="sas-output" >
-                                </div>
-                            </div>
-                            <div class="row price">
-                                <span class="price-title">Цена по прайсу: </span>
-                                <span class="price-value" name="sasRes">100</span>
-                                <i class="fa fa-rub" aria-hidden="true"></i>
-                            </div>
-                            <hr>
-                            <div class="form-group row body-config">
-                                <div class="col-sm-9 body-config-range">
-                                    <label for="ssdInput">Объём дискового пространства SSD (2-10240 gB):</label>
-                                    <input type="range" class="custom-range" name="ssd-input">
-                                </div>
-                                <div class="col-sm-3 body-config-input">
-                                    <input type="number" class="form-control" name="ssd-output">
-                                </div>
-                            </div>
-                            <div class="row price">
-                                <span class="price-title">Цена по прайсу: </span>
-                                <span class="price-value" name="ssdRes">100</span>
-                                <i class="fa fa-rub" aria-hidden="true"></i>
-                            </div>
+                        <div id="body-wrapper">
                         </div>
                         <div class="footer">
                             <div>
@@ -231,106 +162,143 @@
                                     Генерировать договор на вр
                                 </button>
                             </div>
-                            <div class="text-center">
-                                <div class="price total-price m-1">
-                                    <span class="price-title">Цена в месяц: </span>
-                                    <span class="price-value" id="virtualTotalPrice1">100</span>
-                                    <i class="fa fa-rub" aria-hidden="true"></i>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+
         <hr class="main-divider">
+
         <div class="physic">
             <h4 class="physic-title">
-                Конфигуратор физических ресурсов
+                {{data.calculator.physicalName}}
             </h4>
-            <form>
-                <div class="input-group mb-1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Стойка:</span>
-                    </div>
-                    <input type="text" id="standPercent" class="form-control" placeholder="100%">
-                    <input type="text" id="standCount" class="form-control" placeholder="Кол-во">
+            <div class="text-right mb-3">
+                <div class="config-progress" role="status">
+                    <span class="sr-only">Loading...</span>
                 </div>
-                <div class="row price">
-                    <span class="price-title">Цена по прайсу: </span>
-                    <span class="price-value" id="standRes">100</span>
-                    <i class="fa fa-rub" aria-hidden="true"></i>
-                </div>
-                <div class="input-group mb-1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Энергоснабжение стоек, кВт:</span>
-                    </div>
-                    <input type="text" id="standEnergy" class="form-control" placeholder="Мощность, кВт">
-                </div>
-                <div class="row price">
-                    <span class="price-title">Цена по прайсу: </span>
-                    <span class="price-value" id="standEnergyRes">100</span>
-                    <i class="fa fa-rub" aria-hidden="true"></i>
-                </div>
-                <div class="form-row">
-                    <div class="col-sm-4">
-                        <div class="input-group mb-1">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Юнит:</span>
+            </div>
+            <form method="POST" id="physic-form" class="needs-validation">
+                <input type="hidden" name="action" value="physic">
+                <div class="config">
+                    <div class="form-row mb-1">
+                        <div class="col-sm-6 mb-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Стойка:</span>
+                                </div>
+                                <input type="number" name="standPercent"
+                                    class="form-control rounded-right no-num-arrows" placeholder="100%" min="0" step="1" max="100" data-type="int">
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
                             </div>
-                            <input type="text" id="unit" class="form-control" placeholder="Кол-во">
                         </div>
-                        <div class="row price mb-3 mb-sm-0">
-                            <span class="price-title">Цена по прайсу: </span>
-                            <span class="price-value" id="unitRes">100</span>
-                            <i class="fa fa-rub" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="input-group mb-1">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Энергоснабжение юнита, кВт:</span>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="number" name="standCount" class="form-control rounded-right no-num-arrows"
+                                    placeholder="Кол-во" step="1" min="0" max="10000" data-type="int">
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
                             </div>
-                            <input type="text" id="unitEnergy" class="form-control" placeholder="Мощность, кВт">
-                        </div>
-                        <div class="row price">
-                            <span class="price-title">Цена по прайсу: </span>
-                            <span class="price-value" id="unitEnergyRes">100</span>
-                            <i class="fa fa-rub" aria-hidden="true"></i>
                         </div>
                     </div>
-                </div>
-                <div class="input-group mb-1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Канал Internet, gBite/s:</span>
+                    <div class="row price">
+                        <span class="price-title">Цена по прайсу: </span>
+                        <span class="price-value" name="standRes" role="price">0</span>
+                        <i class="fa fa-rub" aria-hidden="true"></i>
                     </div>
-                    <input type="text" id="internetChannel" class="form-control" placeholder="Кол-во">
-                </div>
-                <div class="row price">
-                    <span class="price-title">Цена по прайсу: </span>
-                    <span class="price-value" id="internetChannelRes">100</span>
-                    <i class="fa fa-rub" aria-hidden="true"></i>
-                </div>
-                <hr>
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div>
-                        {{!-- <button class="save" id="save">
-                            <span class="d-sm-inline d-none">Сохранить</span> <i class="fa fa-floppy-o"
-                                aria-hidden="true"></i>
-                        </button> --}}
-                        <button class="gen-kp" id="physic-gen-kp">
-                            Генерировать кп
-                        </button>
-                        <button class="gen-vr" id="physic-gen-vr">
-                            Генерировать договор на вр
-                        </button>
-                    </div>
-                    <div class="text-center">
-                        <div class="price total-price m-1">
-                            <span class="price-title">Цена в месяц: </span>
-                            <span class="price-value" id="physicTotalPrice">100</span>
-                            <i class="fa fa-rub" aria-hidden="true"></i>
+                    <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Энергоснабжение стоек, кВт:</span>
                         </div>
+                        <input type="number" name="standEnergy" class="form-control rounded-right no-num-arrows"
+                            placeholder="Мощность, кВт" step="1" min="0" max="7" data-type="int">
+                        <div class="invalid-feedback">
+                            Поле должно содержать только числа
+                        </div>
+                    </div>
+                    <div class="row price">
+                        <span class="price-title">Цена по прайсу: </span>
+                        <span class="price-value" name="standEnergyRes" role="price">0</span>
+                        <i class="fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Юнит:</span>
+                                </div>
+                                <input type="number" name="unit" class="form-control rounded-right no-num-arrows"
+                                    placeholder="Кол-во" step="1" min="0" max="10000" data-type="int">
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
+                            </div>
+                            <div class="row price mb-3 mb-sm-0">
+                                <span class="price-title">Цена по прайсу: </span>
+                                <span class="price-value" name="unitRes" role="price">0</span>
+                                <i class="fa fa-rub" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Энергоснабжение юнита, кВт:</span>
+                                </div>
+                                <input type="number" name="unitEnergy" class="form-control rounded-right no-num-arrows"
+                                    placeholder="Мощность, кВт" min="0" max="2.5" data-type="float">
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
+                            </div>
+                            <div class="row price">
+                                <span class="price-title">Цена по прайсу: </span>
+                                <span class="price-value" name="unitEnergyRes" role="price">0</span>
+                                <i class="fa fa-rub" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Канал Internet, gBite/s:</span>
+                        </div>
+                        <input type="number" name="internetChannel" class="form-control rounded-right no-num-arrows"
+                            placeholder="Кол-во" min="0" max="10000" data-type="float">
+                        <div class="invalid-feedback">
+                            Поле должно содержать только числа
+                        </div>
+                    </div>
+                    <div class="row price">
+                        <span class="price-title">Цена по прайсу: </span>
+                        <span class="price-value" name="internetChannelRes" role="price">0</span>
+                        <i class="fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                    <hr class="mt-4 mb-2">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                        <div>
+                            {{!-- <button class="save" id="save">
+                                <span class="d-sm-inline d-none">Сохранить</span> <i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i>
+                            </button> --}}
+                            <button type="submit" class="gen-kp" id="physic-gen-kp">
+                                Генерировать кп
+                            </button>
+                            <button type="button" class="gen-vr" id="physic-gen-vr">
+                                Генерировать договор на вр
+                            </button>
+                        </div>
+
+                        <div class="d-flex align-items-center perMonth my-1 ml-1">
+                            <div>
+                                <span class="price-title">В месяц: </span>
+                                <span class="price-value" name="perMonth">0</span>
+                                <i class="fa fa-rub" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </form>
@@ -341,3 +309,144 @@
         </div>
     </div>
     </div>
+
+    {{!-- <div class="snackbar snackbar-config">
+        Some Content
+    </div> --}}
+
+    <template id="config">
+        <div class="body">
+            <div class="body-name">
+                <div class="active-panel">
+                    <div class="delete-checkbox" name="delete-control">
+                        <input type="checkbox" class="custom-control-input">
+                        <label class="custom-control-label"></label>
+                    </div>
+                    <button class="btn btn-outline-primary server-name" type="button" data-toggle="collapse"
+                        aria-expanded="false" name="collapse-button">
+                        Сервер №<span name="serverNumber">1</span>
+                    </button>
+                </div>
+                <div class="collapse" name="collapse-content">
+                    <div class="server-count">
+                        <input type="number" class="form-control no-num-arrows" name="serverCount"
+                            placeholder="Количество" role="heading" step="1" min="0" max="10000" data-type="int">
+                        <div class="invalid-feedback">
+                            Поле должно содержать только числа
+                        </div>
+                    </div>
+                    <div class="server-name">
+                        <input type="text" class="form-control" name="serverName" placeholder="Название" role="heading">
+                        <div class="invalid-feedback">
+                            Поле пустое
+                        </div>
+                    </div>
+                </div>
+                <div class="perMonth">
+                    <span class="price-title">В месяц: </span>
+                    <span class="price-value" name="perMonth">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="body-config-wrapper">
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="coreInput">Количество ядер
+                            ({{data.calculator.coresMin}}-{{data.calculator.coresMax}} шт.):</label>
+                        <input type="range" min="{{data.calculator.coresMin}}" max="{{data.calculator.coresMax}}"
+                            step="{{data.calculator.step}}" class="custom-range" name="core-input" role="input" data-type="int">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="core-output" role="output"
+                            min="{{data.calculator.coresMin}}" max="{{data.calculator.coresMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="coreRes" role="price">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="ramInput">Объём памяти
+                            ({{data.calculator.ramMin}}-{{data.calculator.ramMax}} gB):</label>
+                        <input type="range" class="custom-range" name="ram-input" role="input"
+                            min="{{data.calculator.ramMin}}" max="{{data.calculator.ramMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="ram-output" role="output"
+                            min="{{data.calculator.ramMin}}" max="{{data.calculator.ramMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="ramRes" role="price">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="sataInput">Объём дискового пространства SATA
+                            ({{data.calculator.sataMin}}-{{data.calculator.sataMax}} gB):</label>
+                        <input type="range" class="custom-range" name="sata-input" role="input"
+                            min="{{data.calculator.sataMin}}" max="{{data.calculator.sataMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="sata-output" role="output"
+                            min="{{data.calculator.sataMin}}" max="{{data.calculator.sataMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="sataRes" role="price">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="sasInput">Объём дискового пространства SAS
+                            ({{data.calculator.sasMin}}-{{data.calculator.sasMax}} gB):</label>
+                        <input type="range" class="custom-range" name="sas-input" role="input"
+                            min="{{data.calculator.sasMin}}" max="{{data.calculator.sasMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="sas-output" role="output"
+                            min="{{data.calculator.sasMin}}" max="{{data.calculator.sasMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="sasRes" role="price">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="ssdInput">Объём дискового пространства SSD
+                            ({{data.calculator.ssdMin}}-{{data.calculator.ssdMax}} gB):</label>
+                        <input type="range" class="custom-range" name="ssd-input" role="input"
+                            min="{{data.calculator.ssdMin}}" max="{{data.calculator.ssdMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="ssd-output" role="output"
+                            min="{{data.calculator.ssdMin}}" max="{{data.calculator.ssdMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="ssdRes" role="price">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </template>

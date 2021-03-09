@@ -10,6 +10,5 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import './polyfills';
 import './custom/sidenav';
 import './custom/recaptcha';
-import './custom/calculator';
 
  

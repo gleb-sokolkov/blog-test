@@ -1,29 +1,37 @@
-// const mailgun = require('mailgun-js')({
-//     apiKey: process.env.MAILGUN_API_KEY,
-//     domain: process.env.MAILGUN_DOMAIN,
-// });
-
-const exphbs = require('express-handlebars');
-const rootPath = require('app-root-path');
-const helpers = new require(rootPath + '/templates/views/helpers')();
-var hbs = exphbs.create({
-    helpers: helpers,
+var keystone = require('keystone');
+var mailgun = require('mailgun-js')({ 
+    apiKey: process.env.MAILGUN_API_KEY, 
+    domain: process.env.MAILGUN_DOMAIN 
 });
 
-module.exports = async function (template, data, attachment) {
+module.exports = function (attachment, filename) {
 
-    path = `./services/MailSend/templates/${template}.hbs`;
-    var html = await hbs.render(path, data);
+    return new Promise((resolve, reject) => {
+        keystone.list('Y').model.find().where('isAdmin', true).exec(function (err, admins) {
+            if (err) reject(err);
 
-    var data = {
-        from: 'info@coredatanet.ru',
-        to: 'zmihpog@gmail.com',
-        subject: 'Здравствуйте',
-        text: 'html text here',
-        attachment: attachment,
-    };
+            var attch = new mailgun.Attachment({
+                data: attachment, 
+                filename: filename,
+                contentType: 'application/pdf',
+            });
 
-    // mailgun.messages().send(data, function (error, body) {
-    //     console.log(body);
-    // });
+            var data = {
+                from: 'calculator@coredatanet.ru',
+                to: admins.map(item => item.email),
+                subject: 'Hello',
+                text: 'Сгенерированный документ',
+                attachment: attch,
+            };
+
+            mailgun.messages().send(data, (error, body) => {
+                if(error) {
+                    reject(error);
+                }
+                if(body) {
+                    resolve(body);
+                }
+            });
+        });
+    });
 }

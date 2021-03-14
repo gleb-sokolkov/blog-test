@@ -58,7 +58,7 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			to: admins,
 			from: {
 				name: 'project',
-				email: 'contact@project.com',
+				email: 'contact@coredatanet.ru',
 			},
 			subject: 'New Enquiry for project',
 			enquiry: enquiry,

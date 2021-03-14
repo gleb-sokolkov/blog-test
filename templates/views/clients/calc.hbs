@@ -155,10 +155,10 @@
                         </div>
                         <div class="footer">
                             <div>
-                                <button type="submit" class="gen-kp" id="virtual-gen-kp">
+                                <button type="button" class="gen-kp" name="gen-kp">
                                     Генерировать кп
                                 </button>
-                                <button class="gen-vr" id="virtual-gen-vr">
+                                <button type="button" class="gen-vr" name="gen-vr">
                                     Генерировать договор на вр
                                 </button>
                             </div>
@@ -189,7 +189,8 @@
                                     <span class="input-group-text">Стойка:</span>
                                 </div>
                                 <input type="number" name="standPercent"
-                                    class="form-control rounded-right no-num-arrows" placeholder="100%" min="0" step="1" max="100" data-type="int">
+                                    class="form-control rounded-right no-num-arrows" placeholder="100%" min="0" step="1"
+                                    max="100" data-type="int">
                                 <div class="invalid-feedback">
                                     Поле должно содержать только числа
                                 </div>
@@ -207,7 +208,7 @@
                     </div>
                     <div class="row price">
                         <span class="price-title">Цена по прайсу: </span>
-                        <span class="price-value" name="standRes" role="price">0</span>
+                        <span class="price-value" name="standRes" role="price" for="standCount">0</span>
                         <i class="fa fa-rub" aria-hidden="true"></i>
                     </div>
                     <div class="input-group mb-1">
@@ -215,14 +216,14 @@
                             <span class="input-group-text">Энергоснабжение стоек, кВт:</span>
                         </div>
                         <input type="number" name="standEnergy" class="form-control rounded-right no-num-arrows"
-                            placeholder="Мощность, кВт" step="1" min="0" max="7" data-type="int">
+                            placeholder="Мощность, кВт" step="1" min="0" max="7" data-type="float">
                         <div class="invalid-feedback">
                             Поле должно содержать только числа
                         </div>
                     </div>
                     <div class="row price">
                         <span class="price-title">Цена по прайсу: </span>
-                        <span class="price-value" name="standEnergyRes" role="price">0</span>
+                        <span class="price-value" name="standEnergyRes" role="price" for="standEnergy">0</span>
                         <i class="fa fa-rub" aria-hidden="true"></i>
                     </div>
                     <div class="form-row">
@@ -239,7 +240,7 @@
                             </div>
                             <div class="row price mb-3 mb-sm-0">
                                 <span class="price-title">Цена по прайсу: </span>
-                                <span class="price-value" name="unitRes" role="price">0</span>
+                                <span class="price-value" name="unitRes" role="price" for="unit">0</span>
                                 <i class="fa fa-rub" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -256,7 +257,7 @@
                             </div>
                             <div class="row price">
                                 <span class="price-title">Цена по прайсу: </span>
-                                <span class="price-value" name="unitEnergyRes" role="price">0</span>
+                                <span class="price-value" name="unitEnergyRes" role="price" for="unitEnergy">0</span>
                                 <i class="fa fa-rub" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -266,14 +267,14 @@
                             <span class="input-group-text">Канал Internet, gBite/s:</span>
                         </div>
                         <input type="number" name="internetChannel" class="form-control rounded-right no-num-arrows"
-                            placeholder="Кол-во" min="0" max="10000" data-type="float">
+                            placeholder="Кол-во" min="0" max="10" data-type="float">
                         <div class="invalid-feedback">
                             Поле должно содержать только числа
                         </div>
                     </div>
                     <div class="row price">
                         <span class="price-title">Цена по прайсу: </span>
-                        <span class="price-value" name="internetChannelRes" role="price">0</span>
+                        <span class="price-value" name="internetChannelRes" role="price" for="internetChannel">0</span>
                         <i class="fa fa-rub" aria-hidden="true"></i>
                     </div>
                     <hr class="mt-4 mb-2">
@@ -283,14 +284,13 @@
                                 <span class="d-sm-inline d-none">Сохранить</span> <i class="fa fa-floppy-o"
                                     aria-hidden="true"></i>
                             </button> --}}
-                            <button type="submit" class="gen-kp" id="physic-gen-kp">
+                            <button type="button" class="gen-kp" name="gen-kp">
                                 Генерировать кп
                             </button>
-                            <button type="button" class="gen-vr" id="physic-gen-vr">
+                            <button type="button" class="gen-vr" name="gen-vr">
                                 Генерировать договор на вр
                             </button>
                         </div>
-
                         <div class="d-flex align-items-center perMonth my-1 ml-1">
                             <div>
                                 <span class="price-title">В месяц: </span>
@@ -298,7 +298,6 @@
                                 <i class="fa fa-rub" aria-hidden="true"></i>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </form>
@@ -313,6 +312,44 @@
     {{!-- <div class="snackbar snackbar-config">
         Some Content
     </div> --}}
+
+    <div class="snackbar snackbar-light snackbar-md" id="download">
+        <div class="menu row no-gutters">
+            <div class="col">
+            </div>
+            <div class="col flex-c-c">
+                <div class="title">
+                    <span class="text">
+                    </span>
+                </div>
+            </div>
+            <div class="col flex-fe-c">
+                <button class="close" type="button">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="body">
+            <p class="text">
+            </p>
+            <p class="info-text text-muted" style="font-size: 0.875rem;">
+                Напишите на нашу почту: 
+                <span class="email">info@coredatanet.ru</span>
+            </p>
+            <div class="button-group">
+            </div>
+        </div>
+    </div>
+
+    <div class="snackbar snackbar-content snackbar-dark snackbar-sm" id="validation-alert">
+        <div class="body text-center">
+            <div class="vl-middle">
+                <i class="fa fa-times-circle text-danger" style="font-size: 1.25rem;" aria-hidden="true"></i>
+                &nbsp;
+                <span class="text">Проверьте введеные данные.</span>
+            </div>
+        </div>
+    </div>
 
     <template id="config">
         <div class="body">
@@ -354,7 +391,8 @@
                         <label for="coreInput">Количество ядер
                             ({{data.calculator.coresMin}}-{{data.calculator.coresMax}} шт.):</label>
                         <input type="range" min="{{data.calculator.coresMin}}" max="{{data.calculator.coresMax}}"
-                            step="{{data.calculator.step}}" class="custom-range" name="core-input" role="input" data-type="int">
+                            step="{{data.calculator.step}}" class="custom-range" name="core-input" role="input"
+                            data-type="int" for="coreRes">
                     </div>
                     <div class="col-sm-3 body-config-input">
                         <input type="number" class="form-control no-num-arrows" name="core-output" role="output"
@@ -364,7 +402,7 @@
                 </div>
                 <div class="row price">
                     <span class="price-title">Цена по прайсу: </span>
-                    <span class="price-value" name="coreRes" role="price">0</span>
+                    <span class="price-value" name="coreRes" role="price" for="core-input">0</span>
                     <i class="fa fa-rub" aria-hidden="true"></i>
                 </div>
                 <hr>
@@ -374,7 +412,7 @@
                             ({{data.calculator.ramMin}}-{{data.calculator.ramMax}} gB):</label>
                         <input type="range" class="custom-range" name="ram-input" role="input"
                             min="{{data.calculator.ramMin}}" max="{{data.calculator.ramMax}}"
-                            step="{{data.calculator.step}}" data-type="int">
+                            step="{{data.calculator.step}}" data-type="int" for="ramRes">
                     </div>
                     <div class="col-sm-3 body-config-input">
                         <input type="number" class="form-control no-num-arrows" name="ram-output" role="output"
@@ -384,7 +422,7 @@
                 </div>
                 <div class="row price">
                     <span class="price-title">Цена по прайсу: </span>
-                    <span class="price-value" name="ramRes" role="price">0</span>
+                    <span class="price-value" name="ramRes" role="price" for="ram-input">0</span>
                     <i class="fa fa-rub" aria-hidden="true"></i>
                 </div>
                 <hr>
@@ -394,7 +432,7 @@
                             ({{data.calculator.sataMin}}-{{data.calculator.sataMax}} gB):</label>
                         <input type="range" class="custom-range" name="sata-input" role="input"
                             min="{{data.calculator.sataMin}}" max="{{data.calculator.sataMax}}"
-                            step="{{data.calculator.step}}" data-type="int">
+                            step="{{data.calculator.step}}" data-type="int" for="sataRes">
                     </div>
                     <div class="col-sm-3 body-config-input">
                         <input type="number" class="form-control no-num-arrows" name="sata-output" role="output"
@@ -404,7 +442,7 @@
                 </div>
                 <div class="row price">
                     <span class="price-title">Цена по прайсу: </span>
-                    <span class="price-value" name="sataRes" role="price">0</span>
+                    <span class="price-value" name="sataRes" role="price" for="sata-input">0</span>
                     <i class="fa fa-rub" aria-hidden="true"></i>
                 </div>
                 <hr>
@@ -424,7 +462,7 @@
                 </div>
                 <div class="row price">
                     <span class="price-title">Цена по прайсу: </span>
-                    <span class="price-value" name="sasRes" role="price">0</span>
+                    <span class="price-value" name="sasRes" role="price" for="sas-input">0</span>
                     <i class="fa fa-rub" aria-hidden="true"></i>
                 </div>
                 <hr>
@@ -444,9 +482,23 @@
                 </div>
                 <div class="row price">
                     <span class="price-title">Цена по прайсу: </span>
-                    <span class="price-value" name="ssdRes" role="price">0</span>
+                    <span class="price-value" name="ssdRes" role="price" for="ssd-input">0</span>
                     <i class="fa fa-rub" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
+    </template>
+
+    <template id="downloadButton">
+        <a class="btn btn-primary download" href="#" role="button">
+            <span class="text"></span>
+            <i class="fa fa-download d-inline-block ml-2" aria-hidden="true"></i>
+        </a>
+    </template>
+
+    <template id="showButton">
+        <button type="button" class="btn btn-info show" role="button">
+            <span class="text"></span>
+            <i class="fa fa-file-pdf-o d-inline-block ml-2" aria-hidden="true"></i>
+        </button>
     </template>

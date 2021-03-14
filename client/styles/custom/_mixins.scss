@@ -103,3 +103,43 @@
         }
     }
 }
+
+@mixin float-snackbar($bottom, $duration) {
+    animation-name: float-snackbar;
+    animation-duration: $duration;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+
+    @keyframes float-snackbar {
+        0% {
+            opacity: 0;
+            bottom: 0rem;
+            visibility: visible;
+        }
+        100% {
+            opacity: 1;
+            bottom: $bottom;
+            visibility: visible;
+        }
+    }
+}
+
+@mixin float($duration) {
+    animation-name: float;
+    animation-duration: $duration;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+
+    @keyframes float {
+        0% {
+            opacity: 0;
+            visibility: visible;
+        }
+        100% {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

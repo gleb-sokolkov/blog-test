@@ -131,13 +131,10 @@
                             }
 
                             &-group {
-                                display: inline-block;
-                                opacity: 0;
-                                transition: 0.25s;
+                                display: none;
 
                                 &.actived {
-                                    opacity: 1;
-                                    transition: 0.5s;
+                                    display: inline-block;
                                 }
 
                                 .btn-group {
@@ -258,7 +255,8 @@
 
                         .gen-kp,
                         .gen-vr {
-                            @extend .btn, .btn-light, .shadow, .m-1;
+                            @extend .btn, .btn-light, .m-1;
+                            box-shadow: $button-shadow-sm;
                         }
                     }
                 }
@@ -280,7 +278,8 @@
 
             .gen-kp,
             .gen-vr {
-                @extend .btn, .btn-light, .shadow, .m-1;
+                @extend .btn, .btn-light, .m-1;
+                box-shadow: $button-shadow-sm;
             }
 
             .config-progress {
@@ -298,13 +297,129 @@
             @extend .mt-3, .mt-sm-5, .mx-n3, .mx-sm-n5;
             position: sticky;
             bottom: 0;
-            opacity: 0;
-            transition: 0.5s;
+            visibility: hidden;
             z-index: 2;
 
             &.actived {
-                opacity: 1;
+                @include float(0.5s);
             }
         }
+    }
+}
+
+.snackbar {
+    @extend .rounded, .shadow;
+    visibility: hidden;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    width: 100%;
+    overflow-y: auto;
+    max-height: calc(100% - 8rem);
+
+    &.actived {
+        @include float-snackbar(2rem, 0.5s);
+    }
+
+    &-light {
+        @extend .text-dark;
+        background: white;
+
+        .menu {
+            background: map-get($map: $grays, $key: "200");
+
+            .close {
+                @extend .btn-light, .text-muted;
+            }
+        }
+    }
+
+    &-dark {
+        @extend .bg-dark, .text-light;
+    }
+
+    &-sm {
+        max-width: 35.2rem;
+        font-size: 0.875rem;
+    }
+
+    &-md {
+        max-width: 40rem;
+        font-size: 1rem;
+    }
+
+    &-lg {
+        max-width: 45.44rem;
+        font-size: 1.125rem;
+    }
+
+    .menu {
+        @extend .p-2;
+
+        .title {
+            flex: 0 0 auto;
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-family: $font-Inter;
+        }
+
+        .close {
+            @extend .btn, .shadow-sm;
+        }
+    }
+
+    .body {
+        @extend .p-sm-4, .p-3;
+
+        .btn {
+            box-shadow: $button-shadow-sm;
+        }
+
+        .info-text {
+            font-size: 0.875rem;
+
+            .email {
+                font-weight: 500;
+                font-family: $font-Exo2;
+                background-color: map-get($map: $grays, $key: "300");
+                border-radius: 2rem;
+                display: inline-block;
+                padding: 0rem 0.5rem;
+                color: map-get($map: $grays, $key: "700");;
+            }
+        }
+
+        .button-group {
+            margin-top: 1.5rem;
+        }
+    }
+
+    &-content {
+        width: auto;
+    }
+}
+
+.flex-c-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-sb-fs {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.flex-fe-c {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.vl-middle {
+    & > * {
+        vertical-align: middle;
     }
 }

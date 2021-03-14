@@ -96,7 +96,7 @@ module.exports = function () {
 		var suffix = _.isString(options.hash.suffix) ? options.hash.suffix : '';
 		var output = '';
 
-		function createTagList (tags) {
+		function createTagList(tags) {
 			var tagNames = _.map(tags, 'name');
 
 			if (autolink) {
@@ -327,22 +327,22 @@ module.exports = function () {
 		return obj._[underscoreMethod].format();
 	};
 
-	_helpers.substring = function(str, start, length) {
+	_helpers.substring = function (str, start, length) {
 		var result = str.substring(start, length);
 		return new hbs.SafeString(result);
 	};
 
-	_helpers.tabs = function(context, options) {
+	_helpers.tabs = function (context, options) {
 		var navs = "";
 		var tabs = "";
 
-		if(options.hash.navID === "") {
+		if (options.hash.navID === "") {
 			options.hash.navID = Math.random().toString(36).substring(7);
 		}
 
 		navs = `<div class="nav-container"><div class="nav nav-scrollable" id="${options.hash.navID}" role="tablist" aria-orientation="vertical">`;
 
-		if(options.hash.tabID === "") {
+		if (options.hash.tabID === "") {
 			options.hash.tabID = Math.random().toString(36).substring(7);
 		}
 
@@ -374,6 +374,80 @@ module.exports = function () {
 		tabs += "</div>";
 
 		return new hbs.SafeString(navs + tabs);
+	};
+
+	_helpers.totalPrice = function (object) {
+
+		var result = 0;
+		for (const [key, value] of Object.entries(object)) {
+			result += parseInt(value.perMonth);
+		}
+		return result;
+	};
+
+	_helpers.increment = function (value) {
+		return parseInt(value) + 1;
+	};
+
+	_helpers.hdd = function (object) {
+		return parseInt(object['sata-input'].value) + 
+			   parseInt(object['sas-input'].value)  + 
+			   parseInt(object['ssd-input'].value);
+	};
+
+	_helpers.div = function(a, b) {
+		return (parseFloat(a) / parseFloat(b)).toFixed(1);
+	};
+	_helpers.mul = function(a, b) {
+		return (parseFloat(a) * parseFloat(b)).toFixed(1);
+	};
+	_helpers.add = function(options){
+		var result = 0;
+		//console.log(options);
+		for (const [key, value] of Object.entries(options.hash)) {
+			result += value;
+		}
+		return result;
+	};
+	_helpers.sub = function(a, b) {		
+		return parseInt(a) - parseInt(b);
+	};
+	_helpers.ifCond = function (v1, operator, v2, options) {
+
+		switch (operator) {
+			case '==':
+				if(v1 == v2) return options.fn(this);
+				return options.inverse(this);
+			case '===':
+				if(v1 === v2) return options.fn(this);
+				return options.inverse(this);
+			case '!=':
+				if(v1 != v2) return options.fn(this);
+				return options.inverse(this);
+			case '!==':
+				if(v1 !== v2) return options.fn(this);
+				return options.inverse(this);
+			case '<':
+				if(v1 < v2) return options.fn(this);
+				return options.inverse(this);
+			case '<=':
+				if(v1 <= v2) return options.fn(this);
+				return options.inverse(this);
+			case '>':
+				if(v1 > v2) return options.fn(this);
+				return options.inverse(this);
+			case '>=':
+				if(v1 >= v2) return options.fn(this);
+				return options.inverse(this);
+			case '&&':
+				if(v1 && v2) return options.fn(this);
+				return options.inverse(this);
+			case '||':
+				if(v1 || v2) return options.fn(this);
+				return options.inverse(this);
+			default:
+				return options.inverse(this);
+		}
 	};
 
 	return _helpers;

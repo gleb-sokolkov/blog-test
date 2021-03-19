@@ -25,7 +25,9 @@ body {
     }
 }
 
-html, body, * {
+html,
+body,
+* {
     box-sizing: border-box;
     overflow-wrap: break-word;
 }
@@ -37,7 +39,6 @@ html, body, * {
 }
 
 .main-navbar {
-
     @extend .navbar, .navbar-expand-lg, .navbar-light, .bg-light, .border-bottom, .p-0, .sticky-top;
     font-family: $font-Magistral;
     @include transition(0.2s linear);
@@ -56,7 +57,7 @@ html, body, * {
             flex: 0 0 ;
             gap: 0.5rem;
 
-            @media(max-width:map-get($map: $grid-breakpoints, $key: lg)) {
+            @media (max-width: map-get($map: $grid-breakpoints, $key: lg)) {
                 box-shadow: none !important;
                 background-color: inherit;
                 padding-left: map-get($map: $spacers, $key: 3);
@@ -138,7 +139,6 @@ html, body, * {
 }
 
 .page-footer {
-
     position: relative;
 
     &.blue {
@@ -480,10 +480,6 @@ h6 {
     font-size: 1.25rem;
 }
 
-.wrapper {
-    height: 100%;
-}
-
 .filler {
     background-color: white;
 }
@@ -533,12 +529,7 @@ h6 {
         @extend .flex-column, .justify-content-between, .pb-3;
 
         .header {
-            @extend .text-dark,
-                .mt-2,
-                .mb-3,
-                .font-weight-bold,
-                .d-flex,
-                .justify-content-between;
+            @extend .text-dark, .mt-2, .mb-3, .font-weight-bold, .d-flex, .justify-content-between;
 
             .title {
                 font-weight: bold;
@@ -578,8 +569,15 @@ h6 {
     }
 }
 
-.map * {
+#map * {
     touch-action: auto !important;
+}
+
+.g-recaptcha {
+    @media (max-width: map-get($map: $grid-breakpoints, $key: "sm")) {
+        transform: scale(0.77);
+        transform-origin: 0 0;
+    }
 }
 
 //-----------------------------------
@@ -643,3 +641,4 @@ h6 {
 @import "./serviceCards.scss";
 @import "./cloud-services.scss";
 @import "./firstlook.scss";
+@import "./calc.scss";

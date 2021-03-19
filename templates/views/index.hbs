@@ -13,7 +13,7 @@
             <div class="row expander end">
             </div>
           </div>
-          <div class="col-9 col-md-8 services">
+          <div class="col-9 col-sm-8 col-md-8 services">
             {{#each data.services}}
             <div class="row short-description {{#if @first}} active {{else}} mt {{/if}}">
               <div class="col-12 wrapper">
@@ -87,13 +87,7 @@
                 class="form-control form-control-sm">{{formData.message}}</textarea>
             </div>
             <div class="form-group">
-              {{#if isProd}}
-              <div class="g-recaptcha" data-sitekey="6LccvAAaAAAAALvsjBi6EbF8jZwUIkWNWcjiHcEy"
-                id="g-recaptcha-response"></div>
-              {{else}}
-              <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                id="g-recaptcha-response"></div>
-              {{/if}}
+              {{> captcha}}
             </div>
             <div id="enquiry-errors">
               <div class="enquiry-errors-content">

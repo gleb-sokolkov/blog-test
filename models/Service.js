@@ -7,7 +7,7 @@ var Service = new keystone.List('Service', {
 });
 
 Service.add({
-    name: {type: Types.Text, required: true },
+    name: { type: Types.Text, required: true },
     title: { type: Types.Text },
     content: { type: Types.Html, wysiwyg: true, height: 400, },
 });

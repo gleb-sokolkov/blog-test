@@ -1,0 +1,527 @@
+{{!< info}} <div class="calc">
+    <div class="container">
+        <div class="virtual">
+            <h4 class="virtual-title">
+                {{data.calculator.virtualName}}
+            </h4>
+            <div class="virtual-body">
+                <form method="POST" id="virtual-form" class="needs-validation">
+                    <input type="hidden" name="action" value="virtual">
+                    <div class="client">
+                        <div class="line-title">
+                            <h5 class="text">Клиент <i class="fa fa-user text-primary" aria-hidden="true"></i>
+                            </h5>
+                            <div class="line">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Название:</label>
+                            <input type="text" class="form-control" name="name" aria-describedby="nameHelp"
+                                placeholder="Введите Название">
+                            <small id="nameHelp" class="form-text text-muted">Название может быть организацией или
+                                конкретным клиентом (Ф.И.О).
+                            </small>
+                            <div class="invalid-feedback">
+                                Поле пустое
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="col">
+                                <label for="address">Адрес места нахождения:</label>
+                                <input type="text" name="address" aria-describedby="addressHelp" class="form-control"
+                                    placeholder="Введите адрес">
+                                <small id="addressHelp" class="form-text text-muted"></small>
+                                <div class="invalid-feedback">
+                                    Поле пустое
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="addressFact">Адрес фактический:</label>
+                                <input type="text" name="addressFact" aria-describedby="addressFactHelp"
+                                    class="form-control" placeholder="Введите адрес">
+                                <small id="addressFactHelp" class="form-text text-muted"></small>
+                                <div class="invalid-feedback">
+                                    Поле пустое
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="numberPhone">Телефон или Факс:</label>
+                            <input type="tel" name="numberPhone" aria-describedby="numberPhoneHelp" class="form-control"
+                                placeholder="Введите Телефон/Факс">
+                            <small id="numberPhoneHelp" class="form-text text-muted"></small>
+                            <div class="invalid-feedback">
+                                Неверный формат
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Электронная почта:</label>
+                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
+                                placeholder="Введите эл. почту">
+                            <small id="emailHelp" class="form-text text-muted"></small>
+                            <div class="invalid-feedback">
+                                Неверный формат (Пример: info@example.ru)
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="col">
+                                <label for="r/sch">Расчетный счет:</label>
+                                <input type="text" class="form-control" name="rsch" aria-describedby="r/schHelp"
+                                    placeholder="Введите р/сч">
+                                <small id="r/schHelp" class="form-text text-muted"></small>
+                                <div class="invalid-feedback">
+                                    Поле пустое
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="k/s">Корреспондентский счет:</label>
+                                <input type="text" class="form-control" name="ks" aria-describedby="k/sHelp"
+                                    placeholder="Введите к/с">
+                                <small id="k/sHelp" class="form-text text-muted"></small>
+                                <div class="invalid-feedback">
+                                    Поле пустое
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row mb-3">
+                            <div class="col">
+                                <label for="BIK">БИК:</label>
+                                <input type="text" class="form-control" name="BIK" aria-describedby="BIKHelp"
+                                    placeholder="Введите БИК">
+                                <small id="BIKHelp" class="form-text text-muted">
+                                    Банковский идентификационный код.</small>
+                                <div class="invalid-feedback">
+                                    Поле пустое
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="INN">ИНН:</label>
+                                <input type="number" class="form-control no-num-arrows" name="INN"
+                                    aria-describedby="INNHelp" placeholder="Введите ИНН">
+                                <small id="INNHelp" class="form-text text-muted">
+                                    Идентификационный номер налогоплательщика.</small>
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label for="OGRN">ОГРН:</label>
+                                <input type="text" class="form-control" name="OGRN" aria-describedby="OGRNHelp"
+                                    placeholder="Введите ОГРН">
+                                <small id="OGRNHelp" class="form-text text-muted">
+                                    Основной государственный регистрационный номер.</small>
+                                <div class="invalid-feedback">
+                                    Поле пустое
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-title">
+                        <h5 class="text mb-3">
+                            Конфигурация серверов <i class="fa fa-cog text-primary" aria-hidden="true"></i>
+                        </h5>
+                        <div class="line">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="server-config">
+                        <div class="header">
+                            <div>
+                                <button type="button" class="btn add" data-toggle="tooltip" title="Добавить сервер">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn delete" data-toggle="tooltip" title="Удалить сервер">
+                                    <i class="fa fa-minus minus" aria-hidden="true"></i>
+                                    <i class="fa fa-trash trash" aria-hidden="true"></i>
+                                </button>
+                                <div class="delete-group">
+                                    <div type="button" class="btn-group" role="group">
+                                        <button type="button" class="select-all">
+                                            <span>Все</span>
+                                            <small class="all">(1)</small>
+                                        </button>
+                                        <button type="button" class="select-clear">Очистить</button>
+                                    </div>
+                                    <button type="button" class="cancel">Отмена</button>
+                                    <div class="select-info">Выделено: <span class="selected">0</span></div>
+                                </div>
+                            </div>
+                            <div id="config-progress" class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                        <div id="body-wrapper">
+                        </div>
+                        <div class="footer">
+                            <div>
+                                <button type="button" class="gen-kp" name="gen-kp">
+                                    Генерировать кп
+                                </button>
+                                <button type="button" class="gen-vr" name="gen-vr">
+                                    Генерировать договор на вр
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <hr class="main-divider">
+
+        <div class="physic">
+            <h4 class="physic-title">
+                {{data.calculator.physicalName}}
+            </h4>
+            <div class="text-right mb-3">
+                <div class="config-progress" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <form method="POST" id="physic-form" class="needs-validation">
+                <input type="hidden" name="action" value="physic">
+                <div class="config">
+                    <div class="form-row mb-1">
+                        <div class="col-sm-6 mb-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Стойка:</span>
+                                </div>
+                                <input type="number" name="standPercent"
+                                    class="form-control rounded-right no-num-arrows" placeholder="100%" min="0" step="1"
+                                    max="100" data-type="int">
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input type="number" name="standCount" class="form-control rounded-right no-num-arrows"
+                                    placeholder="Кол-во" step="1" min="0" max="10000" data-type="int">
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row price">
+                        <span class="price-title">Цена по прайсу: </span>
+                        <span class="price-value" name="standRes" role="price" for="standCount">0</span>
+                        <i class="fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                    <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Энергоснабжение стоек, кВт:</span>
+                        </div>
+                        <input type="number" name="standEnergy" class="form-control rounded-right no-num-arrows"
+                            placeholder="Мощность, кВт" step="1" min="0" max="7" data-type="float">
+                        <div class="invalid-feedback">
+                            Поле должно содержать только числа
+                        </div>
+                    </div>
+                    <div class="row price">
+                        <span class="price-title">Цена по прайсу: </span>
+                        <span class="price-value" name="standEnergyRes" role="price" for="standEnergy">0</span>
+                        <i class="fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Юнит:</span>
+                                </div>
+                                <input type="number" name="unit" class="form-control rounded-right no-num-arrows"
+                                    placeholder="Кол-во" step="1" min="0" max="10000" data-type="int">
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
+                            </div>
+                            <div class="row price mb-3 mb-sm-0">
+                                <span class="price-title">Цена по прайсу: </span>
+                                <span class="price-value" name="unitRes" role="price" for="unit">0</span>
+                                <i class="fa fa-rub" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Энергоснабжение юнита, кВт:</span>
+                                </div>
+                                <input type="number" name="unitEnergy" class="form-control rounded-right no-num-arrows"
+                                    placeholder="Мощность, кВт" min="0" max="2.5" data-type="float">
+                                <div class="invalid-feedback">
+                                    Поле должно содержать только числа
+                                </div>
+                            </div>
+                            <div class="row price">
+                                <span class="price-title">Цена по прайсу: </span>
+                                <span class="price-value" name="unitEnergyRes" role="price" for="unitEnergy">0</span>
+                                <i class="fa fa-rub" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Канал Internet, gBite/s:</span>
+                        </div>
+                        <input type="number" name="internetChannel" class="form-control rounded-right no-num-arrows"
+                            placeholder="Кол-во" min="0" max="10" data-type="float">
+                        <div class="invalid-feedback">
+                            Поле должно содержать только числа
+                        </div>
+                    </div>
+                    <div class="row price">
+                        <span class="price-title">Цена по прайсу: </span>
+                        <span class="price-value" name="internetChannelRes" role="price" for="internetChannel">0</span>
+                        <i class="fa fa-rub" aria-hidden="true"></i>
+                    </div>
+                    <hr class="mt-4 mb-2">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                        <div>
+                            {{!-- <button class="save" id="save">
+                                <span class="d-sm-inline d-none">Сохранить</span> <i class="fa fa-floppy-o"
+                                    aria-hidden="true"></i>
+                            </button> --}}
+                            <button type="button" class="gen-kp" name="gen-kp">
+                                Генерировать кп
+                            </button>
+                            <button type="button" class="gen-vr" name="gen-vr">
+                                Генерировать договор на вр
+                            </button>
+                        </div>
+                        <div class="d-flex align-items-center perMonth my-1 ml-1">
+                            <div>
+                                <span class="price-title">В месяц: </span>
+                                <span class="price-value" name="perMonth">0</span>
+                                <i class="fa fa-rub" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="calc-progress" class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100"
+                aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+        </div>
+    </div>
+    </div>
+
+    {{!-- <div class="snackbar snackbar-config">
+        Some Content
+    </div> --}}
+
+    <div class="snackbar snackbar-content snackbar-light snackbar-sm border" id="validation-recaptcha">
+        <div class="body text-center">
+            <div class="mb-2 text-center">
+                {{> captcha}}
+            </div>
+            <div class="manage-menu">
+                <button type="button" class="submit btn-shadow">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="title">
+                        Потвердить
+                    </span>
+                    <span class="error-title">
+                        Неверная капча
+                    </span>
+                </button>
+                <div class="btn-group btn-shadow" role="group">
+                    <button type="button" class="reload"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                    <button type="button" class="close"><i class="fa fa-ban" aria-hidden="true"></i></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="snackbar snackbar-light snackbar-md" id="download">
+        <div class="menu row no-gutters">
+            <div class="col">
+            </div>
+            <div class="col flex-c-c">
+                <div class="title">
+                    <span class="text">
+                    </span>
+                </div>
+            </div>
+            <div class="col flex-fe-c">
+                <button class="close btn-shadow" type="button">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="body">
+            <p class="text">
+            </p>
+            <p class="info-text text-muted" style="font-size: 0.875rem;">
+                Файл отправлен на нашу почту. Свяжитесь с нами:
+                <span class="email">info@coredatanet.ru</span>
+            </p>
+            <div class="button-group">
+            </div>
+        </div>
+    </div>
+
+    <div class="snackbar snackbar-content snackbar-dark snackbar-sm" id="validation-alert">
+        <div class="body text-center">
+            <div class="vl-middle">
+                <i class="fa fa-times-circle text-danger" style="font-size: 1.25rem;" aria-hidden="true"></i>
+                &nbsp;
+                <span class="text">Проверьте введеные данные.</span>
+            </div>
+        </div>
+    </div>
+
+    <template id="config">
+        <div class="body">
+            <div class="body-name">
+                <div class="active-panel">
+                    <div class="delete-checkbox" name="delete-control">
+                        <input type="checkbox" class="custom-control-input">
+                        <label class="custom-control-label"></label>
+                    </div>
+                    <button class="btn btn-outline-primary server-name" type="button" data-toggle="collapse"
+                        aria-expanded="false" name="collapse-button">
+                        Сервер №<span name="serverNumber">1</span>
+                    </button>
+                </div>
+                <div class="collapse" name="collapse-content">
+                    <div class="server-count">
+                        <input type="number" class="form-control no-num-arrows" name="serverCount"
+                            placeholder="Количество" role="heading" step="1" min="0" max="10000" data-type="int">
+                        <div class="invalid-feedback">
+                            Поле должно содержать только числа
+                        </div>
+                    </div>
+                    <div class="server-name">
+                        <input type="text" class="form-control" name="serverName" placeholder="Название" role="heading">
+                        <div class="invalid-feedback">
+                            Поле пустое
+                        </div>
+                    </div>
+                </div>
+                <div class="perMonth">
+                    <span class="price-title">В месяц: </span>
+                    <span class="price-value" name="perMonth">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="body-config-wrapper">
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="coreInput">Количество ядер
+                            ({{data.calculator.coresMin}}-{{data.calculator.coresMax}} шт.):</label>
+                        <input type="range" min="{{data.calculator.coresMin}}" max="{{data.calculator.coresMax}}"
+                            step="{{data.calculator.step}}" class="custom-range" name="core-input" role="input"
+                            data-type="int" for="coreRes">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="core-output" role="output"
+                            min="{{data.calculator.coresMin}}" max="{{data.calculator.coresMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="coreRes" role="price" for="core-input">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="ramInput">Объём памяти
+                            ({{data.calculator.ramMin}}-{{data.calculator.ramMax}} gB):</label>
+                        <input type="range" class="custom-range" name="ram-input" role="input"
+                            min="{{data.calculator.ramMin}}" max="{{data.calculator.ramMax}}"
+                            step="{{data.calculator.step}}" data-type="int" for="ramRes">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="ram-output" role="output"
+                            min="{{data.calculator.ramMin}}" max="{{data.calculator.ramMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="ramRes" role="price" for="ram-input">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="sataInput">Объём дискового пространства SATA
+                            ({{data.calculator.sataMin}}-{{data.calculator.sataMax}} gB):</label>
+                        <input type="range" class="custom-range" name="sata-input" role="input"
+                            min="{{data.calculator.sataMin}}" max="{{data.calculator.sataMax}}"
+                            step="{{data.calculator.step}}" data-type="int" for="sataRes">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="sata-output" role="output"
+                            min="{{data.calculator.sataMin}}" max="{{data.calculator.sataMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="sataRes" role="price" for="sata-input">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="sasInput">Объём дискового пространства SAS
+                            ({{data.calculator.sasMin}}-{{data.calculator.sasMax}} gB):</label>
+                        <input type="range" class="custom-range" name="sas-input" role="input"
+                            min="{{data.calculator.sasMin}}" max="{{data.calculator.sasMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="sas-output" role="output"
+                            min="{{data.calculator.sasMin}}" max="{{data.calculator.sasMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="sasRes" role="price" for="sas-input">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+                <hr>
+                <div class="form-group row body-config">
+                    <div class="col-sm-9 body-config-range">
+                        <label for="ssdInput">Объём дискового пространства SSD
+                            ({{data.calculator.ssdMin}}-{{data.calculator.ssdMax}} gB):</label>
+                        <input type="range" class="custom-range" name="ssd-input" role="input"
+                            min="{{data.calculator.ssdMin}}" max="{{data.calculator.ssdMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                    <div class="col-sm-3 body-config-input">
+                        <input type="number" class="form-control no-num-arrows" name="ssd-output" role="output"
+                            min="{{data.calculator.ssdMin}}" max="{{data.calculator.ssdMax}}"
+                            step="{{data.calculator.step}}" data-type="int">
+                    </div>
+                </div>
+                <div class="row price">
+                    <span class="price-title">Цена по прайсу: </span>
+                    <span class="price-value" name="ssdRes" role="price" for="ssd-input">0</span>
+                    <i class="fa fa-rub" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="downloadButton">
+        <a class="btn btn-primary download btn-shadow" href="#" role="button">
+            <span class="text"></span>
+            <i class="fa fa-download d-inline-block ml-2" aria-hidden="true"></i>
+        </a>
+    </template>
+
+    <template id="showButton">
+        <button type="button" class="btn btn-info show btn-shadow" role="button">
+            <span class="text"></span>
+            <i class="fa fa-file-pdf-o d-inline-block ml-2" aria-hidden="true"></i>
+        </button>
+    </template>

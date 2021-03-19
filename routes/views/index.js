@@ -1,6 +1,8 @@
 var keystone = require('keystone');
 var Enquiry = keystone.list('Enquiry');
 const fetch = require('node-fetch');
+const rootPath = require('app-root-path');
+const captcha = require(rootPath + '/services/captcha/captcha');
 
 exports = module.exports = function (req, res) {
 
@@ -17,25 +19,18 @@ exports = module.exports = function (req, res) {
 	// On POST requests, add the Enquiry item to the database
 	view.on('post', { action: 'home' }, function (next) {
 
-		if (req.body.captcha === undefined ||
-			req.body.captcha === null ||
-			req.body.captcha === '') {
-			return res.json({ "success": false, "msg": "Please, select captcha" });
-		}
-
-		const secret = (process.env.APP_STATE === "dev") ? process.env.TRECAPTCHA_SECRET_KEY : process.env.RECAPTCHA_SECRET_KEY;
-		const verifyURL = `https://google.com/recaptcha/api/siteverify?secret=${secret}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
-
-		fetch(verifyURL)
-			.then(res => res.json())
-			.then(body => {
-				if (body.success !== undefined && !body.success) {
-					res.json({ "success": false, "msg": "Failed captcha verification" });
-				}
-				else {
-					reqData();
-				}
-			});
+		captcha(req.body.captcha, req.connection.remoteAddress)
+		.then(res => {
+			reqData();
+		})
+		.catch(err => {
+			if(err.type === 'empty') {
+				res.json({ "success": false, "msg": "Please, select captcha" });
+			}
+			else if(err.type === 'invalid') {
+				res.json({ "success": false, "msg": "Failed captcha verification" });
+			}
+		});
 
 		function reqData() {
 			var newEnquiry = new Enquiry.model();

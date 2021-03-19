@@ -3,7 +3,7 @@
         display: none;
     }
     scrollbar-width: none;
-    -ms-overflow-style: none;   
+    -ms-overflow-style: none;
 }
 
 @mixin transition($x) {
@@ -27,23 +27,16 @@
     border-width: $size;
     display: block;
 
-    @if $direction == "top" 
-    {
+    @if $direction == "top" {
         border-bottom-color: $color;
         border-top-width: 0px;
-    }
-    @else if $direction == "bottom" 
-    {
+    } @else if $direction == "bottom" {
         border-top-color: $color;
         border-bottom-width: 0px;
-    }
-    @else if $direction == "left" 
-    {
+    } @else if $direction == "left" {
         border-right-color: $color;
         border-left-width: 0px;
-    }
-    @else if $direction == "right" 
-    {
+    } @else if $direction == "right" {
         border-left-color: $color;
         border-right-width: 0px;
     }
@@ -55,7 +48,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    & > *  {
+    & > * {
         margin: $offset;
     }
 }
@@ -78,5 +71,75 @@
 
     & > * {
         transform: skewY(-$angle);
+    }
+}
+
+@mixin hideArrowsOnNumInput() {
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &[type="number"] {
+        -moz-appearance: textfield;
+    }
+}
+
+@mixin bg-animation($color) {
+    animation-name: bg;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    background: rgba($color, 0.5);
+
+    @keyframes bg {
+        0% {
+            background: rgba($color, 0.0);
+        }
+
+        100% {
+            background: rgba($color, 0.5);
+        }
+    }
+}
+
+@mixin float-snackbar($bottom, $duration) {
+    animation-name: float-snackbar;
+    animation-duration: $duration;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+
+    @keyframes float-snackbar {
+        0% {
+            opacity: 0;
+            bottom: 0rem;
+            visibility: visible;
+        }
+        100% {
+            opacity: 1;
+            bottom: $bottom;
+            visibility: visible;
+        }
+    }
+}
+
+@mixin float($duration) {
+    animation-name: float;
+    animation-duration: $duration;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+
+    @keyframes float {
+        0% {
+            opacity: 0;
+            visibility: visible;
+        }
+        100% {
+            opacity: 1;
+            visibility: visible;
+        }
     }
 }

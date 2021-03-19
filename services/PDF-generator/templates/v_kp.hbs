@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+    <TITLE>KP</TITLE>
+    <STYLE TYPE="text/css">
+    </STYLE>
+</HEAD>
+
+<BODY LANG="ru-RU" LINK="#0000ff" DIR="LTR">
+    <IMG SRC="https://res.cloudinary.com/do9pkxeqs/image/upload/v1615464785/default/CoreDataNet_vr.png" ALIGN=center
+        style="box-sizing: border-box; max-width:100%; height:auto">
+    <big><big>
+            <P LANG="en-US">
+            </P>
+            <P LANG="en-US">
+            </P>
+            <P ALIGN=JUSTIFY STYLE="margin-top: 0.08in">
+            </P>
+            <P ALIGN=JUSTIFY STYLE="margin-left: 0.49in; margin-top: 0.08in">
+            </P>
+            <P ALIGN=JUSTIFY STYLE="margin-top: 0.08in"> № 52 от 01.06.2020</P>
+            <P ALIGN=RIGHT><BR>
+            </P>
+            <P ALIGN=RIGHT>Коммерческому директору <SPAN LANG="en-US">Имя
+                    компании?</SPAN></P>
+            <P ALIGN=RIGHT><SPAN LANG="en-US">Имя заказчика?</SPAN></P>
+            <P ALIGN=JUSTIFY><BR>
+            </P>
+            <P ALIGN=CENTER STYLE="margin-top: 0.08in">Уважаемый <SPAN LANG="en-US">{{ client.name.value }}</SPAN></P>
+            <P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-top: 0.08in">В
+                ответ на Ваш запрос сообщаю, что стоимость
+                аренды оборудования для предоставления
+                Вашей услуги на 10 объектах составит
+                {{ totalPrice config }} рублей в месяц.</P>
+            <P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-top: 0.08in">Арендуемая
+                конфигурация включает в себя следующее:</P>
+            {{#each config}}
+            <P>Сервер №{{ increment @index }} (Количество = {{ config.serverCount.value }})</P>
+            <P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-top: 0.08in">Количество ядер:
+                {{config.core-input.value}},
+                {{config.ram-input.value}} ГБ ОЗУ, {{mul (hdd config) 0.001}} ТБ HDD и единая
+                централизованная платформа для
+                мониторинга и управления серверами
+            </P>
+            {{/each}}
+            <P ALIGN=JUSTIFY STYLE="text-indent: 0.49in; margin-top: 0.08in">Каналы
+                связи до серверов шириной 100Мб входят
+                в стоимость, скорость можем увеличить
+                до 1G или до 10G.</P>
+            <P ALIGN=JUSTIFY STYLE="margin-top: 0.08in"> В течение
+                тестового периода возможно предоставление
+                дополнительной скидки.</P>
+            <P ALIGN=JUSTIFY STYLE="line-height: 0.17in">Руководитель
+            </P>
+            <P ALIGN=JUSTIFY STYLE="line-height: 0.17in">коммерческого
+                отдела</P>
+            <div align="right">С.Д. Коржук</div>
+        </big></big>
+</BODY>
+
+</HTML>
+
+
+{{!--
+action: 'virtual',
+client: {
+name: { value: 'asdasd', type: 'text' },
+address: { value: 'Omsk', type: 'text' },
+addressFact: { value: 'Omsk', type: 'text' },
+numberPhone: { value: '89095354706', type: 'tel' },
+email: { value: 'zmihpog@gmail.com', type: 'email' },
+rsch: { value: '1', type: 'text' },
+ks: { value: '1', type: 'text' },
+BIK: { value: '1', type: 'text' },
+INN: { value: '1', type: 'number' },
+OGRN: { value: '1', type: 'text' }
+},
+config: { '0': { config: [Object], perMonth: 588 } }
+--}}

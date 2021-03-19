@@ -53,10 +53,12 @@ Enquiry.schema.methods.sendNotificationEmail = function (callback) {
 			templateName: 'enquiry-notification',
 			transport: 'mailgun',
 		}).send({
+			apiKey: process.env.MAILGUN_API_KEY,
+			domain: process.env.MAILGUN_DOMAIN,
 			to: admins,
 			from: {
 				name: 'project',
-				email: 'contact@project.com',
+				email: 'contact@coredatanet.ru',
 			},
 			subject: 'New Enquiry for project',
 			enquiry: enquiry,

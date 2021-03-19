@@ -1,5 +1,7 @@
 .firstlook {
-    @extend .jumbotron, .jumbotron-fluid, .mb-0, .bg-white, .border-bottom;
+    @extend .jumbotron, .jumbotron-fluid, .mb-0, .bg-white, .shadow;
+    position: relative;
+    z-index: 1;
     background: $main-gradient-light-inv;
 
     .first-description {
@@ -33,7 +35,7 @@
             flex: 0 1 100%;
 
             img {
-                @extend .img-fluid, .rounded, .shadow, .img-thumbnail;
+                @extend .img-fluid, .rounded, .shadow-lg;
             }
         }
     }
@@ -52,7 +54,9 @@
             }
 
             .badge {
-                @extend .badge-pill, .badge-light, .font-weight-light, .shadow-sm;
+                @extend .badge-pill, .badge-light;
+                background: none !important;
+                font-weight: 600;
 
                 & > .fa-check-circle {
                     color: map-get($map: $theme-colors, $key: "success");
@@ -65,11 +69,13 @@
         }
 
         &-list {
-            @extend .list-group, .list-group-flush, .px-3, .pb-4, .shadow, .rounded, .mx-auto, .border, .border-success;
-            background-color: map-get($map: $grays, $key: "100");
+            @extend .list-group, .list-group-flush, .px-3, .pb-4, .shadow, .rounded, .mx-auto;
+            background: white;
             max-width: 50rem;
-            margin-top: -1.4rem;
+            margin-top: 1.5rem;
             padding-top: 1.4rem;
+            font-size: 1.125rem;
+            font-weight: 300;
 
             @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
                 margin-top: -1.3rem;

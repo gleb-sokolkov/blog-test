@@ -32,6 +32,8 @@ html, body, * {
 
 .index-wrapper {
     @extend .d-flex, .justify-content-center;
+    position: relative;
+    overflow-y: hidden;
 }
 
 .main-navbar {
@@ -46,12 +48,13 @@ html, body, * {
     }
 
     .collapse {
-        @extend .navbar-collapse, .flex-column, .flex-md-row, .justify-content-md-around, .align-items-start, .ml-2;
+        @extend .navbar-collapse, .flex-column, .flex-md-row, .justify-content-start, .align-items-start, .ml-2;
 
         .navbar-nav {
-            @extend .w-50, .my-auto, .d-flex, .justify-content-around, .shadow-sm, .rounded, .text-center;
-            background-color: white;
+            @extend .w-50, .my-auto, .d-flex, .justify-content-around, .text-center;
             font-size: 1.25rem;
+            flex: 0 0 ;
+            gap: 0.5rem;
 
             @media(max-width:map-get($map: $grid-breakpoints, $key: lg)) {
                 box-shadow: none !important;

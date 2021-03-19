@@ -13,7 +13,7 @@
 			</div>
 			<div class="substrate"></div>
 		</a>
-		<ul class="navbar-nav">
+		<ul class="navbar-nav ml-3">
 			<li class="nav-item mb-2 mb-lg-0 dropdown">
 				<button class="nav-link font-weight-bold dropdown-toggle" type="button" id="dropdownMenuButton"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,26 +47,23 @@
 					<a href="/partners/partners">Информация о <br />партнерских программах</a>
 				</div>
 			</li>
-			<li class="nav-item">
+			<li class="nav-item text-left">
 				<a class="nav-link font-weight-bold" href="/contact">Контакты</a>
 			</li>
 		</ul>
-		<form class="form-inline d-flex my-auto pt-2 pt-lg-0">
-			<input class="form-control mr-4 w-100" type="search" placeholder="Search" aria-label="Search">
-		</form>
 	</div>
-	<div class="ml-2 mr-2 mr-lg-5 my-1">
+	<div class="ml-2 mr-2 mr-lg-3 my-1">
 		<form class="form-inline admin-bar">
 			{{#if user}}
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<a href="/keystone" type="button" class="btn btn-outline-primary"><i class="fa fa-user"
+				<a href="/keystone" type="button" class="btn btn-light text-primary"><i class="fa fa-user"
 						aria-hidden="true"></i></a>
-				<a href="/keystone/signout" type="button" class="btn btn-outline-success">
+				<a href="/keystone/signout" type="button" class="btn btn-light text-success">
 					<i class="fa fa-sign-out" aria-hidden="true"></i>
 				</a>
 			</div>
 			{{else}}
-			<a href="/keystone/signin" class="btn btn-outline-success">
+			<a href="/keystone/signin" class="btn btn-light text-success">
 				<i class="fa fa-sign-in" aria-hidden="true"></i>
 			</a>
 			{{/if}}

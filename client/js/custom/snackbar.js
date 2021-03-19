@@ -1,9 +1,11 @@
+const debounce = require('debounce');
+
 function Snackbar(id) {
     this.root = document.getElementById(id);
     this.body = this.root.querySelector('.body');
     this.bodyText = this.body.querySelector('.text');
     this.buttonGroup = this.body.querySelector('.button-group');
-    
+
     this.show = function () {
         this.root.classList.add("actived");
     };
@@ -31,7 +33,7 @@ function Snackbar(id) {
         this.buttonGroup.appendChild(template);
     };
 
-    this.addShowButton = function(url, buttonText){
+    this.addShowButton = function (url, buttonText) {
         var template = showButton.content.cloneNode(true);
         var button = template.querySelector('button');
         button.querySelector('.text').innerHTML = buttonText;
@@ -75,8 +77,8 @@ function SnackbarTimeout(id, showTime) {
         }, this.showTime);
     };
 
-    this.hide = function() {
-        if(this.current) clearTimeout(this.current);
+    this.hide = function () {
+        if (this.current) clearTimeout(this.current);
         this.parent.hide();
     };
 
@@ -90,4 +92,66 @@ function SnackbarTimeout(id, showTime) {
     }
 }
 
-export { SnackbarClosable, SnackbarTimeout };
+function CaptchaSnackbar(id, snack_id) {
+    this.parent = new Snackbar(snack_id);
+    this.id = id;
+    this.captcha = this.parent.root.querySelector(`#${this.id}`);
+    this.submit = this.parent.root.querySelector('.submit');
+    this.submitTitle = this.submit.querySelector('.title');
+    this.spinner = this.submit.querySelector('.spinner-border');
+    this.reload = this.parent.root.querySelector('.reload');
+    this.close = this.parent.root.querySelector('.close');
+
+    this.reload.addEventListener('click', () => debounce(this.reloadCaptcha.bind(this), 1000)());
+
+    this.reloadCaptcha = function () {
+        grecaptcha.reset();
+        this.captcha = this.parent.root.querySelector(`#${this.id}`);
+        if(this.captcha.value) this.captcha.value = '';
+        this.clearErrorEffect();
+    };
+
+    this.showLoadingEffect = function() {
+        this.submitTitle.classList.add('sr-only');
+        this.spinner.classList.add('actived');
+        this.submit.disabled = true;
+    };
+
+    this.clearLoadingEffect = function() {
+        this.submitTitle.classList.remove('sr-only');
+        this.spinner.classList.remove('actived');
+        this.submit.disabled = false;
+    };
+
+    this.showErrorEffect = function() {
+        this.submit.classList.add('error');
+    };
+
+    this.clearErrorEffect = function () {
+        this.submit.classList.remove('error');
+    };
+
+    this.submitCaptcha = () => {
+        return new Promise((resolve, reject) => {
+
+            this.submit.onclick = () => {
+                if (this.captcha.value === undefined ||
+                    this.captcha.value === null ||
+                    this.captcha.value === '') {
+                        this.showErrorEffect();
+                }
+                else {
+                    this.clearErrorEffect();
+                    resolve(this.captcha.value);
+                }
+            };
+
+            this.close.onclick = () => {
+                this.clearErrorEffect();
+                reject();
+            };
+        });
+    };
+}
+
+export { SnackbarClosable, SnackbarTimeout, CaptchaSnackbar };

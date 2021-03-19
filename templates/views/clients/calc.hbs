@@ -313,6 +313,29 @@
         Some Content
     </div> --}}
 
+    <div class="snackbar snackbar-content snackbar-light snackbar-sm border" id="validation-recaptcha">
+        <div class="body text-center">
+            <div class="mb-2 text-center">
+                {{> captcha}}
+            </div>
+            <div class="manage-menu">
+                <button type="button" class="submit btn-shadow">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="title">
+                        Потвердить
+                    </span>
+                    <span class="error-title">
+                        Неверная капча
+                    </span>
+                </button>
+                <div class="btn-group btn-shadow" role="group">
+                    <button type="button" class="reload"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                    <button type="button" class="close"><i class="fa fa-ban" aria-hidden="true"></i></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="snackbar snackbar-light snackbar-md" id="download">
         <div class="menu row no-gutters">
             <div class="col">
@@ -324,7 +347,7 @@
                 </div>
             </div>
             <div class="col flex-fe-c">
-                <button class="close" type="button">
+                <button class="close btn-shadow" type="button">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
             </div>
@@ -490,14 +513,14 @@
     </template>
 
     <template id="downloadButton">
-        <a class="btn btn-primary download" href="#" role="button">
+        <a class="btn btn-primary download btn-shadow" href="#" role="button">
             <span class="text"></span>
             <i class="fa fa-download d-inline-block ml-2" aria-hidden="true"></i>
         </a>
     </template>
 
     <template id="showButton">
-        <button type="button" class="btn btn-info show" role="button">
+        <button type="button" class="btn btn-info show btn-shadow" role="button">
             <span class="text"></span>
             <i class="fa fa-file-pdf-o d-inline-block ml-2" aria-hidden="true"></i>
         </button>

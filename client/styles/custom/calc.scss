@@ -372,7 +372,7 @@
     .body {
         @extend .p-sm-4, .p-3;
 
-        .btn {
+        .btn-shadow {
             box-shadow: $button-shadow-sm;
         }
 
@@ -386,7 +386,7 @@
                 border-radius: 2rem;
                 display: inline-block;
                 padding: 0rem 0.5rem;
-                color: map-get($map: $grays, $key: "700");;
+                color: map-get($map: $grays, $key: "700");
             }
         }
 
@@ -395,8 +395,52 @@
         }
     }
 
-    &-content {
-        width: auto;
+    .manage-menu {
+        @extend .d-flex, .flex-wrap;
+        gap: 0.75rem;
+
+        .submit {
+            @extend .btn, .btn-primary, .f-1-1-auto;
+
+            .spinner-border {
+                display: none;
+
+                &.actived {
+                    display: inline-block;
+                }
+            }
+            
+            .error-title {
+                display: none
+            }
+
+            &.error {
+
+                @extend .btn-danger;
+
+                .title {
+                    display: none;
+                }
+
+                .error-title {
+                    display: inline;
+                }
+            }
+        }
+
+        .reload {
+            @extend .btn, .btn-light, .text-primary, .f-0-0-auto;
+        }
+
+        .close {
+            @extend .btn, .btn-light, .text-danger, .f-0-0-auto;
+        }
+    }
+
+    @media (min-width: map-get($map: $grid-breakpoints, $key: sm)) {
+        &-content {
+            width: auto;
+        }
     }
 }
 
@@ -422,4 +466,12 @@
     & > * {
         vertical-align: middle;
     }
+}
+
+.f-1-1-auto {
+    flex: 1 1 auto;
+}
+
+.f-0-0-auto {
+    flex: 0 0 auto;
 }

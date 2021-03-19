@@ -3,6 +3,7 @@ var validator = require('validator');
 var rootPath = require('app-root-path');
 var genPDF = require(rootPath + '/services/PDF-generator/genPDF');
 var sendEmail = require(rootPath + '/services/MailSend/email');
+var captcha = require(rootPath + '/services/captcha/captcha');
 
 exports = module.exports = function (req, res) {
     var view = new keystone.View(req, res);
@@ -40,9 +41,7 @@ exports = module.exports = function (req, res) {
     view.on('post', { action: "virtual" }, (next) => {
 
         if (req.query.type === "validation") {
-
             var response = validateVirtual(req.body);
-            //console.log(response);
             res.json(response);
         }
 
@@ -52,29 +51,40 @@ exports = module.exports = function (req, res) {
         }
 
         if (req.query.type === "gen-kp") {
-            genPDF(req.body, 'v_kp').then(response => {
-                lastFile = response;
-                sendEmail(response, 'virtual_kp.pdf');
 
-                res.contentType("application/pdf");
-                res.send(response);
-            }).catch(error => {
-                res.status(500);
-                res.send({ text: "Ошибка генерации PDF-файла!" });
-            });
+            captcha(req.body.captcha, req.connection.remoteAddress)
+                .then(resp => {
+                    genPDF(req.body, 'v_kp')
+                        .then(response => {
+                            lastFile = response;
+                            sendEmail(response, 'virtual_kp.pdf'); 
+                            res.contentType("application/pdf");
+                            res.send(response);
+                        })
+                        .catch(error => {
+                            res.status(500);
+                            res.json({ text: "Ошибка генерации PDF-файла!" });
+                        });
+                })
+                .catch(err => res.json(err));
         }
 
         if (req.query.type === "gen-vr") {
-            //console.log(req.body);
-            genPDF(req.body, 'v_vr').then(response => {
-                lastFile = response;
-                sendEmail(response, 'virtual_vr.pdf');
-                res.contentType('application/pdf');
-                res.send(response);
-            }).catch(err => {
-                res.status(500);
-                res.send({ text: "Ошибка генерации PDF-файла!" });
-            });
+            captcha(req.body.captcha, req.connection.remoteAddress)
+                .then(resp => {
+                    genPDF(req.body, 'v_vr')
+                        .then(response => {
+                            lastFile = response;
+                            sendEmail(response, 'virtual_vr.pdf');
+                            res.contentType('application/pdf');
+                            res.send(response);
+                        })
+                        .catch(err => {
+                            res.status(500);
+                            res.send({ text: "Ошибка генерации PDF-файла!" });
+                        });
+                })
+                .catch(err => res.json(err));
         }
     });
 
@@ -93,10 +103,6 @@ exports = module.exports = function (req, res) {
                 response.isValid *= !valid;
             }
 
-            response.isValid = Boolean(response.isValid);
-
-            //console.log(response);
-
             res.json(response);
         }
 
@@ -105,31 +111,39 @@ exports = module.exports = function (req, res) {
         }
 
         if (req.query.type === "gen-kp") {
-            //console.log(req.body);
-            genPDF(req.body, 'f_kp')
-                .then(response => {
-                    lastFile = response;
-                    sendEmail(response, 'physic_kp.pdf');
-                    res.contentType("application/pdf");
-                    res.send(response);
+
+            captcha(req.body.captcha, req.connection.remoteAddress)
+                .then(resp => {
+                    genPDF(req.body, 'f_kp')
+                        .then(response => {
+                            lastFile = response;
+                            sendEmail(response, 'physic_kp.pdf');
+                            res.contentType("application/pdf");
+                            res.send(response);
+                        })
+                        .catch(error => {
+                            res.status(500);
+                            res.send({ text: "Ошибка генерации PDF-файла!" });
+                        });
                 })
-                .catch(error => {
-                    res.status(500);
-                    res.send({ text: "Ошибка генерации PDF-файла!" });
-                });
+                .catch(err => res.json(err));
         }
 
         if (req.query.type === "gen-vr") {
-            //console.log(req.body);
-            genPDF(req.body, 'f_vr').then(response => {
-                lastFile = response;
-                sendEmail(response, 'physic_vr.pdf');
-                res.contentType('application/pdf');
-                res.send(response);
-            }).catch(err => {
-                res.status(500);
-                res.send({ text: "Ошибка генерации PDF-файла!" });
-            });
+
+            captcha(req.body.captcha, req.connection.remoteAddress)
+                .then(resp => {
+                    genPDF(req.body, 'f_vr').then(response => {
+                        lastFile = response;
+                        sendEmail(response, 'physic_vr.pdf');
+                        res.contentType('application/pdf');
+                        res.send(response);
+                    }).catch(err => {
+                        res.status(500);
+                        res.send({ text: "Ошибка генерации PDF-файла!" });
+                    });
+                })
+                .catch(err => res.json(err));
         }
     });
 

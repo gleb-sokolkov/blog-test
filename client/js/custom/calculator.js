@@ -1,11 +1,10 @@
 import { clampString, clampStringFloat } from '../functions';
-import { SnackbarClosable, SnackbarTimeout } from './snackbar';
+import { SnackbarClosable, SnackbarTimeout, CaptchaSnackbar } from './snackbar';
 const debounce = require('debounce');
-
 
 var virtualForm = document.getElementById("virtual-form");
 var calcProgress = document.getElementById('calc-progress');
-var configArray, clientInfo, downloadSnackbar, validationSnackbar;
+var configArray, clientInfo, downloadSnackbar, validationSnackbar, captchaSnackbar;
 
 if (virtualForm) {
     var genkp = virtualForm.querySelector("[name='gen-kp']");
@@ -15,90 +14,98 @@ if (virtualForm) {
     clientInfo = new ClientInfo(virtualForm);
     downloadSnackbar = new SnackbarClosable("download");
     validationSnackbar = new SnackbarTimeout('validation-alert', 5000);
+    captchaSnackbar = new CaptchaSnackbar('g-recaptcha-response', 'validation-recaptcha');
 
-    genkp.addEventListener('click', () => createKP(
+    genkp.addEventListener('click', debounce(() => createDocMenu(
         'gen-kp',
         clientInfo.action,
         {
             client: clientInfo.update().body,
             config: configArray.ToValidationForm(),
         },
-    ));
-    genvr.addEventListener('click', () => createVR(
+        'Ваш КП успешно сгенерирован.',
+        'kp.pdf',
+        sendClientInfoToValidation
+    ), 500));
+    genvr.addEventListener('click', debounce(() => createDocMenu(
         'gen-vr',
         clientInfo.action,
         {
             client: clientInfo.update().body,
             config: configArray.ToValidationForm(),
         },
-    ));
+        'Ваш договор на ВР успешно сгенерирован.',
+        'vr.pdf',
+        sendClientInfoToValidation
+    ), 500));
 }
 
-async function createVR(type, action, data) {
+async function createDocMenu(type, action, data, bodyText, downloadText, validation) {
 
     calcProgress.classList.add("actived");
     downloadSnackbar.parent.hide();
     downloadSnackbar.parent.clear();
     validationSnackbar.hide();
 
-    var valid = await sendClientInfoToValidation(action, data);
+    var valid = await validation(action, data);
 
-    if (valid) {
-        var blob = await sendInfoToGenPDF(type, action, data);
-        var url = window.URL.createObjectURL(blob);
-
-        downloadSnackbar.setTitleText('Готово!');
-        downloadSnackbar.parent.setBodyText('Ваш договор на ВР успешно сгенерирован.');
-        downloadSnackbar.parent.addDownload(url, 'vr.pdf');
-        downloadSnackbar.parent.addShowButton(url, "Открыть");
-        downloadSnackbar.parent.show();
-    }
-    else {
+    if (!valid) {
         validationSnackbar.show();
+        calcProgress.classList.remove("actived");
+        return;
     }
 
-    calcProgress.classList.remove("actived");
-}
+    captchaSnackbar.parent.show();
+    captchaSnackbar.submitCaptcha()
+        .then(async res => {
+            captchaSnackbar.showLoadingEffect();
+            var response = await sendInfoToGenPDF(type, action, res, data);
+            if (!response.error) {
+                downloadSnackbar.parent.clear();
 
-async function createKP(type, action, data) {
+                var url = window.URL.createObjectURL(response.body);
 
-    calcProgress.classList.add("actived");
-    downloadSnackbar.parent.hide();
-    downloadSnackbar.clear();
-    validationSnackbar.hide();
+                downloadSnackbar.setTitleText('Готово!');
+                downloadSnackbar.parent.setBodyText(bodyText);
+                downloadSnackbar.parent.addDownload(url, downloadText);
+                downloadSnackbar.parent.addShowButton(url, "Открыть");
+                downloadSnackbar.parent.show();
 
-    var valid = await sendClientInfoToValidation(action, data);
-
-    if (valid) {
-        var blob = await sendInfoToGenPDF(type, action, data);
-        var url = window.URL.createObjectURL(blob);
-
-        downloadSnackbar.setTitleText('Готово!');
-        downloadSnackbar.parent.setBodyText('Ваш КП успешно сгенерирован.');
-        downloadSnackbar.parent.addDownload(url, 'kp.pdf');
-        downloadSnackbar.parent.addShowButton(url, "Открыть");
-        downloadSnackbar.parent.show();
-    }
-    else {
-        validationSnackbar.show();
-    }
-
-    calcProgress.classList.remove("actived");
+                captchaSnackbar.parent.hide();
+                captchaSnackbar.reloadCaptcha();
+            }
+            captchaSnackbar.clearLoadingEffect();
+        })
+        .catch(err => {
+        })
+        .finally(() => {
+            captchaSnackbar.parent.hide();
+            captchaSnackbar.reloadCaptcha();
+            calcProgress.classList.remove("actived");
+        });
 }
 
 
-async function sendInfoToGenPDF(type, action, data) {
+async function sendInfoToGenPDF(type, action, captcha, data) {
 
-    var blob = await fetch(`/clients/calc?type=${type}`, {
+    var response = await fetch(`/clients/calc?type=${type}`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-type': 'application/json; charset=utf-8',
         },
-        body: JSON.stringify(Object.assign({ action }, data)),
-    }).then(res => res.blob());
+        body: JSON.stringify(Object.assign({ action }, { captcha }, data)),
+    }).then(async res => {
+        var contentType = res.headers.get('content-type');
+        if (contentType?.indexOf('application/json') !== -1) {
+            return { error: true, body: await res.json() };
+        }
+        else if (contentType?.indexOf('application/pdf') !== -1) {
+            return { error: false, body: await res.blob() };
+        }
+    });
 
-    return blob;
+    return response;
 }
 
 function sendClientInfoToValidation(action, data) {
@@ -618,8 +625,6 @@ function ConfigSender(id, root) {
 function PhysicSender(id) {
 
     this.physicForm = document.getElementById(id);
-    if (!this.physicForm) return {};
-
     this.inputs = this.physicForm.querySelectorAll(".config input");
     this.action = this.physicForm.querySelector("input[name='action']").value;
     this.progress = document.getElementById('calc-progress');
@@ -677,19 +682,25 @@ function PhysicSender(id) {
         }, 1000))
     });
 
-    this.genkp.addEventListener('click', () => this.KP(
+    this.genkp.addEventListener('click', debounce(() => createDocMenu(
         'gen-kp',
         this.action,
-        this.body,
-    ));
+        this.body.config,
+        'Ваш КП успешно сгенерирован.',
+        'kp.pdf',
+        this.sendToValidation.bind(this)
+    ), 500));
 
-    this.genvr.addEventListener('click', () => this.VR(
+    this.genvr.addEventListener('click', debounce(() => createDocMenu(
         'gen-vr',
         this.action,
-        this.body,
-    ));
+        this.body.config,
+        'Ваш Договор на ВР успешно сгенерирован.',
+        'vr.pdf',
+        this.sendToValidation.bind(this)
+    ), 500));
 
-    this.sendToValidation = function () {
+    this.sendToValidation = function (action, data) {
 
         return new Promise((resolve, reject) => {
             fetch("/clients/calc?type=validation", {
@@ -698,7 +709,7 @@ function PhysicSender(id) {
                     'Accept': 'application/json, text/plain, */*',
                     'Content-type': 'application/json; charset=utf-8',
                 },
-                body: JSON.stringify(Object.assign({ config: this.body.config }, { action: this.action })),
+                body: JSON.stringify(Object.assign({ config: data }, { action })),
             })
                 .then(res => res.json())
                 .then(res => {
@@ -763,58 +774,8 @@ function PhysicSender(id) {
                 });
         });
     };
-
-    this.KP = async function (type, action, data) {
-
-        calcProgress.classList.add("actived");
-        downloadSnackbar.parent.hide();
-        downloadSnackbar.clear();
-        validationSnackbar.hide();
-
-        var valid = await this.sendToValidation(action, data);
-
-        if (valid) {
-            var blob = await sendInfoToGenPDF(type, action, data);
-            var url = window.URL.createObjectURL(blob);
-
-            downloadSnackbar.setTitleText('Готово!');
-            downloadSnackbar.parent.setBodyText('Ваш КП успешно сгенерирован.');
-            downloadSnackbar.parent.addDownload(url, 'kp.pdf');
-            downloadSnackbar.parent.addShowButton(url, "Открыть");
-            downloadSnackbar.parent.show();
-        }
-        else {
-            validationSnackbar.show();
-        }
-
-        calcProgress.classList.remove("actived");
-    }
-
-    this.VR = async function (type, action, data) {
-
-        calcProgress.classList.add("actived");
-        downloadSnackbar.parent.hide();
-        downloadSnackbar.clear();
-        validationSnackbar.hide();
-
-        var valid = await this.sendToValidation(action, data);
-
-        if (valid) {
-            var blob = await sendInfoToGenPDF(type, action, data);
-            var url = window.URL.createObjectURL(blob);
-
-            downloadSnackbar.setTitleText('Готово!');
-            downloadSnackbar.parent.setBodyText('Ваш Договор на ВР успешно сгенерирован.');
-            downloadSnackbar.parent.addDownload(url, 'vr.pdf');
-            downloadSnackbar.parent.addShowButton(url, "Открыть");
-            downloadSnackbar.parent.show();
-        }
-        else {
-            validationSnackbar.show();
-        }
-
-        calcProgress.classList.remove("actived");
-    }
 }
 
-var physicSender = new PhysicSender("physic-form");
+if (document.getElementById('physic-form')) {
+    var physicSender = new PhysicSender("physic-form");
+}

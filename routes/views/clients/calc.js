@@ -56,7 +56,6 @@ exports = module.exports = function (req, res) {
                 .then(resp => {
                     genPDF(req.body, 'v_kp')
                         .then(response => {
-                            lastFile = response;
                             sendEmail(response, 'virtual_kp.pdf'); 
                             res.contentType("application/pdf");
                             res.send(response);
@@ -74,7 +73,6 @@ exports = module.exports = function (req, res) {
                 .then(resp => {
                     genPDF(req.body, 'v_vr')
                         .then(response => {
-                            lastFile = response;
                             sendEmail(response, 'virtual_vr.pdf');
                             res.contentType('application/pdf');
                             res.send(response);
@@ -116,7 +114,6 @@ exports = module.exports = function (req, res) {
                 .then(resp => {
                     genPDF(req.body, 'f_kp')
                         .then(response => {
-                            lastFile = response;
                             sendEmail(response, 'physic_kp.pdf');
                             res.contentType("application/pdf");
                             res.send(response);
@@ -134,7 +131,6 @@ exports = module.exports = function (req, res) {
             captcha(req.body.captcha, req.connection.remoteAddress)
                 .then(resp => {
                     genPDF(req.body, 'f_vr').then(response => {
-                        lastFile = response;
                         sendEmail(response, 'physic_vr.pdf');
                         res.contentType('application/pdf');
                         res.send(response);

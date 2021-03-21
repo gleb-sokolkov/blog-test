@@ -6,6 +6,9 @@ var mailgun = require('mailgun-js')({
 
 module.exports = function (attachment, filename) {
 
+    //we don't want spend API limit
+    if(process.env.APP_STATE === "dev") return;
+
     return new Promise((resolve, reject) => {
         keystone.list('Y').model.find().where('isAdmin', true).exec(function (err, admins) {
             if (err) reject(err);

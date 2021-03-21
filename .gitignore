@@ -36,3 +36,5 @@ public/styles/shared.css
 .env
 
 /web/
+
+public/js/shared.bundle.js.LICENSE.txt

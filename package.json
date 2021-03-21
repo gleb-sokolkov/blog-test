@@ -15,7 +15,6 @@
     "express-html-minify": "^1.0.4",
     "font-awesome": "^4.7.0",
     "handlebars": "^4.7.6",
-    "html-pdf-node": "^1.0.7",
     "jquery": "^3.5.1",
     "keystone": "^4.2.1",
     "keystone-email": "^1.1.0",
@@ -29,7 +28,8 @@
     "promise-polyfill": "8.2.0",
     "regenerator-runtime": "^0.13.7",
     "validator": "^13.5.2",
-    "whatwg-fetch": "^3.5.0"
+    "whatwg-fetch": "^3.5.0",
+    "wkhtmltopdf": "^0.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

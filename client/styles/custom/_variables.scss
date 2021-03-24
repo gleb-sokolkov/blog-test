@@ -32,3 +32,7 @@ $offset-sm: 2rem;
 $offset-xs: 1rem;
 
 $button-shadow-sm: 0 .1rem 0.2rem rgba(0,0,0,.15);
+
+$wysiwyg-list-main-border-light-primary: #c9e3fd;
+$wysiwyg-list-border-light-primary: map-get($map: $grays, $key: "200");
+$wysiwyg-list-bg-light-primary: #f5faff;

@@ -1,5 +1,6 @@
 @import "./variables.scss";
 @import "./mixins.scss";
+@import "./blocks.scss";
 
 html,
 body {
@@ -13,16 +14,18 @@ body {
     }
 
     @media (max-width: map-get($map: $grid-breakpoints, $key: "md")) {
-        font-size: 0.92rem;
+        font-size: 0.93rem;
     }
 
     @media (max-width: map-get($map: $grid-breakpoints, $key: "sm")) {
-        font-size: 0.84rem;
+        font-size: 0.86rem;
     }
 
     @media (max-width: map-get($map: $grid-breakpoints, $key: "xs")) {
-        font-size: 0.76rem;
+        font-size: 0.79rem;
     }
+
+    background: map-get($map: $grays, $key: "100");
 }
 
 html,
@@ -39,7 +42,7 @@ body,
 }
 
 .main-navbar {
-    @extend .navbar, .navbar-expand-lg, .navbar-light, .bg-light, .border-bottom, .p-0, .sticky-top;
+    @extend .navbar, .navbar-expand-lg, .navbar-light, .bg-white, .border-bottom, .p-0, .sticky-top;
     font-family: $font-Magistral;
     @include transition(0.2s linear);
     z-index: 99;
@@ -54,7 +57,7 @@ body,
         .navbar-nav {
             @extend .w-50, .my-auto, .d-flex, .justify-content-around, .text-center;
             font-size: 1.25rem;
-            flex: 0 0 ;
+            flex: 0 0;
             gap: 0.5rem;
 
             @media (max-width: map-get($map: $grid-breakpoints, $key: lg)) {
@@ -355,18 +358,19 @@ body,
             a {
                 @extend .d-flex, .flex-wrap, .w-100, .py-2;
 
-                font-size: 1rem;
+                font-size: 1.125rem;
                 text-decoration: none;
                 color: black;
 
                 & .text-block {
-                    background-color: rgba(255, 255, 255, 0.623);
+                    border: 1rem solid rgba($blue-light, 0.0);
                     @include transition(0.5s ease);
-                    @extend .rounded, .shadow-sm, .p-3;
+                    @extend .rounded, .shadow-sm, .px-0;
+                    background: rgba($white, 0.623);
                 }
 
                 &:hover .text-block {
-                    background-color: rgba($blue-light, 0.623);
+                    border: 1rem solid rgba($blue-light, 0.623);
                 }
             }
 
@@ -381,11 +385,9 @@ body,
                 @include transition(0.5s ease);
 
                 .title {
-                    @extend .align-self-end;
-
-                    & > * {
-                        font-weight: bold;
-                    }
+                    @extend .align-self-end, .h1;
+                    font-family: $font-Exo2;
+                    font-weight: bold;
                 }
             }
         }
@@ -402,7 +404,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: $font-Exo2;
+    font-family: $font-Inter;
 }
 
 #canvas {
@@ -506,13 +508,6 @@ h6 {
     height: 100%;
 }
 
-.categories {
-    position: fixed;
-    top: 8rem;
-    height: calc(100% - 200px);
-    overflow-y: auto;
-}
-
 .admin-bar {
     a {
         @media (max-width: map-get($map: $grid-breakpoints, $key: "lg")) {
@@ -580,6 +575,25 @@ h6 {
     }
 }
 
+.up-button {
+    @extend .btn, .btn-light, .shadow-sm, .ml-auto;
+    position: sticky;
+    z-index: 2;
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    margin-top: -4rem;
+    margin-bottom: 1rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    &.actived {
+        display: flex;
+    }
+}
+
 //-----------------------------------
 //----------Media queries------------
 //-----------------------------------
@@ -642,3 +656,4 @@ h6 {
 @import "./cloud-services.scss";
 @import "./firstlook.scss";
 @import "./calc.scss";
+@import "./blog.scss";

@@ -63,7 +63,7 @@
     "devkey": "nodemon keystone.js",
     "key": "node keystone.js",
     "blocks": "webpack --config ./webpack.blocks.config.js",
-    "dev": "",
-    "prod": "webpack --config ./webpack.prod.config.js"
+    "dev": "webpack serve --config ./webpack.config.js",
+    "prod": "webpack --config ./webpack.config.js"
   }
 }

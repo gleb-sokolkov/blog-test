@@ -6,13 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CoreDataNet</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    {{#if isProd}}
     <link rel="stylesheet" href="/styles/shared.css">
+    <link rel="stylesheet" href="/styles/fa.css">
+    {{else}}
+    <link rel="stylesheet" href="http://localhost:9000/styles/shared.css">
+    <link rel="stylesheet" href="http://localhost:9000/styles/fa.css">
+    {{/if}}
+
     {{#if isProd}}
     <script src="https://api-maps.yandex.ru/2.1/?apikey=49d9e338-98c1-4835-a0e1-d838562fd2a4&lang=ru_RU"
         type="text/javascript">
         </script>
     <script src="/js/map-creator.js" type="text/javascript"></script>
     {{/if}}
+
+
     {{! -- Yandex Metrika -- }}
     <script src="/js/yandex-metrika.js" type="text/javascript"></script>
     <noscript>
@@ -25,13 +36,26 @@
 
     {{> navbar}}
 
-    {{{body}}}
+    <div>
+        {{{body}}}
+        <div class="up-button">
+            <i class="fa fa-arrow-up" aria-hidden="true"></i>
+        </div>
+    </div>
 
     {{> footer}}
 
     {{> sidenav}}
 
-    <script src="/js/shared.bundle.js"></script>
+    {{#if isProd}}
+    <script src="/js/shared.bundle.js" async defer></script>
+    <script src="/js/fa.bundle.js" async defer></script>
+    <script src="/js/bootstrap.bundle.js" async defer></script>
+    {{else}}
+    <script src="http://localhost:9000/js/shared.bundle.js" async defer></script>
+    <script src="http://localhost:9000/js/fa.bundle.js" async defer></script>
+    <script src="http://localhost:9000/js/bootstrap.bundle.js" async defer></script>
+    {{/if}}
 </body>
 
 </html>

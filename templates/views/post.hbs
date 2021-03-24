@@ -1,25 +1,22 @@
-<div class="container text-container py-3">
-	<div class="row">
-		<div class="col-12 px-3 px-sm-5">
-			<article>
-				<p class="mt-3"><a href="/blog">&larr; Назад к новостям</a></p>
-				<hr>
-				<header>
-					<h2 class="text-dark">{{data.post.title}}</h1>
+<div class="flex-c-c">
+	<div class="p-3 p-sm-5 bg-white shadow" style="max-width: 60rem;">
+		<article>
+			<p class="mt-3"><a href="/blog"><i class="fa fa-arrow-left" aria-hidden="true"></i> Назад к новостям</a></p>
+			<hr>
+			<header>
+				<h2 class="text-dark">{{data.post.title}}</h1>
 					<h5 class="text-muted">
 						{{{categoryList data.post.categories prefix="Добавлено в "}}}
 						{{#if author.name.first}}by {{author.name.first}}{{/if}}
 					</h5>
-				</header>
-				<div class="post">
-					{{#if data.post.image}}<img
-						src="{{{cloudinaryUrl data.post.image width=750 height=450 crop='fit' }}}"
-						class="img-fluid my-3 rounded">{{/if}}
-					<div>
-						{{{data.post.content.extended}}}
-					</div>
+			</header>
+			<div class="post">
+				{{#if data.post.image}}<img src="{{{cloudinaryUrl data.post.image crop='fit' }}}"
+					class="img-fluid my-3 shadow d-block mx-auto">{{/if}}
+				<div>
+					{{{data.post.content.extended}}}
 				</div>
-			</article>
-		</div>
+			</div>
+		</article>
 	</div>
 </div>

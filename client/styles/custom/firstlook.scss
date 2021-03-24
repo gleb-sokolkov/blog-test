@@ -47,40 +47,30 @@
 
         &-title {
             font-family: $font-Exo2;
-            font-size: 2.5rem;
+            font-size: 2rem;
 
-            @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
-                font-size: 1.5rem;
-            }
-
-            .badge {
-                @extend .badge-pill, .badge-light;
-                background: none !important;
+            &-content {
+                display: block;
                 font-weight: 600;
 
                 & > .fa-check-circle {
                     color: map-get($map: $theme-colors, $key: "success");
 
                     @media(min-width: map-get($map: $grid-breakpoints, $key: sm)) {
-                        font-size: 2rem
+                        font-size: 2rem;
                     }
                 }
             }
         }
 
         &-list {
-            @extend .list-group, .list-group-flush, .px-3, .pb-4, .shadow, .rounded, .mx-auto;
+            @extend .list-group, .list-group-flush, .px-3, .pb-4, .shadow-sm, .rounded, .mx-auto;
             background: white;
             max-width: 50rem;
             margin-top: 1.5rem;
             padding-top: 1.4rem;
             font-size: 1.125rem;
             font-weight: 300;
-
-            @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
-                margin-top: -1.3rem;
-                padding-top: 1.3rem;
-            }
 
             li {
                 @extend .list-group-item;

@@ -31,10 +31,13 @@ node_modules
 .DS_Store
 
 *.bundle.js
-public/styles/shared.css
+*.bundle.js.map
+
+*.css
+*.css.map
 
 .env
 
 /web/
 
-public/js/shared.bundle.js.LICENSE.txt
+public/js/bootstrap.bundle.js.LICENSE.txt

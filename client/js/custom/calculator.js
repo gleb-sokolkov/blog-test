@@ -52,6 +52,8 @@ async function createDocMenu(type, action, data, bodyText, downloadText, validat
     if (!valid) {
         validationSnackbar.show();
         calcProgress.classList.remove("actived");
+        captchaSnackbar.parent.hide();
+        captchaSnackbar.reloadCaptcha();
         return;
     }
 

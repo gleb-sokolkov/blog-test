@@ -7,6 +7,7 @@
 
         .text {
             font-weight: 900;
+            font-family: $font-Exo2;
         }
 
         .line {
@@ -88,6 +89,7 @@
                 @extend .mb-4;
                 font-weight: 300;
                 text-align: center;
+                font-family: $font-Exo2;
             }
 
             &-body {
@@ -270,6 +272,7 @@
 
             .physic-title {
                 @extend .font-weight-light, .text-center, .mb-3;
+                font-family: $font-Exo2;
             }
 
             .save {

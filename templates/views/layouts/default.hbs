@@ -7,17 +7,23 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>CoreDataNet</title>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="/styles/shared.css">
 
+	{{#if isProd}}
+	<link rel="stylesheet" href="/styles/shared.css">
+	<link rel="stylesheet" href="/styles/fa.css">
+	{{else}}
+	<link rel="stylesheet" href="http://localhost:9000/styles/shared.css">
+	<link rel="stylesheet" href="http://localhost:9000/styles/fa.css">
+	{{/if}}
 
 	{{!-- This file provides the default styling for the KeystoneJS Content Editor
-			- only renders when user is logged in and admin--}}
+	- only renders when user is logged in and admin--}}
 	{{{isAdminEditorCSS user}}}
 
 	{{#if isProd}}
 	<script src="https://api-maps.yandex.ru/2.1/?apikey=49d9e338-98c1-4835-a0e1-d838562fd2a4&lang=ru_RU"
 		type="text/javascript">
-	</script>
+		</script>
 	<script src="/js/map-creator.js" type="text/javascript"></script>
 	{{/if}}
 	<!-- Yandex.Metrika counter -->
@@ -65,16 +71,30 @@
 		{{/if}}
 		<!-- The content block should contain the body of your template's content-->
 	</div> --}}
+	<div>
+		{{{body}}}
+		<div class="up-button">
+			<i class="fa fa-arrow-up" aria-hidden="true"></i>
+		</div>
+	</div>
 
-	{{{body}}}
 
 	{{> footer}}
 	{{> sidenav}}
 
 	{{> weirdShaders}}
 
-	<script src="/js/blocks.bundle.js"></script>
-	<script src="/js/shared.bundle.js"></script>
+	{{#if isProd}}
+	<script src="/js/blocks.bundle.js" async defer></script>
+	<script src="/js/shared.bundle.js" async defer></script>
+	<script src="/js/fa.bundle.js" async defer></script>
+	<script src="/js/bootstrap.bundle.js" async defer></script>
+	{{else}}
+	<script src="http://localhost:9000/js/blocks.bundle.js" async defer></script>
+	<script src="http://localhost:9000/js/shared.bundle.js" async defer></script>
+	<script src="http://localhost:9000/js/fa.bundle.js" async defer></script>
+	<script src="http://localhost:9000/js/bootstrap.bundle.js" async defer></script>
+	{{/if}}
 </body>
 
 </html>

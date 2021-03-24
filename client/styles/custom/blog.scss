@@ -1,0 +1,41 @@
+.blog {
+    @extend .container;
+    padding-top: 6rem;
+
+    &-header {
+        @extend .pb-4;
+        font-weight: 800;
+        font-family: $font-Inter;
+    }
+
+    &-content {
+
+        .posts {
+            @extend .col-sm-8, .col-md-9;
+
+            .post {
+                @extend .py-2, .px-3, .rounded, .mb-3, .bg-white, .shadow-sm;
+                color: map-get($map: $grays, $key: "700");
+
+                .title a {
+                    color: map-get($map: $grays, $key: "700");
+                    font-family: $font-Inter;
+                }
+            }
+        }
+
+        .categories {
+            @extend .col-sm-4, .col-md-3, .d-none, .d-sm-inline-block, .mb-3;
+
+            &-content.sticky {
+                position: sticky;
+                top: 5rem;
+
+                .title {
+                    font-weight: 600;
+                    font-family: $font-Inter;
+                }
+            }
+        }
+    }
+}

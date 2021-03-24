@@ -1,68 +1,111 @@
-.text-container {
+.services-info {
+    .head {
+        &.wrapper {
+            @extend .flex-c-c;
+            height: 30rem;
+            background: $main-gradient-light;
+            padding: 0rem 2rem 10rem 2rem;
 
-    padding: 2rem;
-
-    @media(max-width: map-get($map: $grid-breakpoints, $key: sm)) {
-        padding: 2rem, 1rem;
-    }
-
-    .title {
-        margin-bottom: 2rem;
-        font-weight: 700;
-    }
-
-    ul {
-        @extend .list-group;
-    }
-
-    li {
-        @extend .list-group-item;
-    }
-
-    img {
-        @extend .img-fluid, .rounded;
-    }
-
-    blockquote {
-        @extend .blockquote;
-    }
-
-    .row {
-        @extend .d-flex;
-
-        .nav-container {
-            background-color: map-get($map: $grays, $key: "200");
-            max-width: 30rem;
-            flex: 1 1 auto;
-            border-right: 1px solid $border-color;
-            border-bottom: 1px solid transparent;
-
-            @media (max-width: map-get($map: $grid-breakpoints, $key: xl)) {
-                max-width: 100%;
-                border-right: 1px solid transparent;
-                border-bottom: 1px solid $border-color;
+            &.inv {
+                background: $main-gradient-light-inv;
             }
         }
 
-        .nav {
-            @extend .nav-pills, .p-3;
-            display: block !important;
+        .content {
+            text-align: center;
+            font-family: Inter;
+            font-weight: 700;
+        }
+    }
 
-            @media (min-width: map-get($map: $grid-breakpoints, $key: xl)) {
-                position: sticky;
-                height: calc(100vh - 100px);
-                overflow-y: auto;
-                top: 61px;
-            }
+    .main {
+        &-wrapper {
+            @extend .flex-c-c, .border-top;
         }
 
-        .tab-content {
-            padding: 2rem;
-            max-width: 60rem;
+        &-content {
+            @extend .shadow, .rounded-top;
             flex: 1 1 100%;
+            max-width: 50rem;
+            padding: 4rem;
+            background: $white;
+            margin-top: -15rem;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 300;
 
-            @media(max-width: map-get($map: $grid-breakpoints, $key: sm)) {
-                padding: 2rem 1rem;
+            strong {
+                font-weight: 900;
+                color: map-get($map: $grays, $key: "700");
+            }
+
+            hr {
+                border: none;
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+            }
+
+            ul {
+                @extend .list-group, .list-group-flush, .rounded-right;
+                border-left: 0.5rem solid $wysiwyg-list-main-border-light-primary !important;
+
+                li {
+                    @extend .list-group-item;
+                    border-color: $wysiwyg-list-border-light-primary !important;
+                    background: $wysiwyg-list-bg-light-primary !important;
+                }
+            }
+
+            p {
+                margin-bottom: 1rem;
+
+                img {
+                    @extend .img-fluid;
+                    margin-bottom: 2rem;
+                    margin-top: 2rem;
+                }
+            }
+
+            blockquote {
+                @extend .blockquote;
+            }
+
+            a:after {
+                content: " \f0c1";
+                font: normal normal normal 14px/1 FontAwesome;
+            }
+
+            &-service-card {
+                box-shadow: none !important;
+                padding: 1rem;
+                max-width: 100%;
+                margin-top: 0rem;
+                background: none;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin-bottom: 0.5em;
+                padding-bottom: 0.25em;
+                border-bottom: 1px solid map-get($map: $grays, $key: "200");
+                font-family: $font-Inter;
+                font-weight: 300;
+            }
+        }
+    }
+
+    @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
+        .main {
+            &-content {
+                padding: 2rem;
+
+                &-service-card {
+                    padding: 0.5rem;
+                }
             }
         }
     }

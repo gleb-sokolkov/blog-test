@@ -1,45 +1,40 @@
-{{!< info}}
-<div class="container">
-	<h4 class="py-4">
-		<strong>Новости</strong>
-	</h4>
-	<div class="row content">
-		<div class="col-sm-8 col-md-9">
-			<h4 class="text-weight-bold text-right text-muted d-none" style="font-size: 1.0rem;">Всего постов:
-				{{ data.posts.results.length}}</h4>
-			<div class="blog border-bottom">
-				{{#each data.posts.results}}
-				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}"
-					class="post border py-2 px-3 rounded mb-2 bg-white">
-					<h4>
-						<a href="{{postUrl slug}}" class="text-dark">{{{title}}}</a>
-					</h4>
-					{{!-- {{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}"
-								class="img pull-right">{{/if}} --}}
-					<p>{{{content.brief}}}</p>
+{{!< info}} <div class="blog">
+	<h2 class="blog-header">
+		<i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости
+	</h2>
+	<div class="row blog-content">
+		<div class="posts">
+			{{#each data.posts.results}}
+			<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}"
+				class="post">
+				<h4 class="title">
+					<a href="{{postUrl slug}}">{{{title}}}</a>
+				</h4>
+				{{!-- {{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}"
+					class="img pull-right">{{/if}} --}}
+				<p>{{{content.brief}}}</p>
 
-					{{#if content.extended}}
-					<p class="read-more">
-						<a href="{{postUrl slug}}" class="btn btn-outline-info">
-							<i class="fa fa-sticky-note" aria-hidden="true"></i>
-							Читать
-						</a>
-					</p>
-					{{/if}}
-					<hr>
-					<p class="lead text-muted" style="font-size: 1.0rem;">
-						{{{categoryList categories prefix="Добавлено в "}}}
-						{{#if author.name.first}} <br class="d-block"> <span style="font-size: 0.9rem;">Автор:
-							{{author.name.first}}</span>{{/if}}
-					</p>
-				</div>
-				{{/each}}
+				{{#if content.extended}}
+				<p class="read-more">
+					<a href="{{postUrl slug}}" class="btn btn-outline-info">
+						<i class="fa fa-sticky-note" aria-hidden="true"></i>
+						Читать
+					</a>
+				</p>
+				{{/if}}
+				<hr>
+				<p class="lead text-muted" style="font-size: 1.0rem;">
+					{{{categoryList categories prefix="Добавлено в "}}}
+					{{#if author.name.first}} <br class="d-block"> <span style="font-size: 0.9rem;">Автор:
+						{{author.name.first}}</span>{{/if}}
+				</p>
 			</div>
+			{{/each}}
 		</div>
-		<div class="col-sm-4 col-md-3 d-none d-sm-inline-block">
-			<div class="categories">
-				<h2>Категории</h2>
-				<div class="list-group">
+		<div class="categories">
+			<div class="categories-content sticky">
+				<h3 class="title">Категории</h3>
+				<div class="list-flush-rounded shadow-sm bg-white">
 					<a href="/blog" class="active list-group-item list-group-item-action">Все категории</a>
 					{{#each data.categories }}
 					<a href="{{categoryUrl key}}" class="list-group-item list-group-item-action">{{name}}</a>
@@ -49,7 +44,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="pt-2 mt-sm-0">
+	<div class="mt-sm-0">
 		{{>pagination}}
 	</div>
-</div>
+	</div>

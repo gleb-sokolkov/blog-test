@@ -29,7 +29,7 @@ exports.initLocals = function (req, res, next) {
 	];
 	res.locals.user = req.user;
 
-	res.locals.isProd = process.env.APP_STATE === "prod";
+	res.locals.prod = process.env.APP_STATE === "prod";
 
 	next();
 };

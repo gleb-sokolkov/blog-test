@@ -10,6 +10,8 @@ var paginationLinkTemplate = _.template('<a href="<%= url %>" class="page-link">
 var scriptTemplate = _.template('<script src="<%= src %>"></script>');
 var cssLinkTemplate = _.template('<link href="<%= href %>" rel="stylesheet">');
 
+var devServerLink = "http://localhost:9000";
+
 module.exports = function () {
 
 	var _helpers = {};
@@ -448,6 +450,10 @@ module.exports = function () {
 			default:
 				return options.inverse(this);
 		}
+	};
+
+	_helpers.isProd = function(str, cond) {
+		return cond ? str : `${devServerLink}${str}`;
 	};
 
 	return _helpers;

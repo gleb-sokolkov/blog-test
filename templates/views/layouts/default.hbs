@@ -10,10 +10,10 @@
 
 	{{#if isProd}}
 	<link rel="stylesheet" href="/styles/shared.css">
-	<link rel="stylesheet" href="/styles/fa.css">
+	<link rel="stylesheet" href="/styles/vendor.css">
 	{{else}}
 	<link rel="stylesheet" href="http://localhost:9000/styles/shared.css">
-	<link rel="stylesheet" href="http://localhost:9000/styles/fa.css">
+	<link rel="stylesheet" href="http://localhost:9000/styles/vendor.css">
 	{{/if}}
 
 	{{!-- This file provides the default styling for the KeystoneJS Content Editor
@@ -87,13 +87,11 @@
 	{{#if isProd}}
 	<script src="/js/blocks.bundle.js" async defer></script>
 	<script src="/js/shared.bundle.js" async defer></script>
-	<script src="/js/fa.bundle.js" async defer></script>
-	<script src="/js/bootstrap.bundle.js" async defer></script>
+	<script src="/js/vendor.bundle.js" async defer></script>
 	{{else}}
 	<script src="http://localhost:9000/js/blocks.bundle.js" async defer></script>
 	<script src="http://localhost:9000/js/shared.bundle.js" async defer></script>
-	<script src="http://localhost:9000/js/fa.bundle.js" async defer></script>
-	<script src="http://localhost:9000/js/bootstrap.bundle.js" async defer></script>
+	<script src="http://localhost:9000/js/vendor.bundle.js" async defer></script>
 	{{/if}}
 </body>
 

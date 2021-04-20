@@ -7,6 +7,7 @@
     "async": "3.2.0",
     "bootstrap": "^4.5.3",
     "cloudinary": "^1.23.0",
+    "core-js": "^3.10.1",
     "debounce": "^1.2.0",
     "dotenv": "8.2.0",
     "element-remove": "^1.0.4",
@@ -24,8 +25,6 @@
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
     "node-sass-middleware": "0.11.0",
-    "nodelist-foreach-polyfill": "^1.2.0",
-    "promise-polyfill": "8.2.0",
     "regenerator-runtime": "^0.13.7",
     "validator": "^13.5.2",
     "whatwg-fetch": "^3.5.0",
@@ -56,14 +55,15 @@
     "terser-webpack-plugin": "^5.0.1",
     "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.7.3"
   },
   "scripts": {
     "lint": "eslint .",
     "devkey": "nodemon keystone.js",
     "key": "node keystone.js",
     "blocks": "webpack --config ./webpack.blocks.config.js",
-    "dev": "webpack serve --config ./webpack.config.js",
-    "prod": "webpack --config ./webpack.config.js"
+    "dev": "webpack serve --config ./webpack.dev.config.js",
+    "prod": "webpack --config ./webpack.prod.config.js"
   }
 }

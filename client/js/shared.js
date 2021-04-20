@@ -5,7 +5,6 @@
 *
 */
 import '../styles/site.scss';
-import './polyfills';
 import './custom/sidenav';
 import './custom/recaptcha';
 import './custom/calculator';

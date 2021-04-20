@@ -10,10 +10,10 @@
 
     {{#if isProd}}
     <link rel="stylesheet" href="/styles/shared.css">
-    <link rel="stylesheet" href="/styles/fa.css">
+    <link rel="stylesheet" href="/styles/vendor.css">
     {{else}}
     <link rel="stylesheet" href="http://localhost:9000/styles/shared.css">
-    <link rel="stylesheet" href="http://localhost:9000/styles/fa.css">
+    <link rel="stylesheet" href="http://localhost:9000/styles/vendor.css">
     {{/if}}
 
     {{#if isProd}}
@@ -53,8 +53,7 @@
     <script src="/js/bootstrap.bundle.js" async defer></script>
     {{else}}
     <script src="http://localhost:9000/js/shared.bundle.js" async defer></script>
-    <script src="http://localhost:9000/js/fa.bundle.js" async defer></script>
-    <script src="http://localhost:9000/js/bootstrap.bundle.js" async defer></script>
+    <script src="http://localhost:9000/js/vendor.bundle.js" async defer></script>
     {{/if}}
 </body>
 

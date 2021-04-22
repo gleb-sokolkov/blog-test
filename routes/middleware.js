@@ -8,7 +8,8 @@
  * modules in your project's /lib directory.
  */
 var _ = require('lodash');
-
+const rootPath = require('app-root-path');
+const { decodeToken } = require(rootPath + '/services/jwt');
 
 /**
 	Initialises the standard view locals
@@ -60,4 +61,22 @@ exports.requireUser = function (req, res, next) {
 	} else {
 		next();
 	}
+};
+
+exports.auth = (req, res, next) => {
+	const token = req.header("token");
+	if(!token) {
+		return res.status(401).json({
+			msg: "Вы не авторизированы",
+		});
+	}
+	decodeToken(token)
+	.then(payload => {
+		req.user = payload;
+		next();
+	})
+	.catch(err => res.status(401).json({
+		msg: "Серверу не удалось авторизировать вас",
+	}));
+	
 };

@@ -37,7 +37,7 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
-	app.get('/about', routes.views.about);
+	app.get('/about', middleware.auth, routes.views.about);
 	app.get('/clients/cservices', routes.views.clients.cservices);
 	app.get('/clients/rent', routes.views.clients.rent);
 	app.get('/clients/placement', routes.views.clients.placement);
@@ -45,7 +45,9 @@ exports = module.exports = function (app) {
 	app.get('/carier', routes.views.carier);
 	app.get('/contact', routes.views.contact);
 	app.get('/services/service', routes.views.service);
-
+	
+	app.all('/signup', routes.views.signup);
+	app.all('/signin', routes.views.signin);
 
 	app.all('/clients/calc', routes.views.clients.calc);
 	app.all('/', routes.views.index);

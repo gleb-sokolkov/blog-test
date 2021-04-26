@@ -9,7 +9,7 @@
  */
 var _ = require('lodash');
 const rootPath = require('app-root-path');
-const { decodeToken } = require(rootPath + '/services/jwt');
+const { verifyToken, getTokenFromHeader } = require(rootPath + '/services/jwt');
 
 /**
 	Initialises the standard view locals
@@ -64,13 +64,14 @@ exports.requireUser = function (req, res, next) {
 };
 
 exports.auth = (req, res, next) => {
-	const token = req.header("token");
+	//const token = getTokenFromHeader(req);
+	const token = req.body.accessToken;
 	if(!token) {
 		return res.status(401).json({
 			msg: "Вы не авторизированы",
 		});
 	}
-	decodeToken(token)
+	verifyToken(token)
 	.then(payload => {
 		req.user = payload;
 		next();

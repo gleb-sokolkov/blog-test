@@ -3,7 +3,8 @@ const { default: validator } = require('validator');
 const User = keystone.list('User');
 const bcrypt = require('bcrypt');
 const rootPath = require('app-root-path');
-const { signToken } = require(rootPath + "/services/jwt");
+const { signToken, signRefreshToken } = require(rootPath + "/services/jwt");
+const config = require(rootPath + "/app.config.js");
 
 exports = module.exports = (req, res) => {
     const view = new keystone.View(req, res);
@@ -18,9 +19,10 @@ exports = module.exports = (req, res) => {
      * }
      */
     const body = { email: '', password: '' };
-    view.on('post', validateSignIn);
+    /*view.on('post', validateSignIn);
     view.on('post', getUser);
-    view.on('post', login);
+    view.on('post', login);*/
+    view.on('post', (next) => {signRefreshToken(); res.sendStatus(200)});
 
     view.render('signin', { layout: 'info' });
 
@@ -68,5 +70,11 @@ exports = module.exports = (req, res) => {
             token,
         }))
         .catch(err => next(err));
+
+        signToken({id: req.user.id})
+        .then(token => res.status(200).cookie('refresh token', 'Bearer ' + token, {
+            expires: new Date(Date.now() + config.jwt.refresh.expiredAt * 1000)
+        }).end())
+        .catch();
     }
 };

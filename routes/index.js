@@ -20,10 +20,12 @@
 
 var keystone = require('keystone');
 var middleware = require('./middleware');
+const auth = require('./auth/auth');
 var importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
+keystone.pre('routes', auth);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
@@ -45,9 +47,6 @@ exports = module.exports = function (app) {
 	app.get('/carier', routes.views.carier);
 	app.get('/contact', routes.views.contact);
 	app.get('/services/service', routes.views.service);
-	
-	app.all('/signup', routes.views.signup);
-	app.all('/signin', routes.views.signin);
 
 	app.all('/clients/calc', routes.views.clients.calc);
 	app.all('/', routes.views.index);

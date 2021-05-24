@@ -392,18 +392,18 @@ module.exports = function () {
 	};
 
 	_helpers.hdd = function (object) {
-		return parseInt(object['sata-input'].value) + 
-			   parseInt(object['sas-input'].value)  + 
-			   parseInt(object['ssd-input'].value);
+		return parseInt(object['sata-input'].value) +
+			parseInt(object['sas-input'].value) +
+			parseInt(object['ssd-input'].value);
 	};
 
-	_helpers.div = function(a, b) {
+	_helpers.div = function (a, b) {
 		return (parseFloat(a) / parseFloat(b)).toFixed(1);
 	};
-	_helpers.mul = function(a, b) {
+	_helpers.mul = function (a, b) {
 		return (parseFloat(a) * parseFloat(b)).toFixed(1);
 	};
-	_helpers.add = function(options){
+	_helpers.add = function (options) {
 		var result = 0;
 		//console.log(options);
 		for (const [key, value] of Object.entries(options.hash)) {
@@ -411,49 +411,67 @@ module.exports = function () {
 		}
 		return result;
 	};
-	_helpers.sub = function(a, b) {		
+	_helpers.sub = function (a, b) {
 		return parseInt(a) - parseInt(b);
 	};
 	_helpers.ifCond = function (v1, operator, v2, options) {
 
 		switch (operator) {
 			case '==':
-				if(v1 == v2) return options.fn(this);
+				if (v1 == v2) return options.fn(this);
 				return options.inverse(this);
 			case '===':
-				if(v1 === v2) return options.fn(this);
+				if (v1 === v2) return options.fn(this);
 				return options.inverse(this);
 			case '!=':
-				if(v1 != v2) return options.fn(this);
+				if (v1 != v2) return options.fn(this);
 				return options.inverse(this);
 			case '!==':
-				if(v1 !== v2) return options.fn(this);
+				if (v1 !== v2) return options.fn(this);
 				return options.inverse(this);
 			case '<':
-				if(v1 < v2) return options.fn(this);
+				if (v1 < v2) return options.fn(this);
 				return options.inverse(this);
 			case '<=':
-				if(v1 <= v2) return options.fn(this);
+				if (v1 <= v2) return options.fn(this);
 				return options.inverse(this);
 			case '>':
-				if(v1 > v2) return options.fn(this);
+				if (v1 > v2) return options.fn(this);
 				return options.inverse(this);
 			case '>=':
-				if(v1 >= v2) return options.fn(this);
+				if (v1 >= v2) return options.fn(this);
 				return options.inverse(this);
 			case '&&':
-				if(v1 && v2) return options.fn(this);
+				if (v1 && v2) return options.fn(this);
 				return options.inverse(this);
 			case '||':
-				if(v1 || v2) return options.fn(this);
+				if (v1 || v2) return options.fn(this);
 				return options.inverse(this);
 			default:
 				return options.inverse(this);
 		}
 	};
 
-	_helpers.isProd = function(str, cond) {
+	_helpers.isProd = function (str, cond) {
 		return cond ? str : `${devServerLink}${str}`;
+	};
+
+	_helpers.intersects = (context, arr, options) => {
+		arr = arr.map(item => item.name);
+		let result = context.reduce((accum, item) => {
+			if (arr.includes(item.name)) {
+				item.active = 'active';
+			}
+			return accum += options.fn(item);
+		}, '');
+		return result;
+	};
+
+	_helpers.isOne = (context, options) => {
+		if(context.length !== 1) {
+			return '';
+		}
+		return options.fn(context[0]);
 	};
 
 	return _helpers;

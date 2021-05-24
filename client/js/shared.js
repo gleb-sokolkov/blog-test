@@ -9,3 +9,4 @@ import './custom/sidenav';
 import './custom/recaptcha';
 import './custom/calculator';
 import './custom/up';
+import './custom/gallery-scroller';

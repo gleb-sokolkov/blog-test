@@ -1,0 +1,176 @@
+.gallery {
+    
+    background: map-get($map: $grays, $key: "300");
+
+    .links {
+        @extend .mt-sm-4, .mb-4, .d-flex, .align-items-center, .shadow-sm;
+        border-radius: 1px;
+        font-size: 1.125rem;
+        border-radius: 0px 50px 50px 0px;
+        background: map-get($map: $colors, $key: "white");
+
+        a {
+            color: inherit;
+        }
+
+        .all {
+            @extend .py-3, .px-4;
+            color: map-get($map: $grays, $key: "200");
+            background: map-get($map: $grays, $key: "700");
+            font-weight: 700;
+        }
+
+        .link {
+            position: relative;
+            z-index: 1;
+            transition: 0.2s ease;
+            background: map-get($map: $colors, $key: "white");
+
+            &:hover {
+                background: map-get($map: $grays, $key: "300");
+
+                &.active {
+                    &::after {
+                        height: 0.45rem;
+                    }
+                }
+            }
+
+            a {
+                text-decoration: none !important;
+            }
+
+            &.active {
+                .wrapper {
+                    position: relative;
+                    z-index: 1;
+                }
+
+                &::after {
+                    transition: 0.2s ease;
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    bottom: 0rem;
+                    height: 0.15rem;
+                    left: 1rem;
+                    right: 1rem;
+                    background: $blue;
+                }
+            }
+
+            .wrapper {
+                @extend .py-3, .px-4;
+            }
+        }
+
+        @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
+            border-top: none;
+            border-radius: 0px;
+        }
+    }
+
+    .gallery-scroller {
+        .gallery-grid {
+            @extend .d-flex;
+            .gallery-column {
+                display: none;
+
+                &.active {
+                    @extend .d-flex;
+                }
+
+                @extend .flex-column;
+                flex: 1 1 10rem;
+                & > * {
+                    background: map-get($map: $colors, $key: "white");
+                    margin: 1rem;
+                }
+            }
+        }
+    }
+
+    .image-card {
+        position: relative;
+
+        .body {
+            height: 20rem;
+            img {
+                max-width: 100%;
+            }
+        }
+
+        .progress {
+            @extend .d-flex, .justify-content-center, .align-items-center, .absolute-0-0-0-0;
+            height: 0%;
+            transition: height 0.5s cubic-bezier(0.57, -0.07, 0, 1), background-color 0.5s ease;
+        }
+
+        .info {
+            @extend .absolute-0-0-0-0, .h-100;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%);
+            background-position: 0rem 20rem;
+            background-repeat: no-repeat;
+            transition: background-position 0.25s ease, box-shadow 0.25s ease;
+
+            .title {
+                bottom: 0.5rem;
+                left: -0.5rem;
+                position: absolute;
+                color: map-get($map: $colors, $key: 'white');
+                opacity: 0;
+                font-weight: 700;
+                transition: opacity 0.25s ease, left 0.25s ease;
+            }
+        }
+
+        .info:hover {
+            @extend .shadow-sm;
+            background-position: 0rem 0rem;
+
+            .title {
+                left: 0.5rem;
+                opacity: 1;
+            }
+        }
+
+        &.loading {
+            .progress {
+                height: 100%;
+                background: rgba(map-get($map: $grays, $key: "200"), 0.5);
+            }
+        }
+
+        &.loaded {
+            .progress {
+                display: none;
+            }
+            .body {
+                display: block;
+                height: auto;
+                img {
+                    @extend .img-fluid;
+                }
+            }
+        }
+
+        &.failed {
+            .body {
+                display: block;
+                background: rgba(map-get($map: $colors, $key: "red"), 0.25);
+            }
+            .progress {
+                display: none;
+            }
+
+            &::after {
+                @extend .d-flex, .justify-content-center, .align-items-center, .absolute-0-0-0-0;
+                content: "\f071";
+                font: normal normal normal 14px/1 FontAwesome;
+                height: 100%;
+                color: map-get($map: $colors, $key: "red");
+                font-size: 2rem;
+            }
+        }
+    }
+}

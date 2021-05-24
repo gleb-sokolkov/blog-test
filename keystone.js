@@ -8,9 +8,6 @@ var handlebars = require('express-handlebars');
 const { paths } = require('keystone');
 const path = require('path');
 
-// Initialise Keystone with your project's configuration.
-// See http://keystonejs.com/guide/config for available options
-// and documentation.
 
 keystone.init({
 	'name': 'project',
@@ -54,10 +51,10 @@ keystone.init({
 	'wysiwyg additional plugins': 'table hr autolink image lists advlist nonbreaking visualblocks textcolor colorpicker',
 });
 
-// Load your project's Models
+// Load project's Models
 keystone.import('models');
 
-// Setup common locals for your templates. The following are required for the
+// Setup common locals for templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
 // for each request) should be added to ./routes/middleware.js
 keystone.set('locals', {
@@ -67,14 +64,14 @@ keystone.set('locals', {
 	editable: keystone.content.editable,
 });
 
-// Load your project's Routes
+// Load project's Routes
 keystone.set('routes', require('./routes'));
 
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
 	posts: ['posts', 'post-categories'],
-	galleries: 'galleries',
+	galleries: ['galleries', 'gallery-images'],
 	enquiries: 'enquiries',
 	ys: 'ys',
 	services: 'services',
@@ -83,8 +80,6 @@ keystone.set('nav', {
 });
 
 // Start Keystone to connect to your database and initialise the web server
-
-
 if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
 	console.log('----------------------------------------'
 		+ '\nWARNING: MISSING MAILGUN CREDENTIALS'

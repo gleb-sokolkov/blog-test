@@ -446,35 +446,3 @@
         }
     }
 }
-
-.flex-c-c {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.flex-sb-fs {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.flex-fe-c {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.vl-middle {
-    & > * {
-        vertical-align: middle;
-    }
-}
-
-.f-1-1-auto {
-    flex: 1 1 auto;
-}
-
-.f-0-0-auto {
-    flex: 0 0 auto;
-}

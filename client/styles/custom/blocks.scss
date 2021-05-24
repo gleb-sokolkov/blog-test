@@ -1,3 +1,47 @@
 .list-flush-rounded {
     @extend .list-group, .list-group-flush, .rounded;
 }
+
+.flex-c-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-sb-fs {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.flex-fe-c {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.vl-middle {
+    & > * {
+        vertical-align: middle;
+    }
+}
+
+.f-1-1-auto {
+    flex: 1 1 auto;
+}
+
+.f-0-0-auto {
+    flex: 0 0 auto;
+}
+
+.f-0-1-auto {
+    flex: 0 1 auto;
+}
+
+.absolute-0-0-0-0 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}

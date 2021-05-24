@@ -1,12 +1,12 @@
-{{!< info}} <div class="jumbotron jumbotron-fluid mb-0">
+{{!< info}} {{!-- <div class="jumbotron jumbotron-fluid mb-0">
 	<h4 class="text-center"><strong>Галерея</strong></h4>
 	<div class="container-fluid">
-		{{#if galleries}}
-		{{#each galleries}}
+		{{#if data.galleries}}
+		{{#each data.galleries}}
 
 		<h1 class="display-4 text-center">{{name}}</h1>
 		<p class="lead text-center">{{subtext}}</p>
-			<hr>
+		<hr>
 		<div class="row no-gutters">
 			{{#each images}}
 			<div class="col-12 col-md-6 gallery">
@@ -23,4 +23,53 @@
 		<h3 class="text-muted">There are no image galleries yet.</h3>
 		{{/if}}
 	</div>
+	</div> --}}
+	<div class="gallery">
+		{{#if data.galleries}}
+		<div class="container">
+			<div class="row links">
+				<div class="all">
+					<a href="/gallery/all">Показать все</a>
+				</div>
+				{{#intersects data.galleries filters.galleries}}
+				<div class="link {{active}}">
+					<div class="wrapper">
+						<a href="/gallery/{{key}}">{{name}}</a>
+					</div>
+				</div>
+				{{/intersects}}
+			</div>
+		</div>
+		{{#isOne filters.galleries}}
+		<div class="my-3 text-center container p-4">
+			<h1 style="font-weight: 900; font-size: 3.5rem;" class="text-dark">{{name}}</h1>
+			<p class="font-weight-light text-muted">{{subtext}}</p>
+		</div>
+		{{/isOne}}
+		<div class="container-fluid bg-white shadow-lg py-3">
+			{{> gallery-scroller}}
+		</div>
+		{{else}}
+		<div class="container">
+			<div class="row">
+				There are no image galleries yet.
+			</div>
+		</div>
+		{{/if}}
 	</div>
+
+	<template id="imageCard">
+		<div class="image-card">
+			<div class="body">
+			</div>
+			<div class="info">
+				<div class="title">
+				</div>
+			</div>
+			<div class="progress">
+				<div class="spinner-grow text-primary" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+			</div>
+		</div>
+	</template>

@@ -580,17 +580,15 @@ h6 {
     position: sticky;
     z-index: 2;
     bottom: 1rem;
-    right: 1rem;
     width: 3rem;
     height: 3rem;
     margin-top: -4rem;
     margin-bottom: 1rem;
+    margin-right: 1rem;
     display: none;
-    align-items: center;
-    justify-content: center;
 
     &.actived {
-        display: flex;
+        display: block;
     }
 }
 

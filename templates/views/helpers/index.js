@@ -474,5 +474,10 @@ module.exports = function () {
 		return options.fn(context[0]);
 	};
 
+	_helpers.shortDate = (date) => {
+		date = date.toString().split(' ');
+		return `${date[1]} ${date[2]} ${date[3]}`;
+	};
+
 	return _helpers;
 };

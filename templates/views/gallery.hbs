@@ -41,9 +41,28 @@
 			</div>
 		</div>
 		{{#isOne filters.galleries}}
-		<div class="my-3 text-center container p-4">
-			<h1 style="font-weight: 900; font-size: 3.5rem;" class="text-dark">{{name}}</h1>
-			<p class="font-weight-light text-muted">{{subtext}}</p>
+		<div class="gallery-description container">
+			<h1 class="name">{{name}}</h1>
+			<p class="subtext">{{subtext}}</p>
+		</div>
+		<div class="gallery-info container">
+			<div class="info-block">
+				<span class="icon info opacity-50">
+					<i class="fa fa-clock-o" aria-hidden="true"></i>
+				</span>
+				<span class="value dark">
+					{{shortDate publishedDate}}
+				</span>
+			</div>
+			<div class="info-block">
+				<span class="icon orange opacity-50">
+					<i class="fa fa-user-circle-o" aria-hidden="true"></i>
+				</span>
+				<span class="value dark">
+					{{author.name.first}}
+					{{author.name.last}}
+				</span>
+			</div>
 		</div>
 		{{/isOne}}
 		<div class="container-fluid bg-white shadow-lg py-3">

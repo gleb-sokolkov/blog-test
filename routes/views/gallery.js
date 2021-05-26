@@ -46,7 +46,7 @@ exports = module.exports = function (req, res) {
 			locals.filters.galleries = await Gallery.model.find().populate('author');
 		}
 		else {
-			locals.filters.galleries = await Gallery.model.find({ key: req.params.gallery });
+			locals.filters.galleries = await Gallery.model.find({ key: req.params.gallery }).populate('author');
 
 			if (locals.filters.galleries.length <= 0) {
 				res.redirect('/gallery');
@@ -94,7 +94,7 @@ exports = module.exports = function (req, res) {
 						const public_id = item.body.public_id || '';
 						const format = item.body.format || '';
 						const imageURL = public_id.concat('.', format);
-						return cloudinary.url(imageURL, { secure : cloudinarySecure});
+						return cloudinary.url(imageURL, { secure: cloudinarySecure });
 					})(),
 				}
 			}),
